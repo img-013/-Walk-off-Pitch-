@@ -1,0 +1,82 @@
+{
+  "N": 100000,
+  "offered": 2400000,
+  "missingPartnerRate": 0.09969666666666667,
+  "conflictRate": 0.0051154166666666665,
+  "P_dead_screen": 0.10270875,
+  "target": 0.15,
+  "definition": "Reward-slot dependency screen: required existing partner absent OR mutually exclusive with equipped card. Before replacement, allows no hypothetical future partner. Does not prove absence of every unreachable/game-state-only condition.",
+  "coreCompatibilityLowerBounds": [
+    {
+      "core": "R007",
+      "name": "反向赌局",
+      "usable": 71,
+      "total": 72,
+      "A": 0.9861111111111112,
+      "noWitness": [
+        "R043"
+      ]
+    },
+    {
+      "core": "R008",
+      "name": "单骰决胜",
+      "usable": 72,
+      "total": 72,
+      "A": 1,
+      "noWitness": []
+    },
+    {
+      "core": "R073",
+      "name": "十二点约",
+      "usable": 72,
+      "total": 72,
+      "A": 1,
+      "noWitness": []
+    },
+    {
+      "core": "R074",
+      "name": "偶数法庭",
+      "usable": 72,
+      "total": 72,
+      "A": 1,
+      "noWitness": []
+    },
+    {
+      "core": "R075",
+      "name": "组合裁决",
+      "usable": 71,
+      "total": 72,
+      "A": 0.9861111111111112,
+      "noWitness": [
+        "R043"
+      ]
+    },
+    {
+      "core": "R076",
+      "name": "封骰契约",
+      "usable": 72,
+      "total": 72,
+      "A": 1,
+      "noWitness": []
+    },
+    {
+      "core": "R077",
+      "name": "末掷镜像",
+      "usable": 72,
+      "total": 72,
+      "A": 1,
+      "noWitness": []
+    },
+    {
+      "core": "R078",
+      "name": "熔金赌约",
+      "usable": 70,
+      "total": 72,
+      "A": 0.9722222222222222,
+      "noWitness": [
+        "R045",
+        "R058"
+      ]
+    }
+  ]
+}

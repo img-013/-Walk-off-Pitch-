@@ -8,12 +8,12 @@ for(const c of db.cards){
  assert.ok(['core','support'].includes(c.slot));assert.equal(c.stacking,'unique');
  assert.ok(Number.isInteger(c.price)&&c.price>0);assert.ok(Number.isInteger(c.reward_weight)&&c.reward_weight>0);
  for(const target of [...c.synergies,...c.tensions]){assert.ok(ids.has(target),`${c.id} bad relation ${target}`);assert.notEqual(target,c.id)}
- for(const ref of c.reference_ids)assert.ok(['BAL','PMD','SD','DD','DITD'].includes(ref));
+ for(const ref of c.reference_ids)assert.ok(['BAL','PMD','SD','DD','DITD','LBL'].includes(ref));
  if(c.status==='implemented')assert.ok(EFFECTS.includes(c.effect_key),`${c.id} missing runtime handler`);
  else assert.ok(!EFFECTS.includes(c.effect_key),`${c.id} planned card accidentally active`);
  for(const value of Object.values(c.params))assert.ok(Number.isFinite(value)&&value>=0);
 }
-assert.equal(db.cards.filter(c=>c.status==='implemented').length,24);
-assert.equal(db.cards.filter(c=>c.status==='planned').length,8);
+assert.equal(db.cards.filter(c=>c.status==='implemented').length,80);
+assert.equal(db.cards.filter(c=>c.status==='planned').length,0);
 assert.equal(db.rules.total_slots,db.rules.core_slots+db.rules.support_slots);
-console.log('Validated 32 cards, stable IDs, references, relations and active handlers');
+console.log('Validated 80 cards, stable IDs, references, relations and active handlers');

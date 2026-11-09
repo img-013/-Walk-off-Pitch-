@@ -1,9 +1,9 @@
 {
-  "schema_version": 1,
-  "content_version": "0.6.0",
-  "updated_at": "2026-11-09",
+  "schema_version": 2,
+  "content_version": "0.8.0",
+  "updated_at": "2026-11-10",
   "language": "zh-CN",
-  "balance_status": "prototype-unvalidated",
+  "balance_status": "prototype-measured-not-final",
   "rules": {
     "total_slots": 6,
     "core_slots": 1,
@@ -19,7 +19,23 @@
       "damage",
       "economy",
       "battle_end"
-    ]
+    ],
+    "pool_formula": {
+      "U": 16,
+      "S": 8,
+      "D": 5,
+      "B": 16,
+      "K": 8,
+      "N": 80
+    },
+    "reward_opportunities": 8,
+    "caps": {
+      "roundGoldPerBattle": 12,
+      "roundHealingPerBattle": 6,
+      "carryAdvantage": 3,
+      "carryShield": 3,
+      "extraDamage": 6
+    }
   },
   "cards": [
     {
@@ -35,8 +51,16 @@
         "amount": 1
       },
       "synergies": [
-        "R010",
-        "R013"
+        "R011",
+        "R019",
+        "R027",
+        "R033",
+        "R034",
+        "R035",
+        "R064",
+        "R065",
+        "R066",
+        "R067"
       ],
       "tensions": [
         "R011"
@@ -54,7 +78,25 @@
       "price": 28,
       "reward_weight": 4,
       "symbol": "☾",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "parity",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "parity"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R002",
@@ -69,8 +111,12 @@
         "amount": 3
       },
       "synergies": [
+        "R003",
+        "R013",
         "R014",
-        "R024"
+        "R024",
+        "R027",
+        "R071"
       ],
       "tensions": [
         "R003",
@@ -87,8 +133,26 @@
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "Ⅱ",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "△",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "combo",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "combo"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R003",
@@ -103,7 +167,12 @@
         "amount": 2
       },
       "synergies": [
-        "R013"
+        "R002",
+        "R013",
+        "R014",
+        "R024",
+        "R027",
+        "R071"
       ],
       "tensions": [
         "R002",
@@ -121,13 +190,31 @@
       "price": 28,
       "reward_weight": 4,
       "symbol": "△",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "combo",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "combo"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R004",
       "name": "差一点",
       "rarity": "普通",
-      "family": "防护",
+      "family": "通用",
       "phase": "damage",
       "phase_label": "伤害",
       "effect_key": "close_guard",
@@ -135,9 +222,7 @@
       "params": {
         "threshold": 1
       },
-      "synergies": [
-        "R018"
-      ],
+      "synergies": [],
       "tensions": [
         "R021"
       ],
@@ -152,8 +237,24 @@
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "◌",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "✦",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "bridge_pairs": [],
+      "serves": [],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R005",
@@ -169,7 +270,13 @@
       },
       "synergies": [
         "R009",
-        "R018"
+        "R021",
+        "R027",
+        "R028",
+        "R051",
+        "R052",
+        "R068",
+        "R069"
       ],
       "tensions": [],
       "reference_ids": [
@@ -184,13 +291,31 @@
       "price": 28,
       "reward_weight": 4,
       "symbol": "♨",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "risk",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "risk"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R006",
       "name": "庄家通吃",
       "rarity": "稀有",
-      "family": "胜负",
+      "family": "通用",
       "phase": "compare",
       "phase_label": "胜负",
       "effect_key": "tie_win",
@@ -198,15 +323,12 @@
       "params": {
         "amount": 1
       },
-      "synergies": [
-        "R004",
-        "R024"
-      ],
+      "synergies": [],
       "tensions": [],
       "reference_ids": [
         "BAL"
       ],
-      "role": "converter",
+      "role": "reward",
       "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
@@ -214,23 +336,36 @@
       "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
-      "symbol": "♛",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "✦",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "bridge_pairs": [],
+      "serves": [],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R007",
       "name": "反向赌局",
       "rarity": "核心",
-      "family": "逆点",
+      "family": "核心规则",
       "phase": "compare",
       "phase_label": "胜负",
       "effect_key": "low_wins",
       "description": "最终点数低者获胜。你的计分优势改为减点，最低为 0；敌人也改为保留低点。",
       "params": {},
-      "synergies": [
-        "R012",
-        "R018"
-      ],
+      "synergies": [],
       "tensions": [
         "R008"
       ],
@@ -238,33 +373,44 @@
         "BAL",
         "DD"
       ],
-      "role": "converter",
+      "role": "reward",
       "status": "implemented",
       "slot": "core",
-      "exclusive_group": "victory_mode",
+      "exclusive_group": "core",
       "stacking": "unique",
       "trigger_limit": "once_per_round",
       "price": 45,
       "reward_weight": 1,
       "symbol": "⇅",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "K",
+      "school": null,
+      "display_class": "gameplay",
+      "bridge_pairs": [],
+      "serves": [],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R008",
       "name": "单骰决胜",
       "rarity": "核心",
-      "family": "高点",
+      "family": "核心规则",
       "phase": "base",
-      "phase_label": "基础",
+      "phase_label": "规则",
       "effect_key": "max_only",
-      "description": "先比最高骰；相同则改比原始总和。跳过双方计分加成；胜负、伤害与经济规则照常。",
+      "description": "先比最高骰，相同时比总和；计分优势每 2 点改为胜出额外伤害或败北护盾，最多 3，不改变胜负。",
       "params": {},
-      "synergies": [
-        "R006",
-        "R024",
-        "R018",
-        "R009"
-      ],
+      "synergies": [],
       "tensions": [
         "R007",
         "R001",
@@ -274,16 +420,32 @@
       "reference_ids": [
         "BAL"
       ],
-      "role": "converter",
+      "role": "reward",
       "status": "implemented",
       "slot": "core",
-      "exclusive_group": "victory_mode",
+      "exclusive_group": "core",
       "stacking": "unique",
       "trigger_limit": "once_per_round",
       "price": 45,
       "reward_weight": 1,
       "symbol": "Ⅰ",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "K",
+      "school": null,
+      "display_class": "gameplay",
+      "bridge_pairs": [],
+      "serves": [],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R009",
@@ -300,7 +462,13 @@
       },
       "synergies": [
         "R005",
-        "R018"
+        "R021",
+        "R027",
+        "R028",
+        "R051",
+        "R052",
+        "R068",
+        "R069"
       ],
       "tensions": [
         "R021"
@@ -308,7 +476,7 @@
       "reference_ids": [
         "DITD"
       ],
-      "role": "reward",
+      "role": "safety",
       "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
@@ -316,14 +484,32 @@
       "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
-      "symbol": "✦",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "♨",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "risk",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "risk"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R010",
       "name": "拒绝对称",
       "rarity": "普通",
-      "family": "经济",
+      "family": "跨流派",
       "phase": "economy",
       "phase_label": "经济",
       "effect_key": "all_odd_gold",
@@ -332,10 +518,7 @@
         "amount": 3,
         "cap": 9
       },
-      "synergies": [
-        "R001",
-        "R014"
-      ],
+      "synergies": [],
       "tensions": [
         "R011",
         "R013"
@@ -352,8 +535,24 @@
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "◇",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "∞",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "B",
+      "school": null,
+      "display_class": "economy",
+      "bridge_pairs": [],
+      "serves": [],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R011",
@@ -368,8 +567,16 @@
         "amount": 1
       },
       "synergies": [
-        "R002",
-        "R014"
+        "R001",
+        "R019",
+        "R027",
+        "R033",
+        "R034",
+        "R035",
+        "R064",
+        "R065",
+        "R066",
+        "R067"
       ],
       "tensions": [
         "R001",
@@ -387,13 +594,31 @@
       "price": 28,
       "reward_weight": 4,
       "symbol": "☾",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "parity",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "parity"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R012",
       "name": "微光筹码",
       "rarity": "普通",
-      "family": "逆点",
+      "family": "低点",
       "phase": "score",
       "phase_label": "计分",
       "effect_key": "small_bonus",
@@ -403,8 +628,15 @@
         "threshold": 2
       },
       "synergies": [
-        "R007",
-        "R018"
+        "R027",
+        "R028",
+        "R040",
+        "R041",
+        "R042",
+        "R043",
+        "R068",
+        "R070",
+        "R079"
       ],
       "tensions": [
         "R023"
@@ -412,7 +644,7 @@
       "reference_ids": [
         "DD"
       ],
-      "role": "enabler",
+      "role": "reward",
       "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
@@ -420,8 +652,26 @@
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "Ⅱ",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "◌",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "low",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "low"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R013",
@@ -436,7 +686,12 @@
         "amount": 4
       },
       "synergies": [
-        "R003"
+        "R002",
+        "R003",
+        "R014",
+        "R024",
+        "R027",
+        "R071"
       ],
       "tensions": [
         "R002",
@@ -454,7 +709,25 @@
       "price": 38,
       "reward_weight": 2,
       "symbol": "△",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "combo",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "combo"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R014",
@@ -470,7 +743,11 @@
       },
       "synergies": [
         "R002",
-        "R024"
+        "R003",
+        "R013",
+        "R024",
+        "R027",
+        "R071"
       ],
       "tensions": [
         "R003",
@@ -487,8 +764,26 @@
       "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
-      "symbol": "◌",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "△",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "combo",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "combo"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R015",
@@ -503,40 +798,16 @@
         "amount": 1
       },
       "synergies": [
-        "R016"
-      ],
-      "tensions": [
-        "R017"
-      ],
-      "reference_ids": [
-        "SD"
-      ],
-      "role": "enabler",
-      "status": "implemented",
-      "slot": "support",
-      "exclusive_group": null,
-      "stacking": "unique",
-      "trigger_limit": "once_per_round",
-      "price": 28,
-      "reward_weight": 4,
-      "symbol": "♨",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
-    },
-    {
-      "id": "R016",
-      "name": "独掷者",
-      "rarity": "普通",
-      "family": "锁定",
-      "phase": "score",
-      "phase_label": "计分",
-      "effect_key": "one_reroll",
-      "description": "第三掷恰好重掷一枚骰子，提供 2 点优势。",
-      "params": {
-        "amount": 2
-      },
-      "synergies": [
-        "R015",
-        "R023"
+        "R016",
+        "R027",
+        "R029",
+        "R044",
+        "R045",
+        "R046",
+        "R064",
+        "R065",
+        "R067",
+        "R070"
       ],
       "tensions": [
         "R017"
@@ -552,8 +823,85 @@
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "♛",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "Ⅱ",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "lock",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "lock"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R016",
+      "name": "独掷者",
+      "rarity": "普通",
+      "family": "锁定",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "one_reroll",
+      "description": "第三掷恰好重掷一枚骰子，提供 2 点优势。",
+      "params": {
+        "amount": 2
+      },
+      "synergies": [
+        "R015",
+        "R027",
+        "R029",
+        "R044",
+        "R045",
+        "R046",
+        "R064",
+        "R065",
+        "R067",
+        "R070"
+      ],
+      "tensions": [
+        "R017"
+      ],
+      "reference_ids": [
+        "SD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "Ⅱ",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "lock",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "lock"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R017",
@@ -568,7 +916,16 @@
         "amount": 3
       },
       "synergies": [
-        "R021"
+        "R019",
+        "R027",
+        "R029",
+        "R047",
+        "R048",
+        "R049",
+        "R050",
+        "R065",
+        "R068",
+        "R069"
       ],
       "tensions": [
         "R015",
@@ -586,14 +943,32 @@
       "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
-      "symbol": "⇅",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "↻",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "reroll",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "reroll"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R018",
       "name": "低潮护符",
       "rarity": "普通",
-      "family": "防护",
+      "family": "通用",
       "phase": "damage",
       "phase_label": "伤害",
       "effect_key": "low_guard",
@@ -602,11 +977,7 @@
         "amount": 2,
         "threshold": 9
       },
-      "synergies": [
-        "R007",
-        "R012",
-        "R005"
-      ],
+      "synergies": [],
       "tensions": [
         "R023"
       ],
@@ -621,30 +992,55 @@
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "Ⅰ",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "✦",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "bridge_pairs": [],
+      "serves": [],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R019",
       "name": "看穿庄家",
       "rarity": "普通",
-      "family": "对策",
+      "family": "跨流派",
       "phase": "score",
       "phase_label": "计分",
       "effect_key": "enemy_even",
-      "description": "敌方可见骰子中至少两枚为偶数，提供 2 点优势；不读取镜像后的计分骰。",
+      "description": "敌方至少两颗偶数，且末掷至少重掷一颗：提供 2 优势。",
       "params": {
         "amount": 2,
         "count": 2
       },
       "synergies": [
-        "R004"
+        "R001",
+        "R011",
+        "R017",
+        "R027",
+        "R029",
+        "R033",
+        "R034",
+        "R035",
+        "R047",
+        "R048"
       ],
       "tensions": [],
       "reference_ids": [
         "SD"
       ],
-      "role": "enabler",
+      "role": "reward",
       "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
@@ -652,14 +1048,38 @@
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "✦",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "∞",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "B",
+      "school": null,
+      "display_class": "assistance",
+      "bridge_pairs": [
+        [
+          "parity",
+          "reroll"
+        ]
+      ],
+      "serves": [
+        "parity",
+        "reroll"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R020",
       "name": "旅费余裕",
       "rarity": "普通",
-      "family": "经济",
+      "family": "通用",
       "phase": "battle_end",
       "phase_label": "战后",
       "effect_key": "battle_gold",
@@ -667,14 +1087,12 @@
       "params": {
         "amount": 8
       },
-      "synergies": [
-        "R010"
-      ],
+      "synergies": [],
       "tensions": [],
       "reference_ids": [
         "BAL"
       ],
-      "role": "enabler",
+      "role": "reward",
       "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
@@ -682,8 +1100,24 @@
       "trigger_limit": "once_per_battle",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "◇",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "✦",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "U",
+      "school": null,
+      "display_class": "economy",
+      "bridge_pairs": [],
+      "serves": [],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R021",
@@ -699,7 +1133,14 @@
         "penalty": 2
       },
       "synergies": [
-        "R017"
+        "R005",
+        "R009",
+        "R027",
+        "R028",
+        "R051",
+        "R052",
+        "R068",
+        "R069"
       ],
       "tensions": [
         "R009"
@@ -707,7 +1148,7 @@
       "reference_ids": [
         "DITD"
       ],
-      "role": "converter",
+      "role": "reward",
       "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
@@ -715,14 +1156,32 @@
       "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
-      "symbol": "☾",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "♨",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "risk",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "risk"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R022",
       "name": "败中求变",
       "rarity": "普通",
-      "family": "成长",
+      "family": "通用",
       "phase": "score",
       "phase_label": "计分",
       "effect_key": "loss_growth",
@@ -731,15 +1190,12 @@
         "amount": 1,
         "cap": 3
       },
-      "synergies": [
-        "R018",
-        "R004"
-      ],
+      "synergies": [],
       "tensions": [],
       "reference_ids": [
         "BAL"
       ],
-      "role": "safety",
+      "role": "reward",
       "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
@@ -747,8 +1203,24 @@
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "Ⅱ",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "✦",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "bridge_pairs": [],
+      "serves": [],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R023",
@@ -763,8 +1235,15 @@
         "amount": 2
       },
       "synergies": [
-        "R015",
-        "R016"
+        "R027",
+        "R036",
+        "R037",
+        "R038",
+        "R039",
+        "R065",
+        "R068",
+        "R070",
+        "R080"
       ],
       "tensions": [
         "R007",
@@ -781,8 +1260,26 @@
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "△",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+      "symbol": "♜",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "high",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "high"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R024",
@@ -798,8 +1295,11 @@
       },
       "synergies": [
         "R002",
+        "R003",
+        "R013",
         "R014",
-        "R006"
+        "R027",
+        "R071"
       ],
       "tensions": [
         "R003"
@@ -807,6 +1307,170 @@
       "reference_ids": [
         "PMD",
         "BAL"
+      ],
+      "role": "safety",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "△",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。",
+      "pool_class": "S",
+      "school": "combo",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "combo"
+      ],
+      "effects": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R025",
+      "name": "末掷校准",
+      "rarity": "稀有",
+      "family": "骰面操控",
+      "phase": "roll",
+      "phase_label": "掷骰",
+      "effect_key": "repair_one",
+      "description": "第三掷后，将最左侧的 1 点改为 2 点。",
+      "params": {
+        "amount": 1
+      },
+      "synergies": [
+        "R031",
+        "R053",
+        "R054",
+        "R055",
+        "R066",
+        "R070",
+        "R071",
+        "R072"
+      ],
+      "tensions": [
+        "R001"
+      ],
+      "reference_ids": [
+        "DD"
+      ],
+      "role": "enabler",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "◇",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。",
+      "effects": [],
+      "pool_class": "S",
+      "school": "face",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "face"
+      ],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R026",
+      "name": "余温筹码",
+      "rarity": "普通",
+      "family": "通用",
+      "phase": "carry",
+      "phase_label": "储存",
+      "effect_key": "carry_guard",
+      "description": "本回合未受到比较伤害，储存 1 护盾供下一回合使用。",
+      "params": {
+        "amount": 1
+      },
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "SD"
+      ],
+      "role": "enabler",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "✦",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。",
+      "effects": [
+        {
+          "op": "bankShield",
+          "when": "unhurt",
+          "amount": 1
+        }
+      ],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "bridge_pairs": [],
+      "serves": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R027",
+      "name": "邻座共鸣",
+      "rarity": "稀有",
+      "family": "跨流派",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "adjacent_echo",
+      "description": "左邻辅助牌提供优势，且另一个不同流派的牌也提供优势时，复制左邻优势的一半（向上取整，最多 2）；不复制共鸣。",
+      "params": {
+        "amount": 2
+      },
+      "synergies": [
+        "R001",
+        "R002",
+        "R003",
+        "R005",
+        "R009",
+        "R011",
+        "R012",
+        "R013",
+        "R014",
+        "R015"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "DITD"
       ],
       "role": "reward",
       "status": "implemented",
@@ -816,205 +1480,247 @@
       "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
-      "symbol": "◌",
-      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
-    },
-    {
-      "id": "R025",
-      "name": "末掷校准",
-      "rarity": "稀有",
-      "family": "骰面",
-      "phase": "face",
-      "phase_label": "骰面",
-      "effect_key": "repair_one",
-      "description": "设计稿：第三掷后将最左一枚 1 点临时变为 2，仅限本回合。",
-      "params": {
-        "amount": 2
-      },
-      "synergies": [
-        "R011",
-        "R012"
+      "symbol": "∞",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。",
+      "effects": [],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "assistance",
+      "bridge_pairs": [
+        [
+          "parity",
+          "combo"
+        ],
+        [
+          "high",
+          "risk"
+        ],
+        [
+          "low",
+          "lock"
+        ],
+        [
+          "high",
+          "reroll"
+        ]
       ],
-      "tensions": [
-        "R001"
+      "serves": [
+        "parity",
+        "combo",
+        "high",
+        "risk",
+        "low",
+        "lock",
+        "reroll"
       ],
-      "reference_ids": [
-        "DD"
-      ],
-      "role": "enabler",
-      "status": "planned",
-      "slot": "support",
-      "exclusive_group": null,
-      "stacking": "unique",
-      "trigger_limit": "once_per_round",
-      "price": 38,
-      "reward_weight": 2,
-      "symbol": "♨",
-      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
-    },
-    {
-      "id": "R026",
-      "name": "余温筹码",
-      "rarity": "普通",
-      "family": "跨回合",
-      "phase": "round_end",
-      "phase_label": "回合末",
-      "effect_key": "carry_guard",
-      "description": "设计稿：本回合受到 0 伤害时，下回合获得 1 护盾；不叠加，最多抵挡 1。",
-      "params": {
-        "amount": 1
-      },
-      "synergies": [
-        "R018"
-      ],
-      "tensions": [],
-      "reference_ids": [
-        "SD"
-      ],
-      "role": "safety",
-      "status": "planned",
-      "slot": "support",
-      "exclusive_group": null,
-      "stacking": "unique",
-      "trigger_limit": "once_per_round",
-      "price": 28,
-      "reward_weight": 4,
-      "symbol": "♛",
-      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
-    },
-    {
-      "id": "R027",
-      "name": "邻座共鸣",
-      "rarity": "稀有",
-      "family": "牌位",
-      "phase": "score",
-      "phase_label": "计分",
-      "effect_key": "adjacent_echo",
-      "description": "设计稿：左邻非核心计分牌本回合触发时，再获得 1 点优势；不复制牌、不递归。",
-      "params": {
-        "amount": 1
-      },
-      "synergies": [
-        "R001",
-        "R011"
-      ],
-      "tensions": [],
-      "reference_ids": [
-        "DITD"
-      ],
-      "role": "reward",
-      "status": "planned",
-      "slot": "support",
-      "exclusive_group": null,
-      "stacking": "unique",
-      "trigger_limit": "once_per_round",
-      "price": 38,
-      "reward_weight": 2,
-      "symbol": "⇅",
-      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R028",
       "name": "逆风借据",
       "rarity": "稀有",
-      "family": "跨回合",
-      "phase": "round_end",
-      "phase_label": "回合末",
+      "family": "跨流派",
+      "phase": "carry",
+      "phase_label": "储存",
       "effect_key": "borrowed_edge",
-      "description": "设计稿：本回合落败，下回合获得 3 优势，但下一场首回合失去 2 优势。",
+      "description": "低于半血、总点数不超过 9 且败北：储存 3 优势；每场仅一次，下场首回合扣 2 优势。",
       "params": {
-        "amount": 3,
-        "penalty": 2
+        "amount": 3
       },
       "synergies": [
-        "R022"
+        "R005",
+        "R009",
+        "R012",
+        "R021",
+        "R027",
+        "R040",
+        "R041",
+        "R042",
+        "R043",
+        "R051"
       ],
       "tensions": [],
       "reference_ids": [
         "BAL"
       ],
-      "role": "converter",
-      "status": "planned",
+      "role": "enabler",
+      "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
       "stacking": "unique",
       "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
-      "symbol": "Ⅰ",
-      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+      "symbol": "∞",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。",
+      "effects": [
+        {
+          "op": "bankAdv",
+          "when": "lowRiskLoss",
+          "amount": 3
+        }
+      ],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "gameplay",
+      "bridge_pairs": [
+        [
+          "low",
+          "risk"
+        ]
+      ],
+      "serves": [
+        "low",
+        "risk"
+      ],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R029",
       "name": "破局目光",
       "rarity": "稀有",
-      "family": "对策",
-      "phase": "enemy_intent",
-      "phase_label": "意图",
+      "family": "跨流派",
+      "phase": "roll",
+      "phase_label": "掷骰",
       "effect_key": "break_lock",
-      "description": "设计稿：第二掷结束时，令敌方最高一枚骰子第三掷必定重掷；每回合一次。",
-      "params": {},
+      "description": "第三掷前若有锁骰，迫使敌方最高骰重掷一次。",
+      "params": {
+        "amount": 1
+      },
       "synergies": [
-        "R019"
+        "R015",
+        "R016",
+        "R017",
+        "R019",
+        "R027",
+        "R044",
+        "R045",
+        "R046",
+        "R047",
+        "R048"
       ],
       "tensions": [],
       "reference_ids": [
         "SD"
       ],
       "role": "enabler",
-      "status": "planned",
+      "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
       "stacking": "unique",
       "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
-      "symbol": "✦",
-      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+      "symbol": "∞",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。",
+      "effects": [],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "assistance",
+      "bridge_pairs": [
+        [
+          "lock",
+          "reroll"
+        ]
+      ],
+      "serves": [
+        "lock",
+        "reroll"
+      ],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R030",
       "name": "熟客折扣",
       "rarity": "普通",
-      "family": "经济",
+      "family": "通用",
       "phase": "shop",
-      "phase_label": "商店",
+      "phase_label": "整备",
       "effect_key": "shop_discount",
-      "description": "设计稿：商店第一笔规则购买减少 5 金币，最低价格 1；每个商店一次。",
+      "description": "每次商店访问的第一张购买牌便宜 5 金币，最低 1。",
       "params": {
         "amount": 5
       },
-      "synergies": [
-        "R020"
-      ],
+      "synergies": [],
       "tensions": [],
       "reference_ids": [
         "BAL"
       ],
-      "role": "enabler",
-      "status": "planned",
+      "role": "reward",
+      "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
       "stacking": "unique",
       "trigger_limit": "once_per_round",
       "price": 28,
       "reward_weight": 4,
-      "symbol": "◇",
-      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+      "symbol": "✦",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。",
+      "effects": [],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "economy",
+      "bridge_pairs": [],
+      "serves": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R031",
       "name": "偏心骰匠",
       "rarity": "稀有",
-      "family": "骰面",
-      "phase": "acquire",
-      "phase_label": "获得",
-      "effect_key": "face_swap",
-      "description": "设计稿：获得时选择一枚骰子，将一个 6 点面永久换为 1 点面；仍占规则栏。",
-      "params": {},
+      "family": "骰面操控",
+      "phase": "roll",
+      "phase_label": "掷骰",
+      "effect_key": "face_low",
+      "description": "装备期间，第一枚骰子的 6 点面替换为 1 点面。",
+      "params": {
+        "amount": 1
+      },
       "synergies": [
-        "R007",
-        "R012"
+        "R025",
+        "R053",
+        "R054",
+        "R055",
+        "R066",
+        "R070",
+        "R071",
+        "R072"
       ],
       "tensions": [
         "R023"
@@ -1023,46 +1729,2932 @@
         "PMD"
       ],
       "role": "enabler",
-      "status": "planned",
+      "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
       "stacking": "unique",
       "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
-      "symbol": "☾",
-      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+      "symbol": "◇",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。",
+      "effects": [],
+      "pool_class": "S",
+      "school": "face",
+      "display_class": "school",
+      "bridge_pairs": [],
+      "serves": [
+        "face"
+      ],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     },
     {
       "id": "R032",
       "name": "恰到好处",
       "rarity": "稀有",
-      "family": "终结",
+      "family": "通用",
       "phase": "battle_end",
       "phase_label": "战后",
       "effect_key": "exact_lethal",
-      "description": "设计稿：最终伤害恰好等于敌人结算前生命时，恢复 3 生命；每场一次。",
+      "description": "恰好以比较伤害击败敌人时恢复 3 生命。",
       "params": {
         "amount": 3
       },
-      "synergies": [
-        "R008",
-        "R024"
-      ],
+      "synergies": [],
       "tensions": [],
       "reference_ids": [
         "SD"
       ],
       "role": "reward",
-      "status": "planned",
+      "status": "implemented",
       "slot": "support",
       "exclusive_group": null,
       "stacking": "unique",
-      "trigger_limit": "once_per_battle",
+      "trigger_limit": "once_per_round",
       "price": 38,
       "reward_weight": 2,
+      "symbol": "✦",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。",
+      "effects": [
+        {
+          "op": "heal",
+          "when": "exactKill",
+          "amount": 3
+        }
+      ],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "bridge_pairs": [],
+      "serves": [],
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R033",
+      "rarity": "稀有",
+      "synergies": [
+        "R001",
+        "R011",
+        "R019",
+        "R027",
+        "R034",
+        "R035",
+        "R064",
+        "R065",
+        "R066",
+        "R067"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "☾",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "偶数壁垒",
+      "effect_key": "even_wall",
+      "phase": "damage",
+      "description": "三个偶数：本回合获得 2 护盾。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "shield",
+          "when": "allEven",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "parity",
+      "display_class": "school",
+      "family": "奇偶",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "parity"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R034",
+      "rarity": "稀有",
+      "synergies": [
+        "R001",
+        "R011",
+        "R019",
+        "R027",
+        "R033",
+        "R035",
+        "R064",
+        "R065",
+        "R066",
+        "R067"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "☾",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "回声增幅",
+      "effect_key": "even_amp",
+      "phase": "score",
+      "description": "三个偶数时，将「偶数回声」本回合提供的优势翻倍。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "S",
+      "school": "parity",
+      "display_class": "school",
+      "family": "奇偶",
+      "slot": "support",
+      "phase_label": "计分",
+      "bridge_pairs": [],
+      "serves": [
+        "parity"
+      ],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R035",
+      "rarity": "稀有",
+      "synergies": [
+        "R001",
+        "R011",
+        "R019",
+        "R027",
+        "R033",
+        "R034",
+        "R064",
+        "R065",
+        "R066",
+        "R067"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "☾",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "奇数尾音",
+      "effect_key": "odd_tail",
+      "phase": "damage",
+      "description": "至少两颗奇数且获胜：额外造成 1 伤害。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "damage",
+          "when": "twoOdd",
+          "amount": 1
+        }
+      ],
+      "pool_class": "S",
+      "school": "parity",
+      "display_class": "school",
+      "family": "奇偶",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "parity"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R036",
+      "rarity": "稀有",
+      "synergies": [
+        "R023",
+        "R027",
+        "R037",
+        "R038",
+        "R039",
+        "R065",
+        "R068",
+        "R070",
+        "R080"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "♜",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "顶点落锤",
+      "effect_key": "six_hammer",
+      "phase": "damage",
+      "description": "有 6 点且获胜：额外造成 2 伤害。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "damage",
+          "when": "six",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "high",
+      "display_class": "school",
+      "family": "高点",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "high"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R037",
+      "rarity": "稀有",
+      "synergies": [
+        "R023",
+        "R027",
+        "R036",
+        "R038",
+        "R039",
+        "R065",
+        "R068",
+        "R070",
+        "R080"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "♜",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "孤注高塔",
+      "effect_key": "high_bank",
+      "phase": "carry",
+      "description": "末掷只重掷一颗且该骰至少 5 点：储存 1 优势供下回合使用。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "bankAdv",
+          "when": "singleHigh",
+          "amount": 1
+        }
+      ],
+      "pool_class": "S",
+      "school": "high",
+      "display_class": "school",
+      "family": "高点",
+      "slot": "support",
+      "phase_label": "储存",
+      "bridge_pairs": [],
+      "serves": [
+        "high"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R038",
+      "rarity": "稀有",
+      "synergies": [
+        "R023",
+        "R027",
+        "R036",
+        "R037",
+        "R039",
+        "R065",
+        "R068",
+        "R070",
+        "R080"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "♜",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "双峰屏障",
+      "effect_key": "high_wall",
+      "phase": "damage",
+      "description": "至少两颗骰子为 5 或 6 点：获得 2 护盾。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "shield",
+          "when": "twoHigh",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "high",
+      "display_class": "school",
+      "family": "高点",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "high"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R039",
+      "rarity": "稀有",
+      "synergies": [
+        "R023",
+        "R027",
+        "R036",
+        "R037",
+        "R038",
+        "R065",
+        "R068",
+        "R070",
+        "R080"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "♜",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2,
+        "cap": 4
+      },
+      "name": "高台赏金",
+      "effect_key": "high_gold",
+      "phase": "economy",
+      "description": "总点数至少 15：获得 2 金币，每场此牌最多 4。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "gold",
+          "when": "sum15",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "high",
+      "display_class": "school",
+      "family": "高点",
+      "slot": "support",
+      "phase_label": "经济",
+      "bridge_pairs": [],
+      "serves": [
+        "high"
+      ],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R040",
+      "rarity": "稀有",
+      "synergies": [
+        "R012",
+        "R027",
+        "R028",
+        "R041",
+        "R042",
+        "R043",
+        "R068",
+        "R070",
+        "R079"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◌",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1,
+        "cap": 3
+      },
+      "name": "微光回春",
+      "effect_key": "small_heal",
+      "phase": "damage",
+      "description": "有 1 或 2 点且获胜：恢复 1 生命，每场此牌最多 3。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "heal",
+          "when": "smallWin",
+          "amount": 1
+        }
+      ],
+      "pool_class": "S",
+      "school": "low",
+      "display_class": "school",
+      "family": "低点",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "low"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R041",
+      "rarity": "稀有",
+      "synergies": [
+        "R012",
+        "R027",
+        "R028",
+        "R040",
+        "R042",
+        "R043",
+        "R068",
+        "R070",
+        "R079"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◌",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "谷底蓄势",
+      "effect_key": "low_bank",
+      "phase": "carry",
+      "description": "总点数不超过 7：储存 2 优势供下一回合使用。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "bankAdv",
+          "when": "sum7",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "low",
+      "display_class": "school",
+      "family": "低点",
+      "slot": "support",
+      "phase_label": "储存",
+      "bridge_pairs": [],
+      "serves": [
+        "low"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R042",
+      "rarity": "稀有",
+      "synergies": [
+        "R012",
+        "R027",
+        "R028",
+        "R040",
+        "R041",
+        "R043",
+        "R068",
+        "R070",
+        "R079"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◌",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "针尖反击",
+      "effect_key": "one_thorn",
+      "phase": "damage",
+      "description": "有 1 点且获胜：额外造成 1 伤害。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "damage",
+          "when": "one",
+          "amount": 1
+        }
+      ],
+      "pool_class": "S",
+      "school": "low",
+      "display_class": "school",
+      "family": "低点",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "low"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R043",
+      "rarity": "稀有",
+      "synergies": [
+        "R012",
+        "R027",
+        "R028",
+        "R040",
+        "R041",
+        "R042",
+        "R068",
+        "R070",
+        "R079"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◌",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "低空帷幕",
+      "effect_key": "low_wall",
+      "phase": "damage",
+      "description": "所有骰子不超过 3：获得 2 护盾。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "shield",
+          "when": "allLow",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "low",
+      "display_class": "school",
+      "family": "低点",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "low"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R044",
+      "rarity": "稀有",
+      "synergies": [
+        "R015",
+        "R016",
+        "R027",
+        "R029",
+        "R045",
+        "R046",
+        "R064",
+        "R065",
+        "R067",
+        "R070"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
       "symbol": "Ⅱ",
-      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "双锚",
+      "effect_key": "lock_wall",
+      "phase": "damage",
+      "description": "末掷至少锁定两颗骰子：获得 2 护盾。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "shield",
+          "when": "twoLocks",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "lock",
+      "display_class": "school",
+      "family": "锁定",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "lock"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R045",
+      "rarity": "稀有",
+      "synergies": [
+        "R015",
+        "R016",
+        "R027",
+        "R029",
+        "R044",
+        "R046",
+        "R064",
+        "R065",
+        "R067",
+        "R070"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "Ⅱ",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1,
+        "cap": 4
+      },
+      "name": "早鸟契约",
+      "effect_key": "early_gold",
+      "phase": "economy",
+      "description": "至少两颗骰子从第一掷后一直锁定：获得 1 金币，每场此牌最多 4。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "gold",
+          "when": "twoEarly",
+          "amount": 1
+        }
+      ],
+      "pool_class": "S",
+      "school": "lock",
+      "display_class": "school",
+      "family": "锁定",
+      "slot": "support",
+      "phase_label": "经济",
+      "bridge_pairs": [],
+      "serves": [
+        "lock"
+      ],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R046",
+      "rarity": "稀有",
+      "synergies": [
+        "R015",
+        "R016",
+        "R027",
+        "R029",
+        "R044",
+        "R045",
+        "R064",
+        "R065",
+        "R067",
+        "R070"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "Ⅱ",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 3
+      },
+      "name": "守序锚点",
+      "effect_key": "lock_memory",
+      "phase": "score",
+      "description": "至少锁定两颗骰子，且锁骰位置及奇偶与上回合相同：获得 3 优势。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "adv",
+          "when": "sameLocks",
+          "amount": 3
+        }
+      ],
+      "pool_class": "S",
+      "school": "lock",
+      "display_class": "school",
+      "family": "锁定",
+      "slot": "support",
+      "phase_label": "计分",
+      "bridge_pairs": [],
+      "serves": [
+        "lock"
+      ],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R047",
+      "rarity": "稀有",
+      "synergies": [
+        "R017",
+        "R019",
+        "R027",
+        "R029",
+        "R048",
+        "R049",
+        "R050",
+        "R065",
+        "R068",
+        "R069"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "↻",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "余波缓冲",
+      "effect_key": "reroll_bank",
+      "phase": "carry",
+      "description": "后两掷累计重掷至少 4 颗骰子：储存 2 护盾供下回合使用。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "bankShield",
+          "when": "fourRerolls",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "reroll",
+      "display_class": "school",
+      "family": "重掷",
+      "slot": "support",
+      "phase_label": "储存",
+      "bridge_pairs": [],
+      "serves": [
+        "reroll"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R048",
+      "rarity": "稀有",
+      "synergies": [
+        "R017",
+        "R019",
+        "R027",
+        "R029",
+        "R047",
+        "R049",
+        "R050",
+        "R065",
+        "R068",
+        "R069"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "↻",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1,
+        "cap": 4
+      },
+      "name": "失手找零",
+      "effect_key": "reroll_gold",
+      "phase": "economy",
+      "description": "末掷重掷结果每出现一颗 1 点，获得 1 金币，每场此牌最多 4。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "gold",
+          "when": "rerolledOnes",
+          "amount": 1
+        }
+      ],
+      "pool_class": "S",
+      "school": "reroll",
+      "display_class": "school",
+      "family": "重掷",
+      "slot": "support",
+      "phase_label": "经济",
+      "bridge_pairs": [],
+      "serves": [
+        "reroll"
+      ],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R049",
+      "rarity": "稀有",
+      "synergies": [
+        "R017",
+        "R019",
+        "R027",
+        "R029",
+        "R047",
+        "R048",
+        "R050",
+        "R065",
+        "R068",
+        "R069"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "↻",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 3
+      },
+      "name": "落定之盾",
+      "effect_key": "hold_wall",
+      "phase": "damage",
+      "description": "第三掷全部保留：获得 3 护盾。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "shield",
+          "when": "noReroll",
+          "amount": 3
+        }
+      ],
+      "pool_class": "S",
+      "school": "reroll",
+      "display_class": "school",
+      "family": "重掷",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "reroll"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R050",
+      "rarity": "稀有",
+      "synergies": [
+        "R017",
+        "R019",
+        "R027",
+        "R029",
+        "R047",
+        "R048",
+        "R049",
+        "R065",
+        "R068",
+        "R069"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "↻",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "双掷穿刺",
+      "effect_key": "reroll_damage",
+      "phase": "damage",
+      "description": "末掷重掷两颗且三骰各异，获胜额外造成 2 伤害。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "damage",
+          "when": "twoUnique",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "reroll",
+      "display_class": "school",
+      "family": "重掷",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "reroll"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R051",
+      "rarity": "稀有",
+      "synergies": [
+        "R005",
+        "R009",
+        "R021",
+        "R027",
+        "R028",
+        "R052",
+        "R068",
+        "R069"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "♨",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 3
+      },
+      "name": "最后防线",
+      "effect_key": "risk_wall",
+      "phase": "damage",
+      "description": "生命不超过 10：获得 3 护盾。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "shield",
+          "when": "hp10",
+          "amount": 3
+        }
+      ],
+      "pool_class": "S",
+      "school": "risk",
+      "display_class": "school",
+      "family": "险境",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [
+        "risk"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R052",
+      "rarity": "稀有",
+      "synergies": [
+        "R005",
+        "R009",
+        "R021",
+        "R027",
+        "R028",
+        "R051",
+        "R068",
+        "R069"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "♨",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "血色筹码",
+      "effect_key": "blood_edge",
+      "phase": "score",
+      "description": "结算时生命大于 1：支付 1 生命，获得 2 优势；这项支付不受护盾抵消。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "adv",
+          "when": "canPay",
+          "amount": 2
+        }
+      ],
+      "pool_class": "S",
+      "school": "risk",
+      "display_class": "school",
+      "family": "险境",
+      "slot": "support",
+      "phase_label": "计分",
+      "bridge_pairs": [],
+      "serves": [
+        "risk"
+      ],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R053",
+      "rarity": "稀有",
+      "synergies": [
+        "R025",
+        "R031",
+        "R054",
+        "R055",
+        "R066",
+        "R070",
+        "R071",
+        "R072"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◇",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 3
+      },
+      "name": "补缺骰面",
+      "effect_key": "face_mid",
+      "phase": "roll",
+      "description": "装备期间，第一枚骰子的 1 点面替换为 3 点面。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "S",
+      "school": "face",
+      "display_class": "school",
+      "family": "骰面操控",
+      "slot": "support",
+      "phase_label": "掷骰",
+      "bridge_pairs": [],
+      "serves": [
+        "face"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R054",
+      "rarity": "稀有",
+      "synergies": [
+        "R025",
+        "R031",
+        "R053",
+        "R055",
+        "R066",
+        "R070",
+        "R071",
+        "R072"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◇",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 5
+      },
+      "name": "镀金棱角",
+      "effect_key": "face_high",
+      "phase": "roll",
+      "description": "装备期间，第二枚骰子的 2 点面替换为 5 点面。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "S",
+      "school": "face",
+      "display_class": "school",
+      "family": "骰面操控",
+      "slot": "support",
+      "phase_label": "掷骰",
+      "bridge_pairs": [],
+      "serves": [
+        "face"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R055",
+      "rarity": "稀有",
+      "synergies": [
+        "R025",
+        "R031",
+        "R053",
+        "R054",
+        "R066",
+        "R070",
+        "R071",
+        "R072"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◇",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 3
+      },
+      "name": "中段配重",
+      "effect_key": "face_center",
+      "phase": "roll",
+      "description": "装备期间，第三枚骰子的 6 点面替换为 3 点面。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "S",
+      "school": "face",
+      "display_class": "school",
+      "family": "骰面操控",
+      "slot": "support",
+      "phase_label": "掷骰",
+      "bridge_pairs": [],
+      "serves": [
+        "face"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R056",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "✦",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 6
+      },
+      "name": "启程盘缠",
+      "effect_key": "entry_gold",
+      "phase": "battle_start",
+      "description": "每场战斗开始获得 6 金币，不计入回合产金上限。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "economy",
+      "family": "通用",
+      "slot": "support",
+      "phase_label": "入场",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R057",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "✦",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 8
+      },
+      "name": "炉边熟客",
+      "effect_key": "rest_discount",
+      "phase": "shop",
+      "description": "酒馆付费休整与校准便宜 8 金币，最低 1。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "economy",
+      "family": "通用",
+      "slot": "support",
+      "phase_label": "整备",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R058",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "✦",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1,
+        "cap": 3
+      },
+      "name": "败局补贴",
+      "effect_key": "loss_gold",
+      "phase": "economy",
+      "description": "败北时获得 1 金币，每场此牌最多 3。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "gold",
+          "when": "lost",
+          "amount": 1
+        }
+      ],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "economy",
+      "family": "通用",
+      "slot": "support",
+      "phase_label": "经济",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R059",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "✦",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "沿途拾遗",
+      "effect_key": "node_gold",
+      "phase": "map",
+      "description": "完成非战斗节点获得 2 金币，每局最多 8。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "economy",
+      "family": "通用",
+      "slot": "support",
+      "phase_label": "地图",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R060",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "✦",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "胜后喘息",
+      "effect_key": "victory_heal",
+      "phase": "battle_end",
+      "description": "赢得战斗后恢复 2 生命。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "family": "通用",
+      "slot": "support",
+      "phase_label": "战后",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R061",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "✦",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "入场护符",
+      "effect_key": "first_wall",
+      "phase": "damage",
+      "description": "每场第一回合获得 2 护盾。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "shield",
+          "when": "firstRound",
+          "amount": 2
+        }
+      ],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "family": "通用",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R062",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "✦",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "应急包扎",
+      "effect_key": "emergency_heal",
+      "phase": "damage",
+      "description": "本场第一次受到至少 5 比较伤害且存活时，恢复 2 生命。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "heal",
+          "when": "bigHit",
+          "amount": 2
+        }
+      ],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "family": "通用",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R063",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "✦",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 3
+      },
+      "name": "整装待发",
+      "effect_key": "entry_heal",
+      "phase": "battle_start",
+      "description": "进入战斗时生命高于一半，恢复 3 生命。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "U",
+      "school": null,
+      "display_class": "assistance",
+      "family": "通用",
+      "slot": "support",
+      "phase_label": "入场",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R064",
+      "rarity": "稀有",
+      "synergies": [
+        "R001",
+        "R011",
+        "R015",
+        "R016",
+        "R019",
+        "R027",
+        "R029",
+        "R033",
+        "R034",
+        "R035"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1,
+        "cap": 6
+      },
+      "name": "奇数存单",
+      "effect_key": "locked_odd_gold",
+      "phase": "economy",
+      "description": "每颗锁定奇数获得 1 金币，每回合最多 2，每场此牌最多 6。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "gold",
+          "when": "lockedOdd",
+          "amount": 1
+        }
+      ],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "economy",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "经济",
+      "bridge_pairs": [
+        [
+          "parity",
+          "lock"
+        ]
+      ],
+      "serves": [
+        "parity",
+        "lock"
+      ],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R065",
+      "rarity": "稀有",
+      "synergies": [
+        "R001",
+        "R011",
+        "R015",
+        "R016",
+        "R017",
+        "R019",
+        "R023",
+        "R027",
+        "R029",
+        "R033"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "LBL"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "消费回流",
+      "effect_key": "spend_bank",
+      "phase": "shop",
+      "description": "持有期间每实际消费 10 金币，储存 1 优势给下场首回合，最多 3；余数保留，卸下清空。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "economy",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "整备",
+      "bridge_pairs": [],
+      "serves": [
+        "parity",
+        "lock",
+        "high",
+        "reroll"
+      ],
+      "role": "reward",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R066",
+      "rarity": "稀有",
+      "synergies": [
+        "R001",
+        "R011",
+        "R019",
+        "R025",
+        "R027",
+        "R031",
+        "R033",
+        "R034",
+        "R035",
+        "R053"
+      ],
+      "tensions": [
+        "R067"
+      ],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2,
+        "cap": 6
+      },
+      "name": "偶数兑金",
+      "effect_key": "even_cash",
+      "phase": "convert",
+      "description": "本回合骰面被卡牌改变过时，偶数回声与回声增幅不再提供优势，每 2 优势兑换 1 金币，每场最多 6。与偶数铸盾互斥。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "economy",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "转换",
+      "bridge_pairs": [
+        [
+          "parity",
+          "face"
+        ]
+      ],
+      "serves": [
+        "parity",
+        "face"
+      ],
+      "role": "converter",
+      "exclusive_group": "even_conversion",
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R067",
+      "rarity": "稀有",
+      "synergies": [
+        "R001",
+        "R011",
+        "R015",
+        "R016",
+        "R019",
+        "R027",
+        "R029",
+        "R033",
+        "R034",
+        "R035"
+      ],
+      "tensions": [
+        "R066"
+      ],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "偶数铸盾",
+      "effect_key": "even_shield",
+      "phase": "convert",
+      "description": "偶数回声与回声增幅的优势改为护盾，最多 4；另外每颗锁定偶数提供 1 护盾，最多 2。与偶数兑金互斥。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "转换",
+      "bridge_pairs": [
+        [
+          "parity",
+          "lock"
+        ]
+      ],
+      "serves": [
+        "parity",
+        "lock"
+      ],
+      "role": "converter",
+      "exclusive_group": "even_conversion",
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R068",
+      "rarity": "稀有",
+      "synergies": [
+        "R005",
+        "R009",
+        "R012",
+        "R017",
+        "R019",
+        "R021",
+        "R023",
+        "R027",
+        "R028",
+        "R029"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "险境兑现",
+      "effect_key": "risk_cash",
+      "phase": "convert",
+      "description": "低于半血时，上一回合储存的优势改为本回合胜出额外伤害，最多 3；败北同样消耗。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "转换",
+      "bridge_pairs": [
+        [
+          "high",
+          "risk"
+        ],
+        [
+          "low",
+          "risk"
+        ],
+        [
+          "risk",
+          "reroll"
+        ]
+      ],
+      "serves": [
+        "high",
+        "risk",
+        "low",
+        "reroll"
+      ],
+      "role": "converter",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R069",
+      "rarity": "稀有",
+      "synergies": [
+        "R005",
+        "R009",
+        "R017",
+        "R019",
+        "R021",
+        "R027",
+        "R028",
+        "R029",
+        "R047",
+        "R048"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "破釜重投",
+      "effect_key": "risk_reroll",
+      "phase": "damage",
+      "description": "低于半血时，第三掷每重掷一颗骰子获得 1 护盾，最多 3。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "shield",
+          "when": "riskRerolls",
+          "amount": 1
+        }
+      ],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "伤害",
+      "bridge_pairs": [
+        [
+          "risk",
+          "reroll"
+        ]
+      ],
+      "serves": [
+        "risk",
+        "reroll"
+      ],
+      "role": "safety",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R070",
+      "rarity": "稀有",
+      "synergies": [
+        "R012",
+        "R015",
+        "R016",
+        "R023",
+        "R025",
+        "R027",
+        "R028",
+        "R029",
+        "R031",
+        "R036"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "翻面锚",
+      "effect_key": "flip_lock",
+      "phase": "roll",
+      "description": "第三掷后，将从第一掷后一直锁定的骰子翻面为 7 减当前点数。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "掷骰",
+      "bridge_pairs": [
+        [
+          "lock",
+          "face"
+        ],
+        [
+          "lock",
+          "high"
+        ],
+        [
+          "lock",
+          "low"
+        ]
+      ],
+      "serves": [
+        "lock",
+        "face",
+        "high",
+        "low"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R071",
+      "rarity": "稀有",
+      "synergies": [
+        "R002",
+        "R003",
+        "R013",
+        "R014",
+        "R024",
+        "R025",
+        "R027",
+        "R031",
+        "R053",
+        "R054"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "塑形共振",
+      "effect_key": "face_pair",
+      "phase": "carry",
+      "description": "本回合骰面被卡牌改变过且出现对子：储存 2 优势给下回合。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "bankAdv",
+          "when": "changedPair",
+          "amount": 2
+        }
+      ],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "储存",
+      "bridge_pairs": [
+        [
+          "face",
+          "combo"
+        ]
+      ],
+      "serves": [
+        "face",
+        "combo"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R072",
+      "rarity": "稀有",
+      "synergies": [
+        "R001",
+        "R011",
+        "R015",
+        "R016",
+        "R019",
+        "R025",
+        "R027",
+        "R029",
+        "R031",
+        "R033"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "同律修整",
+      "effect_key": "parity_shape",
+      "phase": "roll",
+      "description": "至少两颗早锁骰的位置及奇偶与上回合相同：第三掷后使最左侧未锁骰点数加 1，最高 6。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "assistance",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "掷骰",
+      "bridge_pairs": [
+        [
+          "parity",
+          "lock"
+        ],
+        [
+          "lock",
+          "face"
+        ]
+      ],
+      "serves": [
+        "parity",
+        "lock",
+        "face"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R073",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◎",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 12
+      },
+      "name": "十二点约",
+      "effect_key": "target12",
+      "phase": "core",
+      "description": "双方以 12−|总点数−12| 为基础分（最低 0），再加入优势；分高者胜，差值伤害。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "K",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "核心规则",
+      "slot": "core",
+      "phase_label": "核心",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "converter",
+      "exclusive_group": "core",
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R074",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "Ⅱ",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "偶数法庭",
+      "effect_key": "parity_core",
+      "phase": "core",
+      "description": "双方基础分改为最高骰点数加偶数骰数量的两倍，再加入优势。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "K",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "核心规则",
+      "slot": "core",
+      "phase_label": "核心",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "converter",
+      "exclusive_group": "core",
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R075",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "△",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "组合裁决",
+      "effect_key": "combo_core",
+      "phase": "core",
+      "description": "双方基础分：三同号 18、顺子 15、对子 12；其他为总和。再加入优势。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "K",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "核心规则",
+      "slot": "core",
+      "phase_label": "核心",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "converter",
+      "exclusive_group": "core",
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R076",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "▣",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "封骰契约",
+      "effect_key": "lock_core",
+      "phase": "core",
+      "description": "仍比总和；双方各自第三掷保留的每颗骰子提供 1 护盾。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "K",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "核心规则",
+      "slot": "core",
+      "phase_label": "核心",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "converter",
+      "exclusive_group": "core",
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R077",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◐",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "末掷镜像",
+      "effect_key": "invert_core",
+      "phase": "core",
+      "description": "第三掷中双方重新投出的骰子落定后翻面为 7 减点数；保留骰不变。之后照常比较总和。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "K",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "核心规则",
+      "slot": "core",
+      "phase_label": "核心",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "converter",
+      "exclusive_group": "core",
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R078",
+      "rarity": "稀有",
+      "synergies": [],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "◈",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 2
+      },
+      "name": "熔金赌约",
+      "effect_key": "gold_core",
+      "phase": "core",
+      "description": "回合内卡牌产出的金币不进钱包，每 2 金币改为下回合 1 优势，最多 3；零头不保留。战斗奖励与地图金币照常获得。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "K",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "核心规则",
+      "slot": "core",
+      "phase_label": "核心",
+      "bridge_pairs": [],
+      "serves": [],
+      "role": "converter",
+      "exclusive_group": "core",
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R079",
+      "rarity": "稀有",
+      "synergies": [
+        "R012",
+        "R017",
+        "R019",
+        "R027",
+        "R028",
+        "R029",
+        "R040",
+        "R041",
+        "R042",
+        "R043"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "低潮回流",
+      "effect_key": "low_reroll",
+      "phase": "carry",
+      "description": "第三掷每颗重新投出的 1 或 2 点，储存 1 优势给下回合，最多 2。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [
+        {
+          "op": "bankAdv",
+          "when": "rerolledLow",
+          "amount": 1
+        }
+      ],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "储存",
+      "bridge_pairs": [
+        [
+          "low",
+          "reroll"
+        ]
+      ],
+      "serves": [
+        "low",
+        "reroll"
+      ],
+      "role": "enabler",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
+    },
+    {
+      "id": "R080",
+      "rarity": "稀有",
+      "synergies": [
+        "R015",
+        "R016",
+        "R023",
+        "R027",
+        "R029",
+        "R036",
+        "R037",
+        "R038",
+        "R039",
+        "R044"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL",
+        "SD"
+      ],
+      "stacking": "unique",
+      "price": 32,
+      "reward_weight": 3,
+      "symbol": "∞",
+      "balance_note": "原型数值；见 v0.8 实测报告，不代表最终平衡。",
+      "params": {
+        "amount": 1
+      },
+      "name": "高锚穿甲",
+      "effect_key": "high_lock",
+      "phase": "convert",
+      "description": "每颗锁定的 5 或 6 点，将已有 1 优势改为胜出额外伤害，最多 2；先扣优势再判断胜负。",
+      "status": "implemented",
+      "trigger_limit": "once_per_round",
+      "effects": [],
+      "pool_class": "B",
+      "school": null,
+      "display_class": "gameplay",
+      "family": "跨流派",
+      "slot": "support",
+      "phase_label": "转换",
+      "bridge_pairs": [
+        [
+          "high",
+          "lock"
+        ]
+      ],
+      "serves": [
+        "high",
+        "lock"
+      ],
+      "role": "converter",
+      "exclusive_group": null,
+      "compatible_cores": [
+        "R007",
+        "R008",
+        "R073",
+        "R074",
+        "R075",
+        "R076",
+        "R077",
+        "R078"
+      ]
     }
-  ]
+  ],
+  "schools": {
+    "parity": "奇偶",
+    "combo": "组合",
+    "high": "高点",
+    "low": "低点",
+    "lock": "锁定",
+    "reroll": "重掷",
+    "risk": "险境",
+    "face": "骰面操控"
+  }
 }

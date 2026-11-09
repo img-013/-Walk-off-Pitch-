@@ -2,28 +2,147 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Walk-off Pitch card database",
   "type": "object",
-  "required": ["schema_version", "content_version", "rules", "cards"],
+  "required": [
+    "schema_version",
+    "content_version",
+    "rules",
+    "cards"
+  ],
   "properties": {
-    "schema_version": {"const": 1},
-    "content_version": {"type": "string"},
+    "schema_version": {
+      "const": 2
+    },
+    "content_version": {
+      "type": "string"
+    },
     "cards": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "name", "description", "status", "slot", "effect_key", "params", "synergies", "tensions", "reference_ids", "price", "reward_weight"],
+        "required": [
+          "id",
+          "name",
+          "description",
+          "status",
+          "slot",
+          "effect_key",
+          "params",
+          "synergies",
+          "tensions",
+          "reference_ids",
+          "price",
+          "reward_weight",
+          "pool_class",
+          "display_class",
+          "school",
+          "serves",
+          "effects",
+          "bridge_pairs"
+        ],
         "properties": {
-          "id": {"type": "string", "pattern": "^R[0-9]{3}$"},
-          "name": {"type": "string", "minLength": 1},
-          "description": {"type": "string", "minLength": 1},
-          "status": {"enum": ["implemented", "planned"]},
-          "slot": {"enum": ["core", "support"]},
-          "effect_key": {"type": "string"},
-          "params": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0}},
-          "synergies": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-          "tensions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-          "reference_ids": {"type": "array", "items": {"enum": ["BAL", "PMD", "SD", "DD", "DITD"]}},
-          "price": {"type": "integer", "minimum": 1},
-          "reward_weight": {"type": "integer", "minimum": 1}
+          "id": {
+            "type": "string",
+            "pattern": "^R[0-9]{3}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "implemented",
+              "planned"
+            ]
+          },
+          "slot": {
+            "enum": [
+              "core",
+              "support"
+            ]
+          },
+          "effect_key": {
+            "type": "string"
+          },
+          "params": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "synergies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "tensions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "reference_ids": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "BAL",
+                "PMD",
+                "SD",
+                "DD",
+                "DITD",
+                "LBL"
+              ]
+            }
+          },
+          "price": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "reward_weight": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pool_class": {
+            "enum": [
+              "U",
+              "S",
+              "B",
+              "K"
+            ]
+          },
+          "display_class": {
+            "enum": [
+              "economy",
+              "assistance",
+              "school",
+              "gameplay"
+            ]
+          },
+          "school": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "serves": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "effects": {
+            "type": "array"
+          },
+          "bridge_pairs": {
+            "type": "array"
+          }
         }
       }
     }

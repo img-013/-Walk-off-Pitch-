@@ -44,3 +44,8 @@ Schema 为编辑器提供基础类型提示，`scripts/validate.cjs` 额外检�
 4. 运行 `node scripts/check.cjs`，确认生成文件可重建；平衡变化再运行 `node scripts/simulate.cjs`。
 5. 若改变 UI，再做真实桌面及窄屏浏览器检查。DOM 替身测试不能当截图验收。
 6. 更新版本和 CHANGELOG，提交 JSON、源代码、测试及生成文件。
+
+
+## v0.8 字段追加
+
+`pool_class` 按 U/S/B/K 互斥统计；`display_class` 按 economy/assistance/school/gameplay 互斥统计。`school` 只填写40张专属牌；`serves` 是可服务方向，不能据此重复计数。`bridge_pairs` 必须对应可执行联动；`effects` 保存声明式条件与操作。`compatible_cores` 是设计声明，实际可用证据见 compatibility80.json。计分与改面等特殊效果使用 effect_key 分派；所有80个 key 均有处理器与测试。LBL 参考为幸运房东官方商品说明，未声称其开发者采用本项目的封顶机制。

@@ -1,66 +1,62 @@
-/* Pure settlement engine: no DOM, timers, global run state or random sampling. */
+/* Pure rules, rolls, lifecycle and rewards shared by UI and simulations. */
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.WalkOffEngine=api;})(typeof globalThis!=='undefined'?globalThis:this,()=>{
-  'use strict';
-  const sum=a=>a.reduce((a,b)=>a+b,0);
-  const EFFECTS=['odd_bonus','pair_bonus','unique_bonus','close_guard','low_hp','tie_win','low_wins','max_only','desperate','all_odd_gold','even_bonus','small_bonus','straight_bonus','triple_bonus','early_lock','one_reroll','all_reroll','low_guard','enemy_even','battle_gold','glass_pact','loss_growth','six_bonus','pair_damage'];
-  function evaluate(state,database){
-    const byId=new Map(database.cards.map(c=>[c.id,c]));
-    const cards=state.rules.map(id=>byId.get(id));
-    if(cards.some(c=>!c||c.status!=='implemented'||!EFFECTS.includes(c.effect_key)))throw Error('Unknown or unimplemented equipped card');
-    if(new Set(state.rules).size!==state.rules.length||cards.filter(c=>c.slot==='core').length>1||cards.filter(c=>c.slot==='support').length>5)throw Error('Illegal loadout');
-    if(state.pdice.length!==3||!state.edice.length||[...state.pdice,...state.edice].some(v=>!Number.isInteger(v)||v<1||v>6))throw Error('Invalid physical die');
-    const has=fx=>cards.find(c=>c.effect_key===fx),raw=[...state.pdice],enemy=[...state.edice],lines=[],events=[],triggered=[];
-    const counts={};raw.forEach(v=>counts[v]=(counts[v]||0)+1);
-    const pair=Object.values(counts).some(n=>n>=2),triple=Object.values(counts).some(n=>n===3),unique=new Set(raw).size===3;
-    const reversed=!!has('low_wins'),single=!!has('max_only');
-    function event(card,phase,amount,text){if(card&&!triggered.includes(card.id))triggered.push(card.id);events.push({source:card?.id||'system',phase,amount,text});lines.push(text)}
-    if(state.enemy.id==='E004'){enemy[0]=Math.max(...raw);event(null,'enemy_copy',enemy[0],'镜面赌徒：计分时复制最高骰 '+enemy[0])}
-    let p=single?Math.max(...raw):sum(raw),e=single?Math.max(...enemy):sum(enemy);
-    event(has('max_only'),'base',0,`${single?'最高单骰':'基础总点数'} ${p} : ${e}`);
-    if(single&&p===e){p=sum(raw);e=sum(enemy);event(has('max_only'),'base',0,`最高骰相同，改比原始总和 ${p} : ${e}`)}
-    if(single)event(null,'score',0,'单骰决胜：跳过双方计分加成，伤害与经济规则保留');
-    for(const c of cards){if(single)continue;const a=c.params.amount||0;let bonus=0;
-      switch(c.effect_key){
-        case 'odd_bonus':bonus=raw.filter(v=>v%2).length*a;break;
-        case 'even_bonus':bonus=raw.filter(v=>v%2===0).length*a;break;
-        case 'pair_bonus':bonus=pair?a:0;break;
-        case 'unique_bonus':bonus=unique?a:0;break;
-        case 'low_hp':bonus=state.hp<state.maxHp/2?a:0;break;
-        case 'small_bonus':bonus=raw.filter(v=>v<=c.params.threshold).length*a;break;
-        case 'straight_bonus':bonus=unique&&Math.max(...raw)-Math.min(...raw)===2?a:0;break;
-        case 'triple_bonus':bonus=triple?a:0;break;
-        case 'early_lock':bonus=(state.earlyLocked||[]).filter(Boolean).length*a;break;
-        case 'one_reroll':bonus=state.lastRerolled===1?a:0;break;
-        case 'all_reroll':bonus=state.lastRerolled===3?a:0;break;
-        case 'enemy_even':bonus=state.edice.filter(v=>v%2===0).length>=c.params.count?a:0;break;
-        case 'glass_pact':bonus=a;break;
-        case 'loss_growth':bonus=Math.min(c.params.cap,(state.battleLosses||0)*a);break;
-        case 'six_bonus':bonus=raw.includes(6)?a:0;break;
-      }
-      if(bonus){const before=p;p=Math.max(0,p+(reversed?-bonus:bonus));event(c,'score',p-before,`${c.name}：${reversed?'减':'加'} ${Math.abs(p-before)}（优势 ${bonus}）`)}
-    }
-    if(!single&&state.enemy.id==='B001'&&state.enemy.hp<=state.enemy.maxHp/2){
-      // In reverse mode the same enemy advantage is subtracted, never added.
-      const adjusted=enemy.map(v=>v+(v%2===0?(state.enemy.evenBonus??1):0));const delta=sum(adjusted)-sum(enemy);
-      e=Math.max(0,e+(reversed?-delta:delta));event(null,'enemy_bonus',delta,'偶数共鸣：敌方 '+delta+' 点优势');
-    }
-    let diff=Math.abs(p-e),win=reversed?p<e:p>e,tie=p===e;
-    if(reversed)event(has('low_wins'),'compare',0,'反向赌局：低者胜');
-    if(tie&&has('tie_win')){win=true;diff=has('tie_win').params.amount;event(has('tie_win'),'compare',diff,'庄家通吃：平局判胜，基础伤害 '+diff)}
-    const lost=!win&&!tie;let damage=diff;
-    if(win){for(const c of cards){let extra=0;if(c.effect_key==='desperate'&&state.hp<=c.params.hp)extra=c.params.amount;if(c.effect_key==='pair_damage'&&pair)extra=c.params.amount;if(extra){damage+=extra;event(c,'damage',extra,c.name+'：伤害 +'+extra)}}}
-    if(lost){
-      const close=has('close_guard'),glass=has('glass_pact'),guard=has('low_guard');
-      if(close&&diff===close.params.threshold){damage=0;event(close,'damage',-diff,'差一点：基础差值免伤')}
-      if(glass){damage+=glass.params.penalty;event(glass,'damage',glass.params.penalty,'玻璃誓约：风险伤害 +'+glass.params.penalty)}
-      if(guard&&sum(raw)<=guard.params.threshold){const reduction=Math.min(damage,guard.params.amount);damage-=reduction;if(reduction)event(guard,'damage',-reduction,'低潮护符：减伤 '+reduction)}
-    }
-    let gold=0;const econ=has('all_odd_gold');
-    if(win&&econ&&raw.every(v=>v%2)){gold=Math.min(econ.params.amount,Math.max(0,econ.params.cap-(state.battleCardGold||0)));if(gold)event(econ,'economy',gold,'拒绝对称：金币 +'+gold)}
-    return {p,e,diff:damage,baseDifference:diff,win,lost,tie,gold,triggered,events,lines};
-  }
-  function battleReward(state,database){const card=database.cards.find(c=>state.rules.includes(c.id)&&c.status==='implemented'&&c.effect_key==='battle_gold');return{gold:state.enemy.gold+(card?.params.amount||0),cardId:card?.id||null}}
-  function replacementOptions(ids,newCard,database){const byId=new Map(database.cards.map(c=>[c.id,c]));if(ids.includes(newCard.id))return{duplicate:true,needsReplacement:false,options:[]};const same=ids.filter(id=>byId.get(id)?.slot===newCard.slot);const cap=newCard.slot==='core'?1:5;return{duplicate:false,needsReplacement:same.length>=cap,options:same.length>=cap?same:[]}}
-  function nextRandom(seed){let value=(seed+0x6D2B79F5)>>>0,t=value;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return{seed:value,value:((t^(t>>>14))>>>0)/4294967296}}
-  return {evaluate,battleReward,replacementOptions,nextRandom,EFFECTS};
+'use strict';
+const sum=a=>a.reduce((a,b)=>a+b,0),clamp=(n,m)=>Math.min(m,Math.max(0,n));
+const EFFECTS=['odd_bonus','pair_bonus','unique_bonus','close_guard','low_hp','tie_win','low_wins','max_only','desperate','all_odd_gold','even_bonus','small_bonus','straight_bonus','triple_bonus','early_lock','one_reroll','all_reroll','low_guard','enemy_even','battle_gold','glass_pact','loss_growth','six_bonus','pair_damage','repair_one','carry_guard','adjacent_echo','borrowed_edge','break_lock','shop_discount','face_low','exact_lethal','even_wall','even_amp','odd_tail','six_hammer','high_bank','high_wall','high_gold','small_heal','low_bank','one_thorn','low_wall','lock_wall','early_gold','lock_memory','reroll_bank','reroll_gold','hold_wall','reroll_damage','risk_wall','blood_edge','face_mid','face_high','face_center','entry_gold','rest_discount','loss_gold','node_gold','victory_heal','first_wall','emergency_heal','entry_heal','locked_odd_gold','spend_bank','even_cash','even_shield','risk_cash','risk_reroll','flip_lock','face_pair','parity_shape','target12','parity_core','combo_core','lock_core','invert_core','gold_core','low_reroll','high_lock'];
+function cardsOf(s,db){const cards=s.rules.map(id=>db.cards.find(c=>c.id===id));if(cards.some(c=>!c||c.status!=='implemented'||!EFFECTS.includes(c.effect_key)))throw Error('Unknown card');if(new Set(s.rules).size!==cards.length||cards.filter(c=>c.slot==='core').length>1||cards.filter(c=>c.slot==='support').length>5)throw Error('Illegal loadout');const groups=cards.map(c=>c.exclusive_group).filter(Boolean);if(new Set(groups).size!==groups.length)throw Error('Conflicting cards');return cards;}
+function shape(a){const counts={};a.forEach(v=>counts[v]=(counts[v]||0)+1);return{pair:Object.values(counts).some(n=>n>=2),triple:Object.values(counts).some(n=>n===3),unique:new Set(a).size===a.length,straight:new Set(a).size===3&&Math.max(...a)-Math.min(...a)===2};}
+function lockSignature(s){return s.pdice.map((v,i)=>s.locked?.[i]?i+':'+v%2:'').filter(Boolean).join('|');}
+function facts(s){const a=s.pdice,f=shape(a),mask=s.lastRerollMask||[false,false,false],locked=s.locked||[],early=s.earlyLocked||[];return{...f,odd:a.filter(v=>v%2).length,even:a.filter(v=>v%2===0).length,small:a.filter(v=>v<=2).length,high:a.filter(v=>v>=5).length,lowRisk:s.hp<s.maxHp/2,locks:locked.filter(Boolean).length,early:early.filter(Boolean).length,lockedOdd:a.filter((v,i)=>locked[i]&&v%2).length,lockedEven:a.filter((v,i)=>locked[i]&&v%2===0).length,lockedHigh:a.filter((v,i)=>locked[i]&&v>=5).length,rerolledOnes:a.filter((v,i)=>mask[i]&&v===1).length,rerolledLow:a.filter((v,i)=>mask[i]&&v<=2).length,sameLocks:locked.filter(Boolean).length>=2&&!!s.previousLockSignature&&lockSignature(s)===s.previousLockSignature,singleHigh:s.lastRerolled===1&&a.some((v,i)=>mask[i]&&v>=5)};}
+function condition(key,s,f,r){switch(key){case'allEven':return f.even===3;case'twoOdd':return f.odd>=2;case'six':return s.pdice.includes(6);case'singleHigh':return f.singleHigh;case'twoHigh':return f.high>=2;case'sum15':return sum(s.pdice)>=15;case'smallWin':return f.small>0&&r.win;case'sum7':return sum(s.pdice)<=7;case'one':return s.pdice.includes(1);case'allLow':return s.pdice.every(v=>v<=3);case'twoLocks':return f.locks>=2;case'twoEarly':return f.early>=2;case'sameLocks':return f.sameLocks;case'fourRerolls':return(s.rerollsAfterFirst||0)>=4;case'rerolledOnes':return f.rerolledOnes;case'noReroll':return s.lastRerolled===0;case'twoUnique':return s.lastRerolled===2&&f.unique;case'hp10':return s.hp<=10;case'canPay':return s.hp>1;case'lost':return r.lost;case'firstRound':return(s.roundNumber||1)===1;case'bigHit':return r.lost&&r.diff>=5&&s.hp-r.diff-r.selfCost>0&&!s.used?.R062;case'lockedOdd':return Math.min(2,f.lockedOdd);case'riskRerolls':return f.lowRisk?s.lastRerolled||0:0;case'changedPair':return(s.faceChanges||0)>0&&f.pair;case'rerolledLow':return Math.min(2,f.rerolledLow);case'unhurt':return!r.lost||r.diff===0;case'lowRiskLoss':return f.lowRisk&&sum(s.pdice)<=9&&r.lost&&!s.used?.R028;case'exactKill':return r.win&&r.diff===s.enemy.hp;default:throw Error('Unknown condition '+key);}}
+function evaluate(s,db){
+ const cards=cardsOf(s,db),has=k=>cards.find(c=>c.effect_key===k),a=s.pdice,enemy=[...s.edice];
+ if(a.length!==3||!enemy.length||[...a,...enemy].some(v=>!Number.isInteger(v)||v<1||v>6))throw Error('Invalid physical die');
+ const f=facts(s),events=[],triggered=[],r={p:0,e:0,diff:0,win:false,lost:false,tie:false,gold:0,generatedGold:0,heal:0,selfCost:0,nextAdv:0,nextShield:0,nextDebt:0,used:{...s.used},cardGold:{...s.cardGold},cardHealing:{...s.cardHealing},events,triggered};
+ const emit=(c,phase,amount,text)=>{if(c&&!triggered.includes(c.id))triggered.push(c.id);events.push({source:c?.id||'system',phase,amount,text:text||`${c?.name||'规则'}：${({score:'优势',shield:'护盾',damage:'伤害',economy:'金币',heal:'恢复生命',carry:'下回合储存',convert:'转换',compare:'胜负修正',enemy_bonus:'敌方优势'})[phase]||phase} ${amount}`});};
+ if(s.enemy.id==='E004'){enemy[0]=Math.max(...a);emit(null,'enemy_copy',enemy[0],'镜面赌徒复制最高骰 '+enemy[0]);}
+ const core=cards.find(c=>c.slot==='core'),single=!!has('max_only'),reversed=!!has('low_wins');
+ function base(d){const q=shape(d);switch(core?.effect_key){case'max_only':return Math.max(...d);case'target12':return Math.max(0,12-Math.abs(sum(d)-12));case'parity_core':return Math.max(...d)+2*d.filter(v=>v%2===0).length;case'combo_core':return q.triple?18:q.straight?15:q.pair?12:sum(d);default:return sum(d);}}
+ r.p=base(a);r.e=base(enemy);if(single&&r.p===r.e){r.p=sum(a);r.e=sum(enemy);}emit(core,'base',0,`基础 ${r.p} : ${r.e}`);
+ const bonuses=new Map();for(const c of cards){const n=c.params.amount||0;let b=0;switch(c.effect_key){case'odd_bonus':b=f.odd*n;break;case'even_bonus':b=f.even*n;break;case'pair_bonus':b=f.pair?n:0;break;case'unique_bonus':b=f.unique?n:0;break;case'low_hp':b=f.lowRisk?n:0;break;case'small_bonus':b=f.small*n;break;case'straight_bonus':b=f.straight?n:0;break;case'triple_bonus':b=f.triple?n:0;break;case'early_lock':b=f.early*n;break;case'one_reroll':b=s.lastRerolled===1?n:0;break;case'all_reroll':b=s.lastRerolled===3?n:0;break;case'enemy_even':b=s.lastRerolled>0&&s.edice.filter(v=>v%2===0).length>=c.params.count?n:0;break;case'glass_pact':b=n;break;case'loss_growth':b=Math.min(c.params.cap,(s.battleLosses||0)*n);break;case'six_bonus':b=a.includes(6)?n:0;break;}for(const ef of c.effects||[])if(ef.op==='adv'&&condition(ef.when,s,f,r)){b+=ef.amount;if(c.effect_key==='blood_edge')r.selfCost=1;}if(b)bonuses.set(c.id,b);}
+ if(has('even_amp')&&f.even===3&&bonuses.has('R011'))bonuses.set('R034',bonuses.get('R011'));
+ if(has('adjacent_echo')){const supports=cards.filter(c=>c.slot==='support'),i=supports.findIndex(c=>c.id==='R027'),left=supports[i-1];if(left&&bonuses.has(left.id)&&left.school&&supports.some(c=>c.school&&c.school!==left.school&&bonuses.has(c.id)))bonuses.set('R027',Math.min(2,Math.ceil(bonuses.get(left.id)/2)));}
+ let shield=s.carryShield||0,extra=0,adv=s.carryAdv||0,evenBonus=(bonuses.get('R011')||0)+(bonuses.get('R034')||0);
+ function gold(c,n){const per=c.params.cap??12,available=Math.max(0,Math.min(per-(r.cardGold[c.id]||0),12-(s.battleCardGold||0)-r.generatedGold)),got=Math.min(n,available);if(got){r.cardGold[c.id]=(r.cardGold[c.id]||0)+got;r.generatedGold+=got;emit(c,'economy',got);} }
+ if(has('risk_cash')&&f.lowRisk&&adv){extra+=Math.min(3,adv);emit(has('risk_cash'),'convert',adv);adv=0;}
+ if(has('even_shield')||(has('even_cash')&&(s.faceChanges||0)>0)){for(const id of ['R011','R034'])if(bonuses.has(id))emit(cards.find(c=>c.id===id),'source',bonuses.get(id),'提供 '+bonuses.get(id)+' 优势供转换，不重复计分');}if(has('even_shield')){bonuses.delete('R011');bonuses.delete('R034');const n=Math.min(4,evenBonus)+Math.min(2,f.lockedEven);shield+=n;if(n)emit(has('even_shield'),'convert',n);}
+ if(has('even_cash')&&(s.faceChanges||0)>0){bonuses.delete('R011');bonuses.delete('R034');gold(has('even_cash'),Math.floor(evenBonus/2));}
+ for(const [id,b]of bonuses){adv+=b;emit(cards.find(c=>c.id===id),'score',b);}
+ if(has('high_lock')){const n=Math.min(2,f.lockedHigh,adv);adv-=n;extra+=n;if(n)emit(has('high_lock'),'convert',n);}
+ adv+=(s.roundNumber||1)===1?(s.openingAdv||0)-(s.openingDebt||0):0;
+ let singleSupport=0;if(single){singleSupport=Math.min(3,Math.floor(Math.max(0,adv)/2));if(singleSupport)emit(core,'convert',singleSupport,'单骰：优势转为伤害／护盾 '+singleSupport);if(adv<0)r.p=Math.max(0,r.p+adv);}else r.p=Math.max(0,r.p+(reversed?-adv:adv));
+ let enemyAdv=0;if(s.enemy.id==='B001'&&s.enemy.hp<=s.enemy.maxHp/2){enemyAdv=enemy.filter(v=>v%2===0).length*(s.enemy.evenBonus??1);if(!single)r.e=Math.max(0,r.e+(reversed?-enemyAdv:enemyAdv));emit(null,'enemy_bonus',enemyAdv);}
+ r.baseDifference=Math.abs(r.p-r.e);r.win=reversed?r.p<r.e:r.p>r.e;r.tie=r.p===r.e;if(r.tie&&has('tie_win')){r.win=true;r.baseDifference=has('tie_win').params.amount;emit(has('tie_win'),'compare',r.baseDifference);}
+ r.lost=!r.win&&!r.tie;r.diff=r.baseDifference;
+ if(r.win){extra+=singleSupport;if(has('desperate')&&s.hp<=has('desperate').params.hp){extra+=has('desperate').params.amount;emit(has('desperate'),'damage',has('desperate').params.amount);}if(has('pair_damage')&&f.pair){extra+=has('pair_damage').params.amount;emit(has('pair_damage'),'damage',has('pair_damage').params.amount);}}
+ if(r.lost){shield+=singleSupport;if(single)r.diff+=Math.min(3,Math.floor(enemyAdv/2));if(has('close_guard')&&r.baseDifference===has('close_guard').params.threshold){r.diff=0;emit(has('close_guard'),'damage',-r.baseDifference);}if(has('glass_pact')){r.diff+=has('glass_pact').params.penalty;emit(has('glass_pact'),'damage',has('glass_pact').params.penalty);}if(has('low_guard')&&sum(a)<=has('low_guard').params.threshold){shield+=has('low_guard').params.amount;emit(has('low_guard'),'damage',-has('low_guard').params.amount);}}
+ for(const c of cards)for(const ef of c.effects||[]){if(!['shield','damage'].includes(ef.op))continue;const v=condition(ef.when,s,f,r);if(v&&(ef.op!=='damage'||r.win)){const n=ef.amount*(typeof v==='number'?v:1);if(ef.op==='shield')shield+=n;else extra+=n;emit(c,ef.op,n);}}
+ if(has('lock_core')){shield+=f.locks;emit(core,'shield',f.locks,'封骰：双方保留骰各提供护盾');}
+ if(r.win)r.diff=Math.max(0,r.diff+Math.min(6,extra)-(has('lock_core')?(s.enemyKept||0):0));else if(r.lost)r.diff=Math.max(0,r.diff-shield);else r.diff=0;
+ if(r.win&&has('all_odd_gold')&&f.odd===3)gold(has('all_odd_gold'),Math.min(has('all_odd_gold').params.amount,Math.max(0,9-(s.battleCardGold||0))));
+ for(const c of cards)for(const ef of c.effects||[]){if(!['gold','heal','bankAdv','bankShield'].includes(ef.op))continue;const v=condition(ef.when,s,f,r);if(!v)continue;let n=ef.amount*(typeof v==='number'?v:1);if(ef.op==='gold')gold(c,n);if(ef.op==='heal'&&s.hp-r.selfCost-(r.lost?r.diff:0)>0){n=Math.min(n,Math.max(0,6-(s.battleHealing||0)-r.heal),Math.max(0,(c.params.cap??6)-(r.cardHealing[c.id]||0)));if(n){r.heal+=n;r.cardHealing[c.id]=(r.cardHealing[c.id]||0)+n;emit(c,'heal',n);if(c.id==='R062')r.used.R062=true;}}if(ef.op==='bankAdv'){r.nextAdv+=n;emit(c,'carry',n);if(c.id==='R028'){r.used.R028=true;r.nextDebt=2;}}if(ef.op==='bankShield'){r.nextShield+=n;emit(c,'carry',n);}}
+ if(has('gold_core')){r.nextAdv+=Math.floor(r.generatedGold/2);if(r.generatedGold)emit(core,'convert',Math.floor(r.generatedGold/2),'回合金币熔为下回合优势，未入钱包');}else r.gold=r.generatedGold;
+ r.nextAdv=clamp(r.nextAdv,3);r.nextShield=clamp(r.nextShield,3);r.lines=events.map(e=>e.text);return r;
+}
+function applyRound(s,r){const hp=Math.max(0,s.hp-r.selfCost-(r.lost?r.diff:0));return{...s,hp:hp>0?Math.min(s.maxHp,hp+r.heal):0,gold:s.gold+r.gold,enemy:{...s.enemy,hp:Math.max(0,s.enemy.hp-(r.win?r.diff:0))},battleLosses:(s.battleLosses||0)+(r.lost?1:0),battleCardGold:(s.battleCardGold||0)+r.generatedGold,battleHealing:(s.battleHealing||0)+r.heal,cardGold:r.cardGold,cardHealing:r.cardHealing,used:r.used,carryAdv:r.nextAdv,carryShield:r.nextShield,nextBattleDebt:Math.max(s.nextBattleDebt||0,r.nextDebt),previousLockSignature:lockSignature(s),roundNumber:(s.roundNumber||1)+1};}
+function nextRandom(seed){let value=(seed+0x6D2B79F5)>>>0,t=value;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return{seed:value,value:((t^(t>>>14))>>>0)/4294967296};}
+function resolveRoll(s,db){const cards=cardsOf(s,db),has=k=>cards.find(c=>c.effect_key===k),out={...s,pdice:[...s.pdice],edice:[...s.edice],roll:s.roll+1,faceChanges:s.faceChanges||0,rollEvents:[]};if(s.roll>=3)throw Error('Only three rolls');let rng=s.rng;const die=()=>{const r=nextRandom(rng);rng=r.seed;return 1+Math.floor(r.value*6);};const pm=s.locked.map(x=>!x),em=s.edice.map(v=>out.roll===1||(has('low_wins')?v>3:v<4));if(out.roll===3&&has('break_lock')&&s.locked.some(Boolean)){em[s.edice.indexOf(Math.max(...s.edice))]=true;out.rollEvents.push('R029');}
+ const change=(i,v,id)=>{if(out.pdice[i]!==v){out.pdice[i]=v;out.faceChanges++;if(id)out.rollEvents.push(id);}};
+ for(let i=0;i<3;i++)if(pm[i]){const raw=die();out.pdice[i]=s.upgrade&&i===0&&raw===1?3:raw;if(i===0&&raw===6&&has('face_low'))change(i,1,'R031');if(i===0&&raw===1&&has('face_mid'))change(i,3,'R053');if(i===1&&raw===2&&has('face_high'))change(i,5,'R054');if(i===2&&raw===6&&has('face_center'))change(i,3,'R055');}
+ out.edice=out.edice.map((v,i)=>em[i]?die():v);
+ if(out.roll===3){if(has('invert_core')){out.pdice.forEach((v,i)=>{if(pm[i])change(i,7-v,'R077');});out.edice=out.edice.map((v,i)=>em[i]?7-v:v);}if(has('flip_lock'))out.pdice.forEach((v,i)=>{if(s.earlyLocked?.[i])change(i,7-v,'R070');});if(has('repair_one')){const i=out.pdice.indexOf(1);if(i>=0)change(i,2,'R025');}if(has('parity_shape')&&(s.earlyLocked||[]).filter(Boolean).length>=2&&facts({...s,pdice:out.pdice}).sameLocks){const i=s.locked.indexOf(false);if(i>=0)change(i,Math.min(6,out.pdice[i]+1),'R072');}}
+ return{...out,rng,lastRerollMask:pm,lastRerolled:pm.filter(Boolean).length,enemyKept:em.filter(x=>!x).length,rerollsAfterFirst:(s.rerollsAfterFirst||0)+(out.roll>1?pm.filter(Boolean).length:0),pm,em};}
+function beginBattle(s,db){const cards=cardsOf(s,db),has=k=>cards.find(c=>c.effect_key===k);return{...s,gold:s.gold+(has('entry_gold')?.params.amount||0),hp:Math.min(s.maxHp,s.hp+(has('entry_heal')&&s.hp>s.maxHp/2?3:0)),roundNumber:1,battleLosses:0,battleCardGold:0,battleHealing:0,cardGold:{},cardHealing:{},used:{},carryAdv:0,carryShield:0,openingAdv:s.spendBank||0,spendBank:0,openingDebt:s.nextBattleDebt||0,nextBattleDebt:0,previousLockSignature:'',faceChanges:0,rerollsAfterFirst:0,lastRerollMask:[false,false,false]};}
+function battleReward(s,db){const c=cardsOf(s,db).find(c=>c.effect_key==='battle_gold');return{gold:s.enemy.gold+(c?.params.amount||0),cardId:c?.id||null};}
+function endBattle(s,db){return{...s,hp:s.hp>0?Math.min(s.maxHp,s.hp+(cardsOf(s,db).some(c=>c.effect_key==='victory_heal')?2:0)):0};}
+function spend(s,amount,db){if(!Number.isInteger(amount)||amount<0||s.gold<amount)throw Error('Invalid spend');const active=cardsOf(s,db).some(c=>c.effect_key==='spend_bank'),total=(s.spendRemainder||0)+amount;return{...s,gold:s.gold-amount,spendBank:active?Math.min(3,(s.spendBank||0)+Math.floor(total/10)):s.spendBank||0,spendRemainder:active?total%10:s.spendRemainder||0};}
+function price(s,base,kind,db){const cards=cardsOf(s,db);return Math.max(1,base-(kind==='shop'&&!s.shopPurchases&&cards.some(c=>c.effect_key==='shop_discount')?5:kind==='rest'&&cards.some(c=>c.effect_key==='rest_discount')?8:0));}
+function nodeReward(s,type,db){const grant=!['fight','elite','boss'].includes(type)&&cardsOf(s,db).some(c=>c.effect_key==='node_gold')?Math.min(2,8-(s.nodeGold||0)):0;return{...s,gold:s.gold+grant,nodeGold:(s.nodeGold||0)+grant};}
+function replacementOptions(ids,newCard,db){if(ids.includes(newCard.id))return{duplicate:true,needsReplacement:false,options:[]};const conflicts=ids.filter(id=>newCard.exclusive_group&&db.cards.find(c=>c.id===id)?.exclusive_group===newCard.exclusive_group),same=ids.filter(id=>db.cards.find(c=>c.id===id)?.slot===newCard.slot);const options=conflicts.length?conflicts:same.length>=(newCard.slot==='core'?1:5)?same:[];return{duplicate:false,needsReplacement:!!options.length,options};}
+function rewardPicks(pool,s,random){const picks=[],available=pool.filter(c=>c.status==='implemented'&&!s.rules.includes(c.id));const pick=list=>{if(!list.length)return;let n=random()*sum(list.map(c=>c.reward_weight));let c=list.at(-1);for(const x of list){n-=x.reward_weight;if(n<0){c=x;break;}}picks.push(c);};const rest=()=>available.filter(c=>!picks.includes(c));pick(rest().filter(c=>c.serves.includes(s.focus)));pick(rest().filter(c=>c.pool_class==='B'||c.pool_class==='U'));while(picks.length<3&&rest().length)pick(rest());return picks;}
+return{EFFECTS,evaluate,applyRound,resolveRoll,beginBattle,endBattle,battleReward,nextRandom,replacementOptions,rewardPicks,price,spend,nodeReward,lockSignature,facts};
 });
