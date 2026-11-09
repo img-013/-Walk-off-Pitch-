@@ -1,0 +1,1068 @@
+{
+  "schema_version": 1,
+  "content_version": "0.6.0",
+  "updated_at": "2026-11-09",
+  "language": "zh-CN",
+  "balance_status": "prototype-unvalidated",
+  "rules": {
+    "total_slots": 6,
+    "core_slots": 1,
+    "support_slots": 5,
+    "duplicate_policy": "unique",
+    "score_bonus_semantics": "advantage: add for high-wins, subtract for low-wins; clamp at zero",
+    "trigger_order": [
+      "enemy_copy",
+      "base",
+      "score",
+      "enemy_bonus",
+      "compare",
+      "damage",
+      "economy",
+      "battle_end"
+    ]
+  },
+  "cards": [
+    {
+      "id": "R001",
+      "name": "奇数信徒",
+      "rarity": "普通",
+      "family": "奇偶",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "odd_bonus",
+      "description": "每颗奇数骰提供 1 点优势。",
+      "params": {
+        "amount": 1
+      },
+      "synergies": [
+        "R010",
+        "R013"
+      ],
+      "tensions": [
+        "R011"
+      ],
+      "reference_ids": [
+        "BAL",
+        "PMD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "☾",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R002",
+      "name": "双生骰",
+      "rarity": "普通",
+      "family": "组合",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "pair_bonus",
+      "description": "出现对子或三同号，提供 3 点优势（每回合一次）。",
+      "params": {
+        "amount": 3
+      },
+      "synergies": [
+        "R014",
+        "R024"
+      ],
+      "tensions": [
+        "R003",
+        "R013"
+      ],
+      "reference_ids": [
+        "PMD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "Ⅱ",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R003",
+      "name": "三人成行",
+      "rarity": "普通",
+      "family": "组合",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "unique_bonus",
+      "description": "三枚骰子互不相同，提供 2 点优势。",
+      "params": {
+        "amount": 2
+      },
+      "synergies": [
+        "R013"
+      ],
+      "tensions": [
+        "R002",
+        "R014"
+      ],
+      "reference_ids": [
+        "PMD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "△",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R004",
+      "name": "差一点",
+      "rarity": "普通",
+      "family": "防护",
+      "phase": "damage",
+      "phase_label": "伤害",
+      "effect_key": "close_guard",
+      "description": "以 1 点差距落败时，基础差值伤害归零；额外风险伤害仍生效。",
+      "params": {
+        "threshold": 1
+      },
+      "synergies": [
+        "R018"
+      ],
+      "tensions": [
+        "R021"
+      ],
+      "reference_ids": [
+        "SD"
+      ],
+      "role": "safety",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "◌",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R005",
+      "name": "破釜沉舟",
+      "rarity": "普通",
+      "family": "险境",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "low_hp",
+      "description": "结算前生命低于一半，提供 2 点优势。",
+      "params": {
+        "amount": 2
+      },
+      "synergies": [
+        "R009",
+        "R018"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "DITD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "♨",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R006",
+      "name": "庄家通吃",
+      "rarity": "稀有",
+      "family": "胜负",
+      "phase": "compare",
+      "phase_label": "胜负",
+      "effect_key": "tie_win",
+      "description": "最终比分相同时视为获胜，基础伤害为 1；之后仍应用伤害修正。",
+      "params": {
+        "amount": 1
+      },
+      "synergies": [
+        "R004",
+        "R024"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL"
+      ],
+      "role": "converter",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "♛",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R007",
+      "name": "反向赌局",
+      "rarity": "核心",
+      "family": "逆点",
+      "phase": "compare",
+      "phase_label": "胜负",
+      "effect_key": "low_wins",
+      "description": "最终点数低者获胜。你的计分优势改为减点，最低为 0；敌人也改为保留低点。",
+      "params": {},
+      "synergies": [
+        "R012",
+        "R018"
+      ],
+      "tensions": [
+        "R008"
+      ],
+      "reference_ids": [
+        "BAL",
+        "DD"
+      ],
+      "role": "converter",
+      "status": "implemented",
+      "slot": "core",
+      "exclusive_group": "victory_mode",
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 45,
+      "reward_weight": 1,
+      "symbol": "⇅",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R008",
+      "name": "单骰决胜",
+      "rarity": "核心",
+      "family": "高点",
+      "phase": "base",
+      "phase_label": "基础",
+      "effect_key": "max_only",
+      "description": "先比最高骰；相同则改比原始总和。跳过双方计分加成；胜负、伤害与经济规则照常。",
+      "params": {},
+      "synergies": [
+        "R006",
+        "R024",
+        "R018",
+        "R009"
+      ],
+      "tensions": [
+        "R007",
+        "R001",
+        "R011",
+        "R023"
+      ],
+      "reference_ids": [
+        "BAL"
+      ],
+      "role": "converter",
+      "status": "implemented",
+      "slot": "core",
+      "exclusive_group": "victory_mode",
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 45,
+      "reward_weight": 1,
+      "symbol": "Ⅰ",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R009",
+      "name": "绝境赔率",
+      "rarity": "稀有",
+      "family": "险境",
+      "phase": "damage",
+      "phase_label": "伤害",
+      "effect_key": "desperate",
+      "description": "结算前生命不高于 10 且获胜，额外造成 3 点伤害。",
+      "params": {
+        "amount": 3,
+        "hp": 10
+      },
+      "synergies": [
+        "R005",
+        "R018"
+      ],
+      "tensions": [
+        "R021"
+      ],
+      "reference_ids": [
+        "DITD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "✦",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R010",
+      "name": "拒绝对称",
+      "rarity": "普通",
+      "family": "经济",
+      "phase": "economy",
+      "phase_label": "经济",
+      "effect_key": "all_odd_gold",
+      "description": "三骰全奇数且本回合获胜，获得 3 金币；每场战斗最多获得 9 金币。",
+      "params": {
+        "amount": 3,
+        "cap": 9
+      },
+      "synergies": [
+        "R001",
+        "R014"
+      ],
+      "tensions": [
+        "R011",
+        "R013"
+      ],
+      "reference_ids": [
+        "BAL",
+        "PMD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "◇",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R011",
+      "name": "偶数回声",
+      "rarity": "普通",
+      "family": "奇偶",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "even_bonus",
+      "description": "每颗偶数骰提供 1 点优势。",
+      "params": {
+        "amount": 1
+      },
+      "synergies": [
+        "R002",
+        "R014"
+      ],
+      "tensions": [
+        "R001",
+        "R010"
+      ],
+      "reference_ids": [
+        "PMD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "☾",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R012",
+      "name": "微光筹码",
+      "rarity": "普通",
+      "family": "逆点",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "small_bonus",
+      "description": "每颗 1 或 2 点骰提供 1 点优势。",
+      "params": {
+        "amount": 1,
+        "threshold": 2
+      },
+      "synergies": [
+        "R007",
+        "R018"
+      ],
+      "tensions": [
+        "R023"
+      ],
+      "reference_ids": [
+        "DD"
+      ],
+      "role": "enabler",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "Ⅱ",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R013",
+      "name": "步步相连",
+      "rarity": "稀有",
+      "family": "组合",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "straight_bonus",
+      "description": "三骰组成连续整数（如 2、3、4），提供 4 点优势。",
+      "params": {
+        "amount": 4
+      },
+      "synergies": [
+        "R003"
+      ],
+      "tensions": [
+        "R002",
+        "R014"
+      ],
+      "reference_ids": [
+        "PMD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "△",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R014",
+      "name": "三重奏",
+      "rarity": "稀有",
+      "family": "组合",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "triple_bonus",
+      "description": "三骰点数完全相同，提供 6 点优势。",
+      "params": {
+        "amount": 6
+      },
+      "synergies": [
+        "R002",
+        "R024"
+      ],
+      "tensions": [
+        "R003",
+        "R013"
+      ],
+      "reference_ids": [
+        "PMD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "◌",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R015",
+      "name": "早定之约",
+      "rarity": "普通",
+      "family": "锁定",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "early_lock",
+      "description": "每颗从第一掷后开始、一直锁定到结算的骰子提供 1 点优势。",
+      "params": {
+        "amount": 1
+      },
+      "synergies": [
+        "R016"
+      ],
+      "tensions": [
+        "R017"
+      ],
+      "reference_ids": [
+        "SD"
+      ],
+      "role": "enabler",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "♨",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R016",
+      "name": "独掷者",
+      "rarity": "普通",
+      "family": "锁定",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "one_reroll",
+      "description": "第三掷恰好重掷一枚骰子，提供 2 点优势。",
+      "params": {
+        "amount": 2
+      },
+      "synergies": [
+        "R015",
+        "R023"
+      ],
+      "tensions": [
+        "R017"
+      ],
+      "reference_ids": [
+        "SD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "♛",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R017",
+      "name": "放手一搏",
+      "rarity": "稀有",
+      "family": "重掷",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "all_reroll",
+      "description": "第三掷重掷全部三枚骰子，提供 3 点优势。",
+      "params": {
+        "amount": 3
+      },
+      "synergies": [
+        "R021"
+      ],
+      "tensions": [
+        "R015",
+        "R016"
+      ],
+      "reference_ids": [
+        "SD",
+        "DD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "⇅",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R018",
+      "name": "低潮护符",
+      "rarity": "普通",
+      "family": "防护",
+      "phase": "damage",
+      "phase_label": "伤害",
+      "effect_key": "low_guard",
+      "description": "你的原始三骰总和不高于 9 时，落败所受伤害减少 2（最低为 0）。",
+      "params": {
+        "amount": 2,
+        "threshold": 9
+      },
+      "synergies": [
+        "R007",
+        "R012",
+        "R005"
+      ],
+      "tensions": [
+        "R023"
+      ],
+      "reference_ids": [
+        "DD"
+      ],
+      "role": "safety",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "Ⅰ",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R019",
+      "name": "看穿庄家",
+      "rarity": "普通",
+      "family": "对策",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "enemy_even",
+      "description": "敌方可见骰子中至少两枚为偶数，提供 2 点优势；不读取镜像后的计分骰。",
+      "params": {
+        "amount": 2,
+        "count": 2
+      },
+      "synergies": [
+        "R004"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "SD"
+      ],
+      "role": "enabler",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "✦",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R020",
+      "name": "旅费余裕",
+      "rarity": "普通",
+      "family": "经济",
+      "phase": "battle_end",
+      "phase_label": "战后",
+      "effect_key": "battle_gold",
+      "description": "击败敌人后额外获得 8 金币（每场一次）。",
+      "params": {
+        "amount": 8
+      },
+      "synergies": [
+        "R010"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL"
+      ],
+      "role": "enabler",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_battle",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "◇",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R021",
+      "name": "玻璃誓约",
+      "rarity": "稀有",
+      "family": "险境",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "glass_pact",
+      "description": "每回合提供 4 点优势；落败时额外受到 2 点伤害。",
+      "params": {
+        "amount": 4,
+        "penalty": 2
+      },
+      "synergies": [
+        "R017"
+      ],
+      "tensions": [
+        "R009"
+      ],
+      "reference_ids": [
+        "DITD"
+      ],
+      "role": "converter",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "☾",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R022",
+      "name": "败中求变",
+      "rarity": "普通",
+      "family": "成长",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "loss_growth",
+      "description": "本场此前每落败一回合，提供 1 点优势，最多 3；新战斗清零。",
+      "params": {
+        "amount": 1,
+        "cap": 3
+      },
+      "synergies": [
+        "R018",
+        "R004"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL"
+      ],
+      "role": "safety",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "Ⅱ",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R023",
+      "name": "六点灯塔",
+      "rarity": "普通",
+      "family": "高点",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "six_bonus",
+      "description": "至少一枚骰子为 6，提供 2 点优势。",
+      "params": {
+        "amount": 2
+      },
+      "synergies": [
+        "R015",
+        "R016"
+      ],
+      "tensions": [
+        "R007",
+        "R012"
+      ],
+      "reference_ids": [
+        "DD"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "△",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R024",
+      "name": "双响余威",
+      "rarity": "稀有",
+      "family": "组合",
+      "phase": "damage",
+      "phase_label": "伤害",
+      "effect_key": "pair_damage",
+      "description": "出现对子或三同号且获胜，额外造成 2 点伤害（每回合一次）。",
+      "params": {
+        "amount": 2
+      },
+      "synergies": [
+        "R002",
+        "R014",
+        "R006"
+      ],
+      "tensions": [
+        "R003"
+      ],
+      "reference_ids": [
+        "PMD",
+        "BAL"
+      ],
+      "role": "reward",
+      "status": "implemented",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "◌",
+      "balance_note": "初始测试值，需结合胜率、触发率与拾取率验证；非最终平衡。"
+    },
+    {
+      "id": "R025",
+      "name": "末掷校准",
+      "rarity": "稀有",
+      "family": "骰面",
+      "phase": "face",
+      "phase_label": "骰面",
+      "effect_key": "repair_one",
+      "description": "设计稿：第三掷后将最左一枚 1 点临时变为 2，仅限本回合。",
+      "params": {
+        "amount": 2
+      },
+      "synergies": [
+        "R011",
+        "R012"
+      ],
+      "tensions": [
+        "R001"
+      ],
+      "reference_ids": [
+        "DD"
+      ],
+      "role": "enabler",
+      "status": "planned",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "♨",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+    },
+    {
+      "id": "R026",
+      "name": "余温筹码",
+      "rarity": "普通",
+      "family": "跨回合",
+      "phase": "round_end",
+      "phase_label": "回合末",
+      "effect_key": "carry_guard",
+      "description": "设计稿：本回合受到 0 伤害时，下回合获得 1 护盾；不叠加，最多抵挡 1。",
+      "params": {
+        "amount": 1
+      },
+      "synergies": [
+        "R018"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "SD"
+      ],
+      "role": "safety",
+      "status": "planned",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "♛",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+    },
+    {
+      "id": "R027",
+      "name": "邻座共鸣",
+      "rarity": "稀有",
+      "family": "牌位",
+      "phase": "score",
+      "phase_label": "计分",
+      "effect_key": "adjacent_echo",
+      "description": "设计稿：左邻非核心计分牌本回合触发时，再获得 1 点优势；不复制牌、不递归。",
+      "params": {
+        "amount": 1
+      },
+      "synergies": [
+        "R001",
+        "R011"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "DITD"
+      ],
+      "role": "reward",
+      "status": "planned",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "⇅",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+    },
+    {
+      "id": "R028",
+      "name": "逆风借据",
+      "rarity": "稀有",
+      "family": "跨回合",
+      "phase": "round_end",
+      "phase_label": "回合末",
+      "effect_key": "borrowed_edge",
+      "description": "设计稿：本回合落败，下回合获得 3 优势，但下一场首回合失去 2 优势。",
+      "params": {
+        "amount": 3,
+        "penalty": 2
+      },
+      "synergies": [
+        "R022"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL"
+      ],
+      "role": "converter",
+      "status": "planned",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "Ⅰ",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+    },
+    {
+      "id": "R029",
+      "name": "破局目光",
+      "rarity": "稀有",
+      "family": "对策",
+      "phase": "enemy_intent",
+      "phase_label": "意图",
+      "effect_key": "break_lock",
+      "description": "设计稿：第二掷结束时，令敌方最高一枚骰子第三掷必定重掷；每回合一次。",
+      "params": {},
+      "synergies": [
+        "R019"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "SD"
+      ],
+      "role": "enabler",
+      "status": "planned",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "✦",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+    },
+    {
+      "id": "R030",
+      "name": "熟客折扣",
+      "rarity": "普通",
+      "family": "经济",
+      "phase": "shop",
+      "phase_label": "商店",
+      "effect_key": "shop_discount",
+      "description": "设计稿：商店第一笔规则购买减少 5 金币，最低价格 1；每个商店一次。",
+      "params": {
+        "amount": 5
+      },
+      "synergies": [
+        "R020"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "BAL"
+      ],
+      "role": "enabler",
+      "status": "planned",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 28,
+      "reward_weight": 4,
+      "symbol": "◇",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+    },
+    {
+      "id": "R031",
+      "name": "偏心骰匠",
+      "rarity": "稀有",
+      "family": "骰面",
+      "phase": "acquire",
+      "phase_label": "获得",
+      "effect_key": "face_swap",
+      "description": "设计稿：获得时选择一枚骰子，将一个 6 点面永久换为 1 点面；仍占规则栏。",
+      "params": {},
+      "synergies": [
+        "R007",
+        "R012"
+      ],
+      "tensions": [
+        "R023"
+      ],
+      "reference_ids": [
+        "PMD"
+      ],
+      "role": "enabler",
+      "status": "planned",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_round",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "☾",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+    },
+    {
+      "id": "R032",
+      "name": "恰到好处",
+      "rarity": "稀有",
+      "family": "终结",
+      "phase": "battle_end",
+      "phase_label": "战后",
+      "effect_key": "exact_lethal",
+      "description": "设计稿：最终伤害恰好等于敌人结算前生命时，恢复 3 生命；每场一次。",
+      "params": {
+        "amount": 3
+      },
+      "synergies": [
+        "R008",
+        "R024"
+      ],
+      "tensions": [],
+      "reference_ids": [
+        "SD"
+      ],
+      "role": "reward",
+      "status": "planned",
+      "slot": "support",
+      "exclusive_group": null,
+      "stacking": "unique",
+      "trigger_limit": "once_per_battle",
+      "price": 38,
+      "reward_weight": 2,
+      "symbol": "Ⅱ",
+      "balance_note": "未注册运行时效果，不进入任何奖励池；须先实现与测试再开放。"
+    }
+  ]
+}

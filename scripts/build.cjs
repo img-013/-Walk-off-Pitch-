@@ -1,0 +1,18 @@
+const fs=require('node:fs'),path=require('node:path');
+process.chdir(path.join(__dirname,'..'));
+const read=p=>fs.readFileSync(p,'utf8').replace(/^\uFEFF/,'').replace(/\r\n/g,'\n');
+const database=JSON.parse(read('data/cards.json'));
+const json=JSON.stringify(database).replaceAll('<','\\u003c');
+const css=['src/legacy.css','src/style.css'].map(read).join('\n');
+const js=`const CARD_DATABASE=${json};\nconst ENEMY_DATABASE=${JSON.stringify(JSON.parse(read('data/enemies.json'))).replaceAll('<','\\u003c')};\n`+['src/engine.js','src/base.js','src/game.js'].map(read).join('\n');
+new Function(js);
+const html=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101c1b"><meta name="description" content="再见一掷：三次掷骰、差值伤害、永久规则构筑。"><title>再见一掷 · Walk-off Pitch</title><style>${css}</style></head><body>${read('src/body.html')}<script>${js}</script></body></html>\n`;
+fs.writeFileSync('index.html',html);
+const csvFields=['id','name','status','rarity','family','slot','phase','effect_key','description','params','synergies','tensions','reference_ids','price','reward_weight','role','trigger_limit','balance_note'];
+const quote=value=>'"'+String(typeof value==='object'?JSON.stringify(value):value??'').replaceAll('"','""')+'"';
+fs.writeFileSync('data/cards.csv','\uFEFF'+[csvFields.join(','),...database.cards.map(c=>csvFields.map(k=>quote(c[k])).join(','))].join('\r\n')+'\r\n');
+const link=id=>{const c=database.cards.find(c=>c.id===id);return `${id} ${c.name}`};
+const md=`# 卡牌数据库 · ${database.content_version}\n\n此文件由 data/cards.json 生成，请修改 JSON 后运行 npm run build。CSV 适合用 Excel 浏览，回写请以 JSON 为准。\n\n24 张已实现、8 张设计稿。所有数值为待验证原型值。每局最多 5 张被动 + 1 张核心；同名唯一，核心互斥。\n\n“优势”在正常模式加分，在反向模式减分（最低 0）。其他条件均检查原始骰面，除非卡面明确说明。\n\n`+
+database.cards.map(c=>`## ${c.id} ${c.name}\n\n- 状态：${c.status==='implemented'?'已实现':'设计稿（不会出现在游戏奖励中）'}；稀有度：${c.rarity}；流派：${c.family}；位置：${c.slot}\n- 效果：${c.description}\n- 实现：\`${c.effect_key}\`；阶段：\`${c.phase}\`；参数：\`${JSON.stringify(c.params)}\`；触发上限：\`${c.trigger_limit}\`\n- 定位：\`${c.role}\`；价格：${c.price}；奖励权重：${c.reward_weight}\n- 协同：${c.synergies.map(link).join('、')||'通用'}\n- 取舍：${c.tensions.map(link).join('、')||'占用构筑位置'}（除核心互斥外，表示策略张力，不一定禁止共存）\n- 机制参考：${c.reference_ids.join('、')}，来源索引见 [研究报告](research.md)。这些为原创改写，非原作卡牌复刻。\n- 平衡状态：${c.balance_note}\n`).join('\n');
+fs.writeFileSync('docs/cards.md',md);
+console.log('Built index.html, data/cards.csv, docs/cards.md');

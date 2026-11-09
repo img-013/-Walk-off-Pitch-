@@ -1,0 +1,566 @@
+{
+  "version": "0.6.0",
+  "seeds": "1..200 per matchup",
+  "policy": "simple heuristics, full preassembled builds; 30 initial HP; no run economy; no upgrades; 40-round limit",
+  "results": [
+    {
+      "build": "无构筑",
+      "enemy": "路骰客",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 3.14,
+      "mean_hp_on_win": 29.805,
+      "timeouts": 0,
+      "triggers": {}
+    },
+    {
+      "build": "无构筑",
+      "enemy": "锁匠",
+      "seeds": 200,
+      "wins": 176,
+      "win_rate": 0.88,
+      "mean_rounds": 12.815,
+      "mean_hp_on_win": 16.431818181818183,
+      "timeouts": 0,
+      "triggers": {}
+    },
+    {
+      "build": "无构筑",
+      "enemy": "债主",
+      "seeds": 200,
+      "wins": 165,
+      "win_rate": 0.825,
+      "mean_rounds": 14.235,
+      "mean_hp_on_win": 15.436363636363636,
+      "timeouts": 0,
+      "triggers": {}
+    },
+    {
+      "build": "无构筑",
+      "enemy": "镜面赌徒",
+      "seeds": 200,
+      "wins": 16,
+      "win_rate": 0.08,
+      "mean_rounds": 19.56,
+      "mean_hp_on_win": 10.4375,
+      "timeouts": 0,
+      "triggers": {}
+    },
+    {
+      "build": "无构筑",
+      "enemy": "概率修士",
+      "seeds": 200,
+      "wins": 10,
+      "win_rate": 0.05,
+      "mean_rounds": 19.78,
+      "mean_hp_on_win": 11.7,
+      "timeouts": 0,
+      "triggers": {}
+    },
+    {
+      "build": "奇数",
+      "enemy": "路骰客",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 2.485,
+      "mean_hp_on_win": 29.935,
+      "timeouts": 0,
+      "triggers": {
+        "R001": 492,
+        "R015": 337,
+        "R016": 207,
+        "R010": 227,
+        "R018": 24
+      }
+    },
+    {
+      "build": "奇数",
+      "enemy": "锁匠",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 7.505,
+      "mean_hp_on_win": 26,
+      "timeouts": 0,
+      "triggers": {
+        "R001": 1486,
+        "R016": 607,
+        "R015": 1062,
+        "R010": 460,
+        "R018": 226
+      }
+    },
+    {
+      "build": "奇数",
+      "enemy": "债主",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 8.34,
+      "mean_hp_on_win": 25.51,
+      "timeouts": 0,
+      "triggers": {
+        "R001": 1651,
+        "R016": 674,
+        "R015": 1171,
+        "R010": 483,
+        "R018": 253
+      }
+    },
+    {
+      "build": "奇数",
+      "enemy": "镜面赌徒",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 12.2,
+      "mean_hp_on_win": 23.975,
+      "timeouts": 0,
+      "triggers": {
+        "R001": 2415,
+        "R016": 997,
+        "R015": 1724,
+        "R010": 577,
+        "R018": 333
+      }
+    },
+    {
+      "build": "奇数",
+      "enemy": "概率修士",
+      "seeds": 200,
+      "wins": 154,
+      "win_rate": 0.77,
+      "mean_rounds": 19.205,
+      "mean_hp_on_win": 13.935064935064934,
+      "timeouts": 0,
+      "triggers": {
+        "R001": 3803,
+        "R016": 1562,
+        "R015": 2683,
+        "R010": 588,
+        "R018": 681
+      }
+    },
+    {
+      "build": "对子",
+      "enemy": "路骰客",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 1.865,
+      "mean_hp_on_win": 29.985,
+      "timeouts": 0,
+      "triggers": {
+        "R002": 312,
+        "R014": 91,
+        "R015": 316,
+        "R024": 306,
+        "R018": 7
+      }
+    },
+    {
+      "build": "对子",
+      "enemy": "锁匠",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 4.09,
+      "mean_hp_on_win": 27.88,
+      "timeouts": 0,
+      "triggers": {
+        "R002": 690,
+        "R014": 175,
+        "R015": 685,
+        "R024": 500,
+        "R018": 129
+      }
+    },
+    {
+      "build": "对子",
+      "enemy": "债主",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 4.465,
+      "mean_hp_on_win": 27.725,
+      "timeouts": 0,
+      "triggers": {
+        "R002": 756,
+        "R014": 193,
+        "R015": 750,
+        "R024": 549,
+        "R018": 140
+      }
+    },
+    {
+      "build": "对子",
+      "enemy": "镜面赌徒",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 5.82,
+      "mean_hp_on_win": 26.92,
+      "timeouts": 0,
+      "triggers": {
+        "R002": 971,
+        "R014": 246,
+        "R015": 981,
+        "R024": 737,
+        "R018": 144
+      }
+    },
+    {
+      "build": "对子",
+      "enemy": "概率修士",
+      "seeds": 200,
+      "wins": 197,
+      "win_rate": 0.985,
+      "mean_rounds": 8.995,
+      "mean_hp_on_win": 22.34517766497462,
+      "timeouts": 0,
+      "triggers": {
+        "R002": 1488,
+        "R014": 392,
+        "R015": 1500,
+        "R024": 979,
+        "R018": 312
+      }
+    },
+    {
+      "build": "顺子",
+      "enemy": "路骰客",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 2.79,
+      "mean_hp_on_win": 29.84,
+      "timeouts": 0,
+      "triggers": {
+        "R003": 381,
+        "R015": 456,
+        "R016": 308,
+        "R013": 188,
+        "R018": 32
+      }
+    },
+    {
+      "build": "顺子",
+      "enemy": "锁匠",
+      "seeds": 200,
+      "wins": 199,
+      "win_rate": 0.995,
+      "mean_rounds": 9.095,
+      "mean_hp_on_win": 22.57788944723618,
+      "timeouts": 0,
+      "triggers": {
+        "R003": 1234,
+        "R015": 1476,
+        "R013": 586,
+        "R016": 1016,
+        "R018": 428
+      }
+    },
+    {
+      "build": "顺子",
+      "enemy": "债主",
+      "seeds": 200,
+      "wins": 198,
+      "win_rate": 0.99,
+      "mean_rounds": 10.215,
+      "mean_hp_on_win": 21.62121212121212,
+      "timeouts": 0,
+      "triggers": {
+        "R003": 1367,
+        "R015": 1660,
+        "R013": 658,
+        "R016": 1139,
+        "R018": 484
+      }
+    },
+    {
+      "build": "顺子",
+      "enemy": "镜面赌徒",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 13.49,
+      "mean_hp_on_win": 21.65,
+      "timeouts": 0,
+      "triggers": {
+        "R003": 1829,
+        "R015": 2191,
+        "R013": 871,
+        "R016": 1522,
+        "R018": 568
+      }
+    },
+    {
+      "build": "顺子",
+      "enemy": "概率修士",
+      "seeds": 200,
+      "wins": 84,
+      "win_rate": 0.42,
+      "mean_rounds": 20.455,
+      "mean_hp_on_win": 11.142857142857142,
+      "timeouts": 0,
+      "triggers": {
+        "R003": 2733,
+        "R015": 3321,
+        "R013": 1306,
+        "R016": 2314,
+        "R018": 1138
+      }
+    },
+    {
+      "build": "逆点",
+      "enemy": "路骰客",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 5.165,
+      "mean_hp_on_win": 27.62,
+      "timeouts": 0,
+      "triggers": {
+        "R012": 958,
+        "R015": 900,
+        "R016": 440,
+        "R007": 1033,
+        "R022": 506,
+        "R018": 103
+      }
+    },
+    {
+      "build": "逆点",
+      "enemy": "锁匠",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 4.045,
+      "mean_hp_on_win": 29.045,
+      "timeouts": 0,
+      "triggers": {
+        "R012": 751,
+        "R015": 701,
+        "R007": 809,
+        "R016": 356,
+        "R022": 182,
+        "R018": 26
+      }
+    },
+    {
+      "build": "逆点",
+      "enemy": "债主",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 4.475,
+      "mean_hp_on_win": 28.96,
+      "timeouts": 0,
+      "triggers": {
+        "R012": 830,
+        "R015": 778,
+        "R007": 895,
+        "R016": 399,
+        "R018": 27,
+        "R022": 213
+      }
+    },
+    {
+      "build": "逆点",
+      "enemy": "镜面赌徒",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 5.06,
+      "mean_hp_on_win": 29.655,
+      "timeouts": 0,
+      "triggers": {
+        "R012": 943,
+        "R015": 880,
+        "R007": 1012,
+        "R016": 451,
+        "R022": 103,
+        "R018": 9
+      }
+    },
+    {
+      "build": "逆点",
+      "enemy": "概率修士",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 9.29,
+      "mean_hp_on_win": 27.255,
+      "timeouts": 0,
+      "triggers": {
+        "R012": 1719,
+        "R015": 1626,
+        "R007": 1858,
+        "R016": 808,
+        "R022": 736,
+        "R018": 70
+      }
+    },
+    {
+      "build": "单骰",
+      "enemy": "路骰客",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 4.38,
+      "mean_hp_on_win": 29.825,
+      "timeouts": 0,
+      "triggers": {
+        "R008": 876,
+        "R004": 157,
+        "R024": 415,
+        "R018": 16,
+        "R006": 12
+      }
+    },
+    {
+      "build": "单骰",
+      "enemy": "锁匠",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 10.85,
+      "mean_hp_on_win": 25.25,
+      "timeouts": 0,
+      "triggers": {
+        "R008": 2170,
+        "R024": 777,
+        "R006": 178,
+        "R004": 631,
+        "R018": 50
+      }
+    },
+    {
+      "build": "单骰",
+      "enemy": "债主",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 12.09,
+      "mean_hp_on_win": 24.58,
+      "timeouts": 0,
+      "triggers": {
+        "R008": 2418,
+        "R024": 870,
+        "R006": 198,
+        "R004": 686,
+        "R018": 56
+      }
+    },
+    {
+      "build": "单骰",
+      "enemy": "镜面赌徒",
+      "seeds": 200,
+      "wins": 184,
+      "win_rate": 0.92,
+      "mean_rounds": 17.85,
+      "mean_hp_on_win": 16.64673913043478,
+      "timeouts": 0,
+      "triggers": {
+        "R008": 3570,
+        "R024": 1119,
+        "R004": 1034,
+        "R006": 491,
+        "R018": 94
+      }
+    },
+    {
+      "build": "单骰",
+      "enemy": "概率修士",
+      "seeds": 200,
+      "wins": 195,
+      "win_rate": 0.975,
+      "mean_rounds": 23.475,
+      "mean_hp_on_win": 20.235897435897435,
+      "timeouts": 0,
+      "triggers": {
+        "R008": 4695,
+        "R024": 1689,
+        "R006": 407,
+        "R004": 1343,
+        "R018": 110
+      }
+    },
+    {
+      "build": "险境",
+      "enemy": "路骰客",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 1.955,
+      "mean_hp_on_win": 30,
+      "timeouts": 0,
+      "triggers": {
+        "R021": 391
+      }
+    },
+    {
+      "build": "险境",
+      "enemy": "锁匠",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 4.365,
+      "mean_hp_on_win": 28.84,
+      "timeouts": 0,
+      "triggers": {
+        "R021": 873,
+        "R022": 170,
+        "R018": 21
+      }
+    },
+    {
+      "build": "险境",
+      "enemy": "债主",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 4.785,
+      "mean_hp_on_win": 28.785,
+      "timeouts": 0,
+      "triggers": {
+        "R021": 957,
+        "R022": 191,
+        "R018": 21
+      }
+    },
+    {
+      "build": "险境",
+      "enemy": "镜面赌徒",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 7.4,
+      "mean_hp_on_win": 28.1,
+      "timeouts": 0,
+      "triggers": {
+        "R021": 1480,
+        "R022": 426,
+        "R018": 37
+      }
+    },
+    {
+      "build": "险境",
+      "enemy": "概率修士",
+      "seeds": 200,
+      "wins": 200,
+      "win_rate": 1,
+      "mean_rounds": 10.25,
+      "mean_hp_on_win": 25.46,
+      "timeouts": 0,
+      "triggers": {
+        "R021": 2050,
+        "R022": 855,
+        "R018": 52,
+        "R005": 1
+      }
+    }
+  ]
+}
