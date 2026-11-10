@@ -1,43 +1,840 @@
 {
   "E001": {
     "name": "普通海鸥",
+    "chapter": 1,
+    "rank": "prototype",
+    "branch": "pressure",
+    "mechanics": [
+      "learn"
+    ],
     "hp": 12,
     "dice": 2,
     "rerolls": 2,
-    "desc": "保留高点的入门对手。",
-    "gold": 18
+    "gold": 18,
+    "desc": "双骰入门，无特殊限制",
+    "threat": {
+      "components": [
+        0.2,
+        0.2333333333333333,
+        0,
+        0,
+        0
+      ],
+      "value": 0.11
+    }
   },
   "E002": {
-    "name": "锁匠",
+    "name": "铁骰守卫",
+    "chapter": 1,
+    "rank": "prototype",
+    "branch": "pressure",
+    "mechanics": [
+      "grow"
+    ],
     "hp": 16,
     "dice": 3,
     "rerolls": 2,
-    "desc": "保留 4 点及以上的骰子。",
-    "gold": 22
+    "gold": 21,
+    "desc": "每回合增长1伤害，最多3；只在敌方胜出时生效",
+    "threat": {
+      "components": [
+        0.26666666666666666,
+        0.55,
+        0,
+        0,
+        0
+      ],
+      "value": 0.218
+    }
   },
   "E003": {
-    "name": "债主",
+    "name": "失控魔术师",
+    "chapter": 1,
+    "rank": "prototype",
+    "branch": "dice",
+    "mechanics": [
+      "seal"
+    ],
     "hp": 18,
     "dice": 3,
     "rerolls": 2,
-    "desc": "更耐久的普通对手；本版与锁匠共用 AI。",
-    "gold": 26
+    "gold": 21,
+    "desc": "偶数回合指定一骰不能锁定，其他两骰照常",
+    "threat": {
+      "components": [
+        0.3,
+        0.35,
+        0.3333333333333333,
+        0,
+        0
+      ],
+      "value": 0.232
+    }
+  },
+  "N004": {
+    "name": "倒计时执行者",
+    "chapter": 1,
+    "rank": "prototype",
+    "branch": "tempo",
+    "mechanics": [
+      "charge"
+    ],
+    "hp": 20,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 21,
+    "desc": "每4回合蓄力爆发，敌方胜出额外4伤害",
+    "threat": {
+      "components": [
+        0.3333333333333333,
+        0.55,
+        0,
+        0,
+        0
+      ],
+      "value": 0.232
+    }
+  },
+  "N005": {
+    "name": "双倍或归零",
+    "chapter": 1,
+    "rank": "prototype",
+    "branch": "risk",
+    "mechanics": [
+      "wager"
+    ],
+    "hp": 18,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 21,
+    "desc": "偶数回合可自愿加注，双方最终伤害翻倍；赢下该回合额外2金币",
+    "threat": {
+      "components": [
+        0.3,
+        0.55,
+        0,
+        0,
+        0.3
+      ],
+      "value": 0.255
+    }
+  },
+  "V001": {
+    "name": "裂帆守卫",
+    "chapter": 1,
+    "rank": "variant",
+    "branch": "pressure",
+    "mechanics": [
+      "grow",
+      "mercy"
+    ],
+    "hp": 20,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 21,
+    "desc": "每回合增长1伤害，最多3；只在敌方胜出时生效；玩家本回合无锁骰时，双方胜出伤害各减2",
+    "threat": {
+      "components": [
+        0.3333333333333333,
+        0.55,
+        0,
+        0,
+        0
+      ],
+      "value": 0.232
+    }
+  },
+  "V002": {
+    "name": "疲惫魔术师",
+    "chapter": 1,
+    "rank": "variant",
+    "branch": "dice",
+    "mechanics": [
+      "seal",
+      "scar"
+    ],
+    "hp": 19,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 21,
+    "desc": "偶数回合指定一骰不能锁定，其他两骰照常；第3回合起，玩家三骰全重投则敌方获得2护盾",
+    "threat": {
+      "components": [
+        0.31666666666666665,
+        0.35,
+        0.3333333333333333,
+        0,
+        0
+      ],
+      "value": 0.235
+    }
   },
   "E004": {
     "name": "镜面赌徒",
+    "chapter": 1,
+    "rank": "elite",
+    "branch": "counter",
+    "mechanics": [
+      "mirror"
+    ],
+    "hp": 26,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 38,
+    "desc": "复制玩家最高骰，仅改变计分副本",
+    "threat": {
+      "components": [
+        0.43333333333333335,
+        0.35,
+        0,
+        0.25,
+        0
+      ],
+      "value": 0.242
+    }
+  },
+  "L002": {
+    "name": "钟楼监工",
+    "chapter": 1,
+    "rank": "elite",
+    "branch": "tempo",
+    "mechanics": [
+      "charge",
+      "alternating"
+    ],
+    "hp": 26,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 38,
+    "desc": "每4回合蓄力爆发，敌方胜出额外4伤害；奇数回合敌方有2护盾，偶数回合敌方胜出+2伤害",
+    "threat": {
+      "components": [
+        0.43333333333333335,
+        0.75,
+        0,
+        0,
+        0
+      ],
+      "value": 0.312
+    }
+  },
+  "L003": {
+    "name": "封印卫士",
+    "chapter": 1,
+    "rank": "elite",
+    "branch": "dice",
+    "mechanics": [
+      "seal",
+      "lockhunt"
+    ],
     "hp": 24,
     "dice": 3,
     "rerolls": 2,
-    "desc": "结算时复制你的最高骰。",
-    "gold": 45
+    "gold": 38,
+    "desc": "偶数回合指定一骰不能锁定，其他两骰照常；玩家锁满三骰时敌方胜出+2伤害",
+    "threat": {
+      "components": [
+        0.4,
+        0.55,
+        0.3333333333333333,
+        0,
+        0
+      ],
+      "value": 0.312
+    }
   },
   "B001": {
     "name": "概率修士",
+    "chapter": 1,
+    "rank": "boss",
+    "branch": "pressure",
+    "mechanics": [
+      "even"
+    ],
     "hp": 36,
     "dice": 3,
     "rerolls": 2,
-    "evenBonus": 1,
-    "desc": "半血后每颗偶数骰提供 1 点优势；单骰模式跳过计分加成。",
-    "gold": 80
+    "gold": 65,
+    "desc": "半血后偶数骰为敌方提供优势；每4回合蓄力爆发，敌方胜出额外4伤害",
+    "phases": [
+      [
+        "even"
+      ],
+      [
+        "even",
+        "charge"
+      ]
+    ],
+    "threat": {
+      "components": [
+        0.6,
+        0.55,
+        0,
+        0,
+        0
+      ],
+      "value": 0.285
+    }
+  },
+  "N006": {
+    "name": "重复审判官",
+    "chapter": 2,
+    "rank": "prototype",
+    "branch": "pattern",
+    "mechanics": [
+      "repeat"
+    ],
+    "hp": 24,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 24,
+    "desc": "沿用上一回合牌型时，敌方获得2护盾",
+    "threat": {
+      "components": [
+        0.4,
+        0.35,
+        0,
+        0.25,
+        0
+      ],
+      "value": 0.235
+    }
+  },
+  "N007": {
+    "name": "收税官",
+    "chapter": 2,
+    "rank": "prototype",
+    "branch": "resource",
+    "mechanics": [
+      "tax"
+    ],
+    "hp": 24,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 24,
+    "desc": "战前可付6金币解除强化；拒付则敌方胜出+1伤害，胜利额外8金币",
+    "threat": {
+      "components": [
+        0.4,
+        0.35,
+        0,
+        0,
+        0.3
+      ],
+      "value": 0.215
+    }
+  },
+  "N008": {
+    "name": "规则监察者",
+    "chapter": 2,
+    "rank": "prototype",
+    "branch": "counter",
+    "mechanics": [
+      "inspect"
+    ],
+    "hp": 26,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 24,
+    "desc": "每3回合检查此前触发最多的流派，下一回合该流派每张得分牌少1优势",
+    "threat": {
+      "components": [
+        0.43333333333333335,
+        0.35,
+        0,
+        0.25,
+        0
+      ],
+      "value": 0.242
+    }
+  },
+  "N009": {
+    "name": "贪婪赌徒",
+    "chapter": 2,
+    "rank": "prototype",
+    "branch": "tempo",
+    "mechanics": [
+      "streak"
+    ],
+    "hp": 24,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 24,
+    "desc": "玩家连胜令敌方胜出伤害增加，最多3；玩家失利清零",
+    "threat": {
+      "components": [
+        0.4,
+        0.55,
+        0,
+        0,
+        0
+      ],
+      "value": 0.245
+    }
+  },
+  "N010": {
+    "name": "奇偶书记",
+    "chapter": 2,
+    "rank": "prototype",
+    "branch": "pattern",
+    "mechanics": [
+      "parity"
+    ],
+    "hp": 25,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 24,
+    "desc": "上一回合多数奇偶重复时，敌方获得2护盾",
+    "threat": {
+      "components": [
+        0.4166666666666667,
+        0.35,
+        0,
+        0.25,
+        0
+      ],
+      "value": 0.238
+    }
+  },
+  "V003": {
+    "name": "债务魔术师",
+    "chapter": 2,
+    "rank": "variant",
+    "branch": "resource",
+    "mechanics": [
+      "tax",
+      "seal"
+    ],
+    "hp": 26,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 24,
+    "desc": "战前可付6金币解除强化；拒付则敌方胜出+1伤害，胜利额外8金币；偶数回合指定一骰不能锁定，其他两骰照常",
+    "threat": {
+      "components": [
+        0.43333333333333335,
+        0.35,
+        0.3333333333333333,
+        0,
+        0.3
+      ],
+      "value": 0.288
+    }
+  },
+  "V004": {
+    "name": "重复执行者",
+    "chapter": 2,
+    "rank": "variant",
+    "branch": "pattern",
+    "mechanics": [
+      "repeat",
+      "charge"
+    ],
+    "hp": 27,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 24,
+    "desc": "沿用上一回合牌型时，敌方获得2护盾；每4回合蓄力爆发，敌方胜出额外4伤害",
+    "threat": {
+      "components": [
+        0.45,
+        0.55,
+        0,
+        0.25,
+        0
+      ],
+      "value": 0.305
+    }
+  },
+  "V005": {
+    "name": "顺序破坏者",
+    "chapter": 2,
+    "rank": "variant",
+    "branch": "pattern",
+    "mechanics": [
+      "straight",
+      "alternating"
+    ],
+    "hp": 26,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 24,
+    "desc": "每3回合预告防顺子，玩家顺子时敌方获得3护盾；奇数回合敌方有2护盾，偶数回合敌方胜出+2伤害",
+    "threat": {
+      "components": [
+        0.43333333333333335,
+        0.55,
+        0,
+        0.25,
+        0
+      ],
+      "value": 0.302
+    }
+  },
+  "L004": {
+    "name": "规则总督",
+    "chapter": 2,
+    "rank": "elite",
+    "branch": "counter",
+    "mechanics": [
+      "inspect",
+      "echo"
+    ],
+    "hp": 32,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 38,
+    "desc": "每3回合检查此前触发最多的流派，下一回合该流派每张得分牌少1优势；上一回合触发至少3张辅助牌时，下一回合敌方有2护盾",
+    "threat": {
+      "components": [
+        0.5333333333333333,
+        0.35,
+        0,
+        0.5,
+        0
+      ],
+      "value": 0.312
+    }
+  },
+  "L005": {
+    "name": "碎骰狱卒",
+    "chapter": 2,
+    "rank": "elite",
+    "branch": "dice",
+    "mechanics": [
+      "seal",
+      "alternating"
+    ],
+    "hp": 30,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 38,
+    "desc": "偶数回合指定一骰不能锁定，其他两骰照常；奇数回合敌方有2护盾，偶数回合敌方胜出+2伤害",
+    "threat": {
+      "components": [
+        0.5,
+        0.55,
+        0.3333333333333333,
+        0,
+        0
+      ],
+      "value": 0.332
+    }
+  },
+  "L006": {
+    "name": "赤金赌王",
+    "chapter": 2,
+    "rank": "elite",
+    "branch": "risk",
+    "mechanics": [
+      "wager",
+      "streak"
+    ],
+    "hp": 32,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 38,
+    "desc": "偶数回合可自愿加注，双方最终伤害翻倍；赢下该回合额外2金币；玩家连胜令敌方胜出伤害增加，最多3；玩家失利清零",
+    "threat": {
+      "components": [
+        0.5333333333333333,
+        0.75,
+        0,
+        0,
+        0.3
+      ],
+      "value": 0.362
+    }
+  },
+  "B002": {
+    "name": "审判双生",
+    "chapter": 2,
+    "rank": "boss",
+    "branch": "pattern",
+    "mechanics": [
+      "repeat"
+    ],
+    "hp": 44,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 65,
+    "desc": "沿用上一回合牌型时，敌方获得2护盾；上一回合多数奇偶重复时，敌方获得2护盾；每3回合检查此前触发最多的流派，下一回合该流派每张得分牌少1优势；每3回合预告防顺子，玩家顺子时敌方获得3护盾",
+    "phases": [
+      [
+        "repeat",
+        "parity"
+      ],
+      [
+        "inspect",
+        "straight"
+      ]
+    ],
+    "threat": {
+      "components": [
+        0.7333333333333333,
+        0.35,
+        0,
+        1,
+        0
+      ],
+      "value": 0.452
+    }
+  },
+  "N011": {
+    "name": "逆序裁判",
+    "chapter": 3,
+    "rank": "prototype",
+    "branch": "field",
+    "mechanics": [
+      "tide"
+    ],
+    "hp": 30,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 27,
+    "desc": "奇数回合双方低点骰提供优势，偶数回合高点骰提供优势；不改变主戒律",
+    "threat": {
+      "components": [
+        0.5,
+        0.35,
+        0,
+        0,
+        0
+      ],
+      "value": 0.205
+    }
+  },
+  "N012": {
+    "name": "封骰猎手",
+    "chapter": 3,
+    "rank": "prototype",
+    "branch": "dice",
+    "mechanics": [
+      "lockhunt"
+    ],
+    "hp": 30,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 27,
+    "desc": "玩家锁满三骰时敌方胜出+2伤害",
+    "threat": {
+      "components": [
+        0.5,
+        0.55,
+        0,
+        0,
+        0
+      ],
+      "value": 0.265
+    }
+  },
+  "N013": {
+    "name": "终局看守",
+    "chapter": 3,
+    "rank": "prototype",
+    "branch": "pressure",
+    "mechanics": [
+      "alternating"
+    ],
+    "hp": 32,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 27,
+    "desc": "奇数回合敌方有2护盾，偶数回合敌方胜出+2伤害",
+    "threat": {
+      "components": [
+        0.5333333333333333,
+        0.55,
+        0,
+        0,
+        0
+      ],
+      "value": 0.272
+    }
+  },
+  "V006": {
+    "name": "偏转猎手",
+    "chapter": 3,
+    "rank": "variant",
+    "branch": "dice",
+    "mechanics": [
+      "lockhunt",
+      "parity"
+    ],
+    "hp": 32,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 27,
+    "desc": "玩家锁满三骰时敌方胜出+2伤害；上一回合多数奇偶重复时，敌方获得2护盾",
+    "threat": {
+      "components": [
+        0.5333333333333333,
+        0.55,
+        0,
+        0.25,
+        0
+      ],
+      "value": 0.322
+    }
+  },
+  "V007": {
+    "name": "债务仲裁者",
+    "chapter": 3,
+    "rank": "variant",
+    "branch": "resource",
+    "mechanics": [
+      "thrift",
+      "charge"
+    ],
+    "hp": 32,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 27,
+    "desc": "每3回合可支付4金币取得2护盾；拒绝无额外惩罚；每4回合蓄力爆发，敌方胜出额外4伤害",
+    "threat": {
+      "components": [
+        0.5333333333333333,
+        0.55,
+        0,
+        0,
+        0.3
+      ],
+      "value": 0.302
+    }
+  },
+  "V008": {
+    "name": "余响看守",
+    "chapter": 3,
+    "rank": "variant",
+    "branch": "pressure",
+    "mechanics": [
+      "alternating",
+      "echo"
+    ],
+    "hp": 34,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 27,
+    "desc": "奇数回合敌方有2护盾，偶数回合敌方胜出+2伤害；上一回合触发至少3张辅助牌时，下一回合敌方有2护盾",
+    "threat": {
+      "components": [
+        0.5666666666666667,
+        0.55,
+        0,
+        0.25,
+        0
+      ],
+      "value": 0.328
+    }
+  },
+  "L007": {
+    "name": "禁锁审判长",
+    "chapter": 3,
+    "rank": "elite",
+    "branch": "dice",
+    "mechanics": [
+      "seal",
+      "inspect"
+    ],
+    "hp": 38,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 38,
+    "desc": "偶数回合指定一骰不能锁定，其他两骰照常；每3回合检查此前触发最多的流派，下一回合该流派每张得分牌少1优势",
+    "threat": {
+      "components": [
+        0.6333333333333333,
+        0.35,
+        0.3333333333333333,
+        0.25,
+        0
+      ],
+      "value": 0.348
+    }
+  },
+  "L008": {
+    "name": "末日钟匠",
+    "chapter": 3,
+    "rank": "elite",
+    "branch": "tempo",
+    "mechanics": [
+      "charge",
+      "streak"
+    ],
+    "hp": 40,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 38,
+    "desc": "每4回合蓄力爆发，敌方胜出额外4伤害；玩家连胜令敌方胜出伤害增加，最多3；玩家失利清零",
+    "threat": {
+      "components": [
+        0.6666666666666666,
+        0.75,
+        0,
+        0,
+        0
+      ],
+      "value": 0.358
+    }
+  },
+  "L009": {
+    "name": "铁壁庄家",
+    "chapter": 3,
+    "rank": "elite",
+    "branch": "pressure",
+    "mechanics": [
+      "grow",
+      "repeat"
+    ],
+    "hp": 40,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 38,
+    "desc": "每回合增长1伤害，最多3；只在敌方胜出时生效；沿用上一回合牌型时，敌方获得2护盾",
+    "threat": {
+      "components": [
+        0.6666666666666666,
+        0.55,
+        0,
+        0.25,
+        0
+      ],
+      "value": 0.348
+    }
+  },
+  "B003": {
+    "name": "命运庄主",
+    "chapter": 3,
+    "rank": "boss",
+    "branch": "tempo",
+    "mechanics": [
+      "charge"
+    ],
+    "hp": 52,
+    "dice": 3,
+    "rerolls": 2,
+    "gold": 65,
+    "desc": "每4回合蓄力爆发，敌方胜出额外4伤害；奇数回合双方低点骰提供优势，偶数回合高点骰提供优势；不改变主戒律；偶数回合指定一骰不能锁定，其他两骰照常；每3回合检查此前触发最多的流派，下一回合该流派每张得分牌少1优势；玩家连胜令敌方胜出伤害增加，最多3；玩家失利清零",
+    "phases": [
+      [
+        "charge",
+        "tide"
+      ],
+      [
+        "seal",
+        "inspect",
+        "streak"
+      ]
+    ],
+    "threat": {
+      "components": [
+        0.8666666666666667,
+        0.75,
+        0.3333333333333333,
+        0.25,
+        0
+      ],
+      "value": 0.515
+    }
   }
 }

@@ -1,10 +1,11 @@
 const fs=require('node:fs'),path=require('node:path');
 process.chdir(path.join(__dirname,'..'));
+require('./enemies10.cjs');
 const read=p=>fs.readFileSync(p,'utf8').replace(/^\uFEFF/,'').replace(/\r\n/g,'\n');
 const database=JSON.parse(read('data/cards.json'));
 const json=JSON.stringify(database).replaceAll('<','\\u003c');
 const css=['src/legacy.css','src/style.css','src/facets.css'].map(read).join('\n');
-const js=`const CARD_DATABASE=${json};\nconst ENEMY_DATABASE=${JSON.stringify(JSON.parse(read('data/enemies.json'))).replaceAll('<','\\u003c')};\n`+['src/engine.js','src/art.js','src/base.js','src/game.js','src/presentation.js'].map(read).join('\n');
+const js=`const CARD_DATABASE=${json};\nconst ENEMY_DATABASE=${JSON.stringify(JSON.parse(read('data/enemies.json'))).replaceAll('<','\\u003c')};\n`+['src/enemy-system.js','src/campaign.js','src/engine.js','src/art.js','src/base.js','src/game.js','src/presentation.js','src/enemy-ui.js'].map(read).join('\n');
 new Function(js);
 const html=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101c1b"><meta name="description" content="再见一掷：三次掷骰、差值伤害、永久规则构筑。"><title>再见一掷 · Walk-off Pitch</title><style>${css}</style></head><body>${read('src/body.html')}<script>${js}</script></body></html>\n`;
 fs.writeFileSync('index.html',html);

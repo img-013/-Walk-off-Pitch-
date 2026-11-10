@@ -1,0 +1,1929 @@
+{
+  "samplesPerCell": 64,
+  "battles": 16896,
+  "timeouts": 88,
+  "matrix": {
+    "E001": {
+      "parity": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 5.42,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 63,
+        "samples": 64,
+        "rate": 0.984375,
+        "meanRounds": 3.64,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 56,
+        "samples": 64,
+        "rate": 0.875,
+        "meanRounds": 5.72,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 62,
+        "samples": 64,
+        "rate": 0.96875,
+        "meanRounds": 8.16,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 4.88,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 57,
+        "samples": 64,
+        "rate": 0.890625,
+        "meanRounds": 5.72,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 3.3,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 56,
+        "samples": 64,
+        "rate": 0.875,
+        "meanRounds": 6.33,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "E002": {
+      "parity": {
+        "wins": 44,
+        "samples": 64,
+        "rate": 0.6875,
+        "meanRounds": 10.33,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 57,
+        "samples": 64,
+        "rate": 0.890625,
+        "meanRounds": 5.73,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 44,
+        "samples": 64,
+        "rate": 0.6875,
+        "meanRounds": 9.08,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 26,
+        "samples": 64,
+        "rate": 0.40625,
+        "meanRounds": 8.36,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 48,
+        "samples": 64,
+        "rate": 0.75,
+        "meanRounds": 9.28,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 9.84,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 5.89,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 27,
+        "samples": 64,
+        "rate": 0.421875,
+        "meanRounds": 10.91,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "E003": {
+      "parity": {
+        "wins": 54,
+        "samples": 64,
+        "rate": 0.84375,
+        "meanRounds": 15.55,
+        "restrictedLockDecisions": 966
+      },
+      "combo": {
+        "wins": 62,
+        "samples": 64,
+        "rate": 0.96875,
+        "meanRounds": 7.56,
+        "restrictedLockDecisions": 448
+      },
+      "high": {
+        "wins": 48,
+        "samples": 64,
+        "rate": 0.75,
+        "meanRounds": 11.53,
+        "restrictedLockDecisions": 702
+      },
+      "low": {
+        "wins": 31,
+        "samples": 64,
+        "rate": 0.484375,
+        "meanRounds": 13.23,
+        "restrictedLockDecisions": 810
+      },
+      "lock": {
+        "wins": 53,
+        "samples": 64,
+        "rate": 0.828125,
+        "meanRounds": 12.22,
+        "restrictedLockDecisions": 750
+      },
+      "reroll": {
+        "wins": 59,
+        "samples": 64,
+        "rate": 0.921875,
+        "meanRounds": 13.14,
+        "restrictedLockDecisions": 816
+      },
+      "risk": {
+        "wins": 63,
+        "samples": 64,
+        "rate": 0.984375,
+        "meanRounds": 6.8,
+        "restrictedLockDecisions": 402
+      },
+      "face": {
+        "wins": 35,
+        "samples": 64,
+        "rate": 0.546875,
+        "meanRounds": 16.19,
+        "restrictedLockDecisions": 1000
+      }
+    },
+    "N004": {
+      "parity": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 15.31,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 7.41,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 41,
+        "samples": 64,
+        "rate": 0.640625,
+        "meanRounds": 11.75,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 29,
+        "samples": 64,
+        "rate": 0.453125,
+        "meanRounds": 10.36,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 50,
+        "samples": 64,
+        "rate": 0.78125,
+        "meanRounds": 11.64,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 57,
+        "samples": 64,
+        "rate": 0.890625,
+        "meanRounds": 13.53,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 7.23,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 27,
+        "samples": 64,
+        "rate": 0.421875,
+        "meanRounds": 15.02,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "N005": {
+      "parity": {
+        "wins": 57,
+        "samples": 64,
+        "rate": 0.890625,
+        "meanRounds": 14.5,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 7.17,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 50,
+        "samples": 64,
+        "rate": 0.78125,
+        "meanRounds": 10.88,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 31,
+        "samples": 64,
+        "rate": 0.484375,
+        "meanRounds": 12.25,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 53,
+        "samples": 64,
+        "rate": 0.828125,
+        "meanRounds": 11.19,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 60,
+        "samples": 64,
+        "rate": 0.9375,
+        "meanRounds": 12.31,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 7.05,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 15.52,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "V001": {
+      "parity": {
+        "wins": 43,
+        "samples": 64,
+        "rate": 0.671875,
+        "meanRounds": 12.52,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 55,
+        "samples": 64,
+        "rate": 0.859375,
+        "meanRounds": 6.94,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 42,
+        "samples": 64,
+        "rate": 0.65625,
+        "meanRounds": 9.59,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 29,
+        "samples": 64,
+        "rate": 0.453125,
+        "meanRounds": 10.16,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 10.48,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 45,
+        "samples": 64,
+        "rate": 0.703125,
+        "meanRounds": 13.22,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 63,
+        "samples": 64,
+        "rate": 0.984375,
+        "meanRounds": 7.16,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 26,
+        "samples": 64,
+        "rate": 0.40625,
+        "meanRounds": 12,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "V002": {
+      "parity": {
+        "wins": 50,
+        "samples": 64,
+        "rate": 0.78125,
+        "meanRounds": 16.13,
+        "restrictedLockDecisions": 1008
+      },
+      "combo": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 7.91,
+        "restrictedLockDecisions": 472
+      },
+      "high": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 11.48,
+        "restrictedLockDecisions": 698
+      },
+      "low": {
+        "wins": 32,
+        "samples": 64,
+        "rate": 0.5,
+        "meanRounds": 13.78,
+        "restrictedLockDecisions": 846
+      },
+      "lock": {
+        "wins": 51,
+        "samples": 64,
+        "rate": 0.796875,
+        "meanRounds": 12.55,
+        "restrictedLockDecisions": 766
+      },
+      "reroll": {
+        "wins": 55,
+        "samples": 64,
+        "rate": 0.859375,
+        "meanRounds": 14.86,
+        "restrictedLockDecisions": 912
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 8.13,
+        "restrictedLockDecisions": 476
+      },
+      "face": {
+        "wins": 37,
+        "samples": 64,
+        "rate": 0.578125,
+        "meanRounds": 18.64,
+        "restrictedLockDecisions": 1164
+      }
+    },
+    "E004": {
+      "parity": {
+        "wins": 40,
+        "samples": 64,
+        "rate": 0.625,
+        "meanRounds": 23.06,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 58,
+        "samples": 64,
+        "rate": 0.90625,
+        "meanRounds": 10.69,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 16.33,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 31,
+        "samples": 64,
+        "rate": 0.484375,
+        "meanRounds": 15.09,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 51,
+        "samples": 64,
+        "rate": 0.796875,
+        "meanRounds": 19.78,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 47,
+        "samples": 64,
+        "rate": 0.734375,
+        "meanRounds": 20.06,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 63,
+        "samples": 64,
+        "rate": 0.984375,
+        "meanRounds": 10.48,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 27,
+        "samples": 64,
+        "rate": 0.421875,
+        "meanRounds": 21,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "L002": {
+      "parity": {
+        "wins": 34,
+        "samples": 64,
+        "rate": 0.53125,
+        "meanRounds": 18.58,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 54,
+        "samples": 64,
+        "rate": 0.84375,
+        "meanRounds": 9.86,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 33,
+        "samples": 64,
+        "rate": 0.515625,
+        "meanRounds": 13.63,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 23,
+        "samples": 64,
+        "rate": 0.359375,
+        "meanRounds": 12.95,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 38,
+        "samples": 64,
+        "rate": 0.59375,
+        "meanRounds": 16.66,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 29,
+        "samples": 64,
+        "rate": 0.453125,
+        "meanRounds": 17.77,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 59,
+        "samples": 64,
+        "rate": 0.921875,
+        "meanRounds": 10.55,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 16,
+        "samples": 64,
+        "rate": 0.25,
+        "meanRounds": 15.72,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "L003": {
+      "parity": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 17.36,
+        "restrictedLockDecisions": 1076
+      },
+      "combo": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 9.56,
+        "restrictedLockDecisions": 574
+      },
+      "high": {
+        "wins": 43,
+        "samples": 64,
+        "rate": 0.671875,
+        "meanRounds": 13.88,
+        "restrictedLockDecisions": 854
+      },
+      "low": {
+        "wins": 28,
+        "samples": 64,
+        "rate": 0.4375,
+        "meanRounds": 14.22,
+        "restrictedLockDecisions": 874
+      },
+      "lock": {
+        "wins": 50,
+        "samples": 64,
+        "rate": 0.78125,
+        "meanRounds": 14.02,
+        "restrictedLockDecisions": 864
+      },
+      "reroll": {
+        "wins": 52,
+        "samples": 64,
+        "rate": 0.8125,
+        "meanRounds": 16.75,
+        "restrictedLockDecisions": 1036
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 9.45,
+        "restrictedLockDecisions": 572
+      },
+      "face": {
+        "wins": 27,
+        "samples": 64,
+        "rate": 0.421875,
+        "meanRounds": 17.48,
+        "restrictedLockDecisions": 1082
+      }
+    },
+    "B001": {
+      "parity": {
+        "wins": 29,
+        "samples": 64,
+        "rate": 0.453125,
+        "meanRounds": 24.22,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 48,
+        "samples": 64,
+        "rate": 0.75,
+        "meanRounds": 13.08,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 15,
+        "samples": 64,
+        "rate": 0.234375,
+        "meanRounds": 17.7,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 11,
+        "samples": 64,
+        "rate": 0.171875,
+        "meanRounds": 16.7,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 38,
+        "samples": 64,
+        "rate": 0.59375,
+        "meanRounds": 20.64,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 24,
+        "samples": 64,
+        "rate": 0.375,
+        "meanRounds": 22.56,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 60,
+        "samples": 64,
+        "rate": 0.9375,
+        "meanRounds": 13.78,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 11,
+        "samples": 64,
+        "rate": 0.171875,
+        "meanRounds": 20.97,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "N006": {
+      "parity": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 21.42,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 60,
+        "samples": 64,
+        "rate": 0.9375,
+        "meanRounds": 10.11,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 14.72,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 28,
+        "samples": 64,
+        "rate": 0.4375,
+        "meanRounds": 15.27,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 51,
+        "samples": 64,
+        "rate": 0.796875,
+        "meanRounds": 16.31,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 48,
+        "samples": 64,
+        "rate": 0.75,
+        "meanRounds": 17.91,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 9.72,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 34,
+        "samples": 64,
+        "rate": 0.53125,
+        "meanRounds": 21.8,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "N007": {
+      "parity": {
+        "wins": 48,
+        "samples": 64,
+        "rate": 0.75,
+        "meanRounds": 17.42,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 56,
+        "samples": 64,
+        "rate": 0.875,
+        "meanRounds": 8.84,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 45,
+        "samples": 64,
+        "rate": 0.703125,
+        "meanRounds": 12.05,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 28,
+        "samples": 64,
+        "rate": 0.4375,
+        "meanRounds": 11.52,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 51,
+        "samples": 64,
+        "rate": 0.796875,
+        "meanRounds": 13.86,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 14.8,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 8.39,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 29,
+        "samples": 64,
+        "rate": 0.453125,
+        "meanRounds": 16.08,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "N008": {
+      "parity": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 20.36,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 62,
+        "samples": 64,
+        "rate": 0.96875,
+        "meanRounds": 10.22,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 15.02,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 27,
+        "samples": 64,
+        "rate": 0.421875,
+        "meanRounds": 13.89,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 50,
+        "samples": 64,
+        "rate": 0.78125,
+        "meanRounds": 15.95,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 52,
+        "samples": 64,
+        "rate": 0.8125,
+        "meanRounds": 17.31,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 10.27,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 36,
+        "samples": 64,
+        "rate": 0.5625,
+        "meanRounds": 19.31,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "N009": {
+      "parity": {
+        "wins": 48,
+        "samples": 64,
+        "rate": 0.75,
+        "meanRounds": 18.47,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 62,
+        "samples": 64,
+        "rate": 0.96875,
+        "meanRounds": 8.5,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 47,
+        "samples": 64,
+        "rate": 0.734375,
+        "meanRounds": 12.81,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 28,
+        "samples": 64,
+        "rate": 0.4375,
+        "meanRounds": 14.03,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 50,
+        "samples": 64,
+        "rate": 0.78125,
+        "meanRounds": 14.14,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 58,
+        "samples": 64,
+        "rate": 0.90625,
+        "meanRounds": 15,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 8.22,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 31,
+        "samples": 64,
+        "rate": 0.484375,
+        "meanRounds": 18.38,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "N010": {
+      "parity": {
+        "wins": 41,
+        "samples": 64,
+        "rate": 0.640625,
+        "meanRounds": 28,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 58,
+        "samples": 64,
+        "rate": 0.90625,
+        "meanRounds": 11.08,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 47,
+        "samples": 64,
+        "rate": 0.734375,
+        "meanRounds": 17.09,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 28,
+        "samples": 64,
+        "rate": 0.4375,
+        "meanRounds": 15.14,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 20.09,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 50,
+        "samples": 64,
+        "rate": 0.78125,
+        "meanRounds": 23.25,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 63,
+        "samples": 64,
+        "rate": 0.984375,
+        "meanRounds": 11.59,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 23,
+        "samples": 64,
+        "rate": 0.359375,
+        "meanRounds": 24,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "V003": {
+      "parity": {
+        "wins": 42,
+        "samples": 64,
+        "rate": 0.65625,
+        "meanRounds": 16.39,
+        "restrictedLockDecisions": 1018
+      },
+      "combo": {
+        "wins": 59,
+        "samples": 64,
+        "rate": 0.921875,
+        "meanRounds": 9.81,
+        "restrictedLockDecisions": 594
+      },
+      "high": {
+        "wins": 35,
+        "samples": 64,
+        "rate": 0.546875,
+        "meanRounds": 13.63,
+        "restrictedLockDecisions": 842
+      },
+      "low": {
+        "wins": 24,
+        "samples": 64,
+        "rate": 0.375,
+        "meanRounds": 11.97,
+        "restrictedLockDecisions": 738
+      },
+      "lock": {
+        "wins": 48,
+        "samples": 64,
+        "rate": 0.75,
+        "meanRounds": 15.34,
+        "restrictedLockDecisions": 942
+      },
+      "reroll": {
+        "wins": 44,
+        "samples": 64,
+        "rate": 0.6875,
+        "meanRounds": 15.95,
+        "restrictedLockDecisions": 994
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 9.63,
+        "restrictedLockDecisions": 580
+      },
+      "face": {
+        "wins": 20,
+        "samples": 64,
+        "rate": 0.3125,
+        "meanRounds": 15.63,
+        "restrictedLockDecisions": 968
+      }
+    },
+    "V004": {
+      "parity": {
+        "wins": 40,
+        "samples": 64,
+        "rate": 0.625,
+        "meanRounds": 20.41,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 56,
+        "samples": 64,
+        "rate": 0.875,
+        "meanRounds": 10.91,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 41,
+        "samples": 64,
+        "rate": 0.640625,
+        "meanRounds": 15.48,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 28,
+        "samples": 64,
+        "rate": 0.4375,
+        "meanRounds": 13.3,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 45,
+        "samples": 64,
+        "rate": 0.703125,
+        "meanRounds": 17.66,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 45,
+        "samples": 64,
+        "rate": 0.703125,
+        "meanRounds": 18.5,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 9.53,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 19,
+        "samples": 64,
+        "rate": 0.296875,
+        "meanRounds": 18.17,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "V005": {
+      "parity": {
+        "wins": 35,
+        "samples": 64,
+        "rate": 0.546875,
+        "meanRounds": 21.78,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 55,
+        "samples": 64,
+        "rate": 0.859375,
+        "meanRounds": 10.8,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 40,
+        "samples": 64,
+        "rate": 0.625,
+        "meanRounds": 15.38,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 24,
+        "samples": 64,
+        "rate": 0.375,
+        "meanRounds": 13.86,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 43,
+        "samples": 64,
+        "rate": 0.671875,
+        "meanRounds": 19.97,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 43,
+        "samples": 64,
+        "rate": 0.671875,
+        "meanRounds": 21.31,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 11.19,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 20,
+        "samples": 64,
+        "rate": 0.3125,
+        "meanRounds": 19.33,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "L004": {
+      "parity": {
+        "wins": 39,
+        "samples": 64,
+        "rate": 0.609375,
+        "meanRounds": 27.5,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 12.5,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 45,
+        "samples": 64,
+        "rate": 0.703125,
+        "meanRounds": 17.3,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 25,
+        "samples": 64,
+        "rate": 0.390625,
+        "meanRounds": 16.77,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 20.48,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 50,
+        "samples": 64,
+        "rate": 0.78125,
+        "meanRounds": 20.81,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 12.14,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 26,
+        "samples": 64,
+        "rate": 0.40625,
+        "meanRounds": 21.53,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "L005": {
+      "parity": {
+        "wins": 31,
+        "samples": 64,
+        "rate": 0.484375,
+        "meanRounds": 22.05,
+        "restrictedLockDecisions": 1392
+      },
+      "combo": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 12.84,
+        "restrictedLockDecisions": 792
+      },
+      "high": {
+        "wins": 22,
+        "samples": 64,
+        "rate": 0.34375,
+        "meanRounds": 16.44,
+        "restrictedLockDecisions": 1030
+      },
+      "low": {
+        "wins": 23,
+        "samples": 64,
+        "rate": 0.359375,
+        "meanRounds": 15.69,
+        "restrictedLockDecisions": 974
+      },
+      "lock": {
+        "wins": 38,
+        "samples": 64,
+        "rate": 0.59375,
+        "meanRounds": 19.02,
+        "restrictedLockDecisions": 1204
+      },
+      "reroll": {
+        "wins": 25,
+        "samples": 64,
+        "rate": 0.390625,
+        "meanRounds": 20.66,
+        "restrictedLockDecisions": 1298
+      },
+      "risk": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 11.92,
+        "restrictedLockDecisions": 732
+      },
+      "face": {
+        "wins": 10,
+        "samples": 64,
+        "rate": 0.15625,
+        "meanRounds": 18.25,
+        "restrictedLockDecisions": 1146
+      }
+    },
+    "L006": {
+      "parity": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 21.63,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 11.36,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 44,
+        "samples": 64,
+        "rate": 0.6875,
+        "meanRounds": 15.45,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 27,
+        "samples": 64,
+        "rate": 0.421875,
+        "meanRounds": 14.59,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 47,
+        "samples": 64,
+        "rate": 0.734375,
+        "meanRounds": 17.36,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 43,
+        "samples": 64,
+        "rate": 0.671875,
+        "meanRounds": 19.19,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 10.53,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 23,
+        "samples": 64,
+        "rate": 0.359375,
+        "meanRounds": 20.5,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "B002": {
+      "parity": {
+        "wins": 31,
+        "samples": 64,
+        "rate": 0.484375,
+        "meanRounds": 35.34,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 54,
+        "samples": 64,
+        "rate": 0.84375,
+        "meanRounds": 16.77,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 36,
+        "samples": 64,
+        "rate": 0.5625,
+        "meanRounds": 23.3,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 26,
+        "samples": 64,
+        "rate": 0.40625,
+        "meanRounds": 21.44,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 39,
+        "samples": 64,
+        "rate": 0.609375,
+        "meanRounds": 29.34,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 35,
+        "samples": 64,
+        "rate": 0.546875,
+        "meanRounds": 31.95,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 63,
+        "samples": 64,
+        "rate": 0.984375,
+        "meanRounds": 17.67,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 16,
+        "samples": 64,
+        "rate": 0.25,
+        "meanRounds": 29.61,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "N011": {
+      "parity": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 19.34,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 10.41,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 43,
+        "samples": 64,
+        "rate": 0.671875,
+        "meanRounds": 14.63,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 29,
+        "samples": 64,
+        "rate": 0.453125,
+        "meanRounds": 15.34,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 51,
+        "samples": 64,
+        "rate": 0.796875,
+        "meanRounds": 15.89,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 52,
+        "samples": 64,
+        "rate": 0.8125,
+        "meanRounds": 18.08,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 10.47,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 33,
+        "samples": 64,
+        "rate": 0.515625,
+        "meanRounds": 20.17,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "N012": {
+      "parity": {
+        "wins": 43,
+        "samples": 64,
+        "rate": 0.671875,
+        "meanRounds": 19.94,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 10.89,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 46,
+        "samples": 64,
+        "rate": 0.71875,
+        "meanRounds": 14.58,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 29,
+        "samples": 64,
+        "rate": 0.453125,
+        "meanRounds": 13.09,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 17.34,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 53,
+        "samples": 64,
+        "rate": 0.828125,
+        "meanRounds": 19.7,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 10.7,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 24,
+        "samples": 64,
+        "rate": 0.375,
+        "meanRounds": 19.98,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "N013": {
+      "parity": {
+        "wins": 33,
+        "samples": 64,
+        "rate": 0.515625,
+        "meanRounds": 23.66,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 56,
+        "samples": 64,
+        "rate": 0.875,
+        "meanRounds": 12.23,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 34,
+        "samples": 64,
+        "rate": 0.53125,
+        "meanRounds": 17.3,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 26,
+        "samples": 64,
+        "rate": 0.40625,
+        "meanRounds": 16,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 41,
+        "samples": 64,
+        "rate": 0.640625,
+        "meanRounds": 19.92,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 38,
+        "samples": 64,
+        "rate": 0.59375,
+        "meanRounds": 23.27,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 12.97,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 15,
+        "samples": 64,
+        "rate": 0.234375,
+        "meanRounds": 20.69,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "V006": {
+      "parity": {
+        "wins": 36,
+        "samples": 64,
+        "rate": 0.5625,
+        "meanRounds": 26.89,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 58,
+        "samples": 64,
+        "rate": 0.90625,
+        "meanRounds": 13.56,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 40,
+        "samples": 64,
+        "rate": 0.625,
+        "meanRounds": 18.61,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 26,
+        "samples": 64,
+        "rate": 0.40625,
+        "meanRounds": 17.16,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 43,
+        "samples": 64,
+        "rate": 0.671875,
+        "meanRounds": 22.41,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 26.86,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 63,
+        "samples": 64,
+        "rate": 0.984375,
+        "meanRounds": 13.56,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 16,
+        "samples": 64,
+        "rate": 0.25,
+        "meanRounds": 22.56,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "V007": {
+      "parity": {
+        "wins": 40,
+        "samples": 64,
+        "rate": 0.625,
+        "meanRounds": 20.92,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 58,
+        "samples": 64,
+        "rate": 0.90625,
+        "meanRounds": 11.16,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 39,
+        "samples": 64,
+        "rate": 0.609375,
+        "meanRounds": 14.69,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 27,
+        "samples": 64,
+        "rate": 0.421875,
+        "meanRounds": 14.11,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 49,
+        "samples": 64,
+        "rate": 0.765625,
+        "meanRounds": 15.89,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 42,
+        "samples": 64,
+        "rate": 0.65625,
+        "meanRounds": 17.84,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 64,
+        "samples": 64,
+        "rate": 1,
+        "meanRounds": 10.8,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 19,
+        "samples": 64,
+        "rate": 0.296875,
+        "meanRounds": 18.63,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "V008": {
+      "parity": {
+        "wins": 32,
+        "samples": 64,
+        "rate": 0.5,
+        "meanRounds": 27.5,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 53,
+        "samples": 64,
+        "rate": 0.828125,
+        "meanRounds": 13.77,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 31,
+        "samples": 64,
+        "rate": 0.484375,
+        "meanRounds": 20.39,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 20,
+        "samples": 64,
+        "rate": 0.3125,
+        "meanRounds": 17.42,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 40,
+        "samples": 64,
+        "rate": 0.625,
+        "meanRounds": 24.41,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 33,
+        "samples": 64,
+        "rate": 0.515625,
+        "meanRounds": 25.72,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 63,
+        "samples": 64,
+        "rate": 0.984375,
+        "meanRounds": 13.77,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 15,
+        "samples": 64,
+        "rate": 0.234375,
+        "meanRounds": 20.69,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "L007": {
+      "parity": {
+        "wins": 40,
+        "samples": 64,
+        "rate": 0.625,
+        "meanRounds": 26.45,
+        "restrictedLockDecisions": 1660
+      },
+      "combo": {
+        "wins": 53,
+        "samples": 64,
+        "rate": 0.828125,
+        "meanRounds": 14.61,
+        "restrictedLockDecisions": 896
+      },
+      "high": {
+        "wins": 39,
+        "samples": 64,
+        "rate": 0.609375,
+        "meanRounds": 19.3,
+        "restrictedLockDecisions": 1202
+      },
+      "low": {
+        "wins": 28,
+        "samples": 64,
+        "rate": 0.4375,
+        "meanRounds": 17.11,
+        "restrictedLockDecisions": 1062
+      },
+      "lock": {
+        "wins": 43,
+        "samples": 64,
+        "rate": 0.671875,
+        "meanRounds": 21.66,
+        "restrictedLockDecisions": 1354
+      },
+      "reroll": {
+        "wins": 45,
+        "samples": 64,
+        "rate": 0.703125,
+        "meanRounds": 23.05,
+        "restrictedLockDecisions": 1446
+      },
+      "risk": {
+        "wins": 62,
+        "samples": 64,
+        "rate": 0.96875,
+        "meanRounds": 14.33,
+        "restrictedLockDecisions": 884
+      },
+      "face": {
+        "wins": 17,
+        "samples": 64,
+        "rate": 0.265625,
+        "meanRounds": 23.05,
+        "restrictedLockDecisions": 1448
+      }
+    },
+    "L008": {
+      "parity": {
+        "wins": 33,
+        "samples": 64,
+        "rate": 0.515625,
+        "meanRounds": 20.16,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 45,
+        "samples": 64,
+        "rate": 0.703125,
+        "meanRounds": 11.55,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 30,
+        "samples": 64,
+        "rate": 0.46875,
+        "meanRounds": 15.38,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 24,
+        "samples": 64,
+        "rate": 0.375,
+        "meanRounds": 14.48,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 37,
+        "samples": 64,
+        "rate": 0.578125,
+        "meanRounds": 17.67,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 32,
+        "samples": 64,
+        "rate": 0.5,
+        "meanRounds": 18.36,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 59,
+        "samples": 64,
+        "rate": 0.921875,
+        "meanRounds": 11.97,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 12,
+        "samples": 64,
+        "rate": 0.1875,
+        "meanRounds": 16.83,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "L009": {
+      "parity": {
+        "wins": 23,
+        "samples": 64,
+        "rate": 0.359375,
+        "meanRounds": 20.69,
+        "restrictedLockDecisions": 0
+      },
+      "combo": {
+        "wins": 45,
+        "samples": 64,
+        "rate": 0.703125,
+        "meanRounds": 11.92,
+        "restrictedLockDecisions": 0
+      },
+      "high": {
+        "wins": 16,
+        "samples": 64,
+        "rate": 0.25,
+        "meanRounds": 15.05,
+        "restrictedLockDecisions": 0
+      },
+      "low": {
+        "wins": 16,
+        "samples": 64,
+        "rate": 0.25,
+        "meanRounds": 13.34,
+        "restrictedLockDecisions": 0
+      },
+      "lock": {
+        "wins": 30,
+        "samples": 64,
+        "rate": 0.46875,
+        "meanRounds": 18.33,
+        "restrictedLockDecisions": 0
+      },
+      "reroll": {
+        "wins": 21,
+        "samples": 64,
+        "rate": 0.328125,
+        "meanRounds": 18.3,
+        "restrictedLockDecisions": 0
+      },
+      "risk": {
+        "wins": 61,
+        "samples": 64,
+        "rate": 0.953125,
+        "meanRounds": 12.97,
+        "restrictedLockDecisions": 0
+      },
+      "face": {
+        "wins": 8,
+        "samples": 64,
+        "rate": 0.125,
+        "meanRounds": 15.83,
+        "restrictedLockDecisions": 0
+      }
+    },
+    "B003": {
+      "parity": {
+        "wins": 29,
+        "samples": 64,
+        "rate": 0.453125,
+        "meanRounds": 23.92,
+        "restrictedLockDecisions": 528
+      },
+      "combo": {
+        "wins": 42,
+        "samples": 64,
+        "rate": 0.65625,
+        "meanRounds": 15.48,
+        "restrictedLockDecisions": 380
+      },
+      "high": {
+        "wins": 21,
+        "samples": 64,
+        "rate": 0.328125,
+        "meanRounds": 18.92,
+        "restrictedLockDecisions": 418
+      },
+      "low": {
+        "wins": 19,
+        "samples": 64,
+        "rate": 0.296875,
+        "meanRounds": 16.66,
+        "restrictedLockDecisions": 280
+      },
+      "lock": {
+        "wins": 33,
+        "samples": 64,
+        "rate": 0.515625,
+        "meanRounds": 21.56,
+        "restrictedLockDecisions": 560
+      },
+      "reroll": {
+        "wins": 33,
+        "samples": 64,
+        "rate": 0.515625,
+        "meanRounds": 24.59,
+        "restrictedLockDecisions": 570
+      },
+      "risk": {
+        "wins": 62,
+        "samples": 64,
+        "rate": 0.96875,
+        "meanRounds": 15.31,
+        "restrictedLockDecisions": 406
+      },
+      "face": {
+        "wins": 8,
+        "samples": 64,
+        "rate": 0.125,
+        "meanRounds": 19.58,
+        "restrictedLockDecisions": 222
+      }
+    }
+  },
+  "encounters": {
+    "seeds": 1000,
+    "adjacent": 25000,
+    "repeated": 0,
+    "R": 0,
+    "distinctEnemies": 33
+  },
+  "method": "Each cell 64 independently drafted full builds; school fixed, all eight cores represented equally; 30HP/20gold; 60-round cutoff; tax refused, optional wagers and purchases declined; deterministic heuristic locks. Not human win rate or campaign clear rate."
+}

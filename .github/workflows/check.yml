@@ -15,4 +15,4 @@ jobs:
           node-version: '22'
       - run: npm run check
       - name: Generated files must match sources
-        run: git diff --exit-code -- index.html data/cards.csv docs/cards.md
+        run: git diff --exit-code -- index.html data/cards.csv docs/cards.md data/enemies.json docs/enemies10.md
