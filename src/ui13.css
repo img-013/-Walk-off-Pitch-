@@ -5,8 +5,8 @@
 .relic-carousel{position:absolute;left:52%;right:8%;top:22%;height:43%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px}
 .relic-carousel button{min-width:34px;min-height:32px;padding:3px 8px}
 #relicDisplay{height:100%;display:grid;place-items:center;min-width:0}
-.relic-fragment{background-image:var(--icons13)}
-#relicDisplay .relic-fragment{width:auto;height:100%;max-width:100%;mix-blend-mode:multiply}
+.relic-fragment{background-image:var(--icons13);mix-blend-mode:normal}
+#relicDisplay .relic-fragment{width:auto;height:100%;max-width:100%;mix-blend-mode:normal}
 .empty-relic{font-size:clamp(32px,8vw,100px);line-height:1;color:#152ce3}
 .archive-selection .core-detail{top:66%;left:52%;width:43%;height:18%;padding:1%;background:#eeebe3f5;border:1px solid #151515;color:#151515}
 .archive-selection .core-detail strong,.archive-selection .core-detail p{color:#151515}

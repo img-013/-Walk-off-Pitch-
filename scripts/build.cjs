@@ -5,7 +5,7 @@ const read=p=>fs.readFileSync(p,'utf8').replace(/^\uFEFF/,'').replace(/\r\n/g,'\
 const database=JSON.parse(read('data/cards.json'));
 const json=JSON.stringify(database).replaceAll('<','\\u003c');
 let css=['src/legacy.css','src/style.css','src/facets.css','src/ui11.css','src/ui12.css','src/ui13.css'].map(read).join('\n').replaceAll('__FRAME__','').replaceAll('__ICONS__','');
-const archiveMedia=Object.fromEntries(['start12.png','enemies12.png','map12.png','selection13.jpg','table13.jpg','icons13.jpg','madonna13.png','dice13.jpg'].map(file=>[file,fs.readFileSync('assets/'+file).toString('base64')]));
+const archiveMedia=Object.fromEntries(['start12.png','enemies12.png','map12.png','selection13.jpg','table13.jpg','icons13.png','madonna13.png','dice13.jpg'].map(file=>[file,fs.readFileSync('assets/'+file).toString('base64')]));
 css=css.replace(/url\('__\w+12__'\)/g,'none');
 const media={chest:'',comic:''};
 const js=`const ARCHIVE_MEDIA=${JSON.stringify(archiveMedia)};\nif(typeof Blob!=='undefined'&&document.documentElement){for(const [file,data]of Object.entries(ARCHIVE_MEDIA)){const raw=atob(data),bytes=Uint8Array.from(raw,c=>c.charCodeAt(0));document.documentElement.style.setProperty('--'+file.split('.')[0],'url('+URL.createObjectURL(new Blob([bytes],{type:file.endsWith('.jpg')?'image/jpeg':'image/png'}))+')');}}\nconst PITCH_MEDIA=${JSON.stringify(media)};\nconst CARD_DATABASE=${json};\nconst ENEMY_DATABASE=${JSON.stringify(JSON.parse(read('data/enemies.json'))).replaceAll('<','\\u003c')};\n`+['src/enemy-system.js','src/campaign.js','src/engine.js','src/art.js','src/base.js','src/game.js','src/presentation.js','src/enemy-ui.js','src/ui11.js','src/ui12.js','src/ui13.js'].map(read).join('\n');
