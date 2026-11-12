@@ -83,3 +83,4 @@ body[data-screen="start"] .archive-home{width:min(100%,150dvh)}
   #intro{min-height:min(330px,100dvh)!important}
   #intro::before{bottom:12%;left:0;width:53%;height:68%}
 }
+.story-portrait{aspect-ratio:141.4/147;background:var(--paper);border-color:var(--ink);filter:none}

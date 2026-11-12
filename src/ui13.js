@@ -6,9 +6,9 @@ const relicArt = {
 };
 const relicOrder = [...Object.keys(relicArt), null];
 
-function supportCapacity() {
-  const hasCore = state.rules.some(id => rules.find(card => card.id === id)?.slot === 'core');
-  return state.noCore && !hasCore ? 6 : 5;
+function supportCapacity(run = state) {
+  const hasCore = run.rules.some(id => rules.find(card => card.id === id)?.slot === 'core');
+  return run.noCore === true && !hasCore ? 6 : 5;
 }
 
 relicFragment = function(id) {
@@ -55,7 +55,7 @@ selectIntroCore = function(id) {
   finishIntro();
 };
 
-welcome[0] = ['档案守门人','欢迎来到拉斯科尔。每一条戒律，都会改变赌局的秩序。'];
+welcome[0] = ['命运本身','欢迎来到拉斯科尔。每一条戒律，都会改变赌局的秩序。'];
 finishIntro = function() {
   if (!introRunning) return;
   introRunning = false;
