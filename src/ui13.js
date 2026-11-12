@@ -12,7 +12,9 @@ function supportCapacity() {
 }
 
 relicFragment = function(id) {
-  return '<span class="relic-fragment" style="'+cropStyle(relicArt[id],2048,2048)+'"></span>';
+  const rect = relicArt[id];
+  const size = id === 'R008' ? 1 : 0.72;
+  return '<span class="relic-fragment" style="--relic-ratio:'+(rect[2]/rect[3])+';--relic-scale:'+size+';'+cropStyle(rect,2048,2048)+'"></span>';
 };
 
 function cycleRelic(step) {

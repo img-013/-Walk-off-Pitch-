@@ -143,6 +143,30 @@ button,.btn,.smallbtn,.choice,.modal,.book-rule,.rule-card,.reward-card{border-r
 body[data-screen="intro"] #intro::after{z-index:0;pointer-events:none}
 body[data-screen="intro"] #intro::before{z-index:1}
 .relic-carousel{z-index:2}
+
+/* Fit the complete artwork to the space left by the interface. */
+body[data-screen="start"] .archive-home{width:min(100%,150dvh)}
+#intro{width:min(100%,177.78dvh);background-size:100% auto;background-repeat:no-repeat;background-color:var(--paper)}
+#intro::before{background-size:contain}
+#battle{width:min(100%,calc((100dvh - var(--top-height))*16/9))}
+.top{box-sizing:border-box}
+#relicDisplay{container-type:size}
+#relicDisplay .relic-fragment{
+  width:min(92cqw,calc(100cqh * var(--relic-ratio) * var(--relic-scale)),78cqh);
+  height:auto;
+  max-width:none;
+}
+#battleCore{container-type:size}
+#battleCore .relic-fragment{
+  width:min(82cqw,calc(65cqh * var(--relic-ratio)));
+  height:auto;
+  max-height:none;
+  flex:none;
+}
+@media(max-width:700px){
+  #intro{min-height:min(330px,100dvh)!important}
+  #intro::before{bottom:12%;left:0;width:53%;height:68%}
+}
 </style></head><body data-screen="start"><div class="ambient" aria-hidden="true"></div><div class="app">
 <header class="top"><div class="brand"><span class="brand-mark">◇</span><div><h1>再见一掷</h1><small>WALK-OFF PITCH</small></div></div><div class="chapter" id="chapterLabel">第一章 <i>／</i> 拉斯科尔</div><div class="stats"><span class="stat health">♡ <b id="hpTop">30/30</b></span><span class="stat money">◈ <b id="goldTop">20</b></span></div><div class="header-actions"><button class="smallbtn" id="motionBtn" aria-pressed="false" onclick="toggleMotion()">动效 ×1</button><button class="smallbtn" onclick="toggleSound()" id="soundBtn" aria-label="开启音效">音效 关</button><button class="smallbtn" onclick="openCatalog()">卡牌图鉴</button><button class="smallbtn" onclick="openRulebook()">规则书</button></div></header>
 <section id="start" class="screen active archive-home" aria-label="再见一掷开始界面"><div id="heroLandscape" hidden></div><button class="home-hotspot home-start" onclick="newGame()" aria-label="开始游戏"></button><button class="home-hotspot home-rules" onclick="openRulebook()" aria-label="查看规则"></button><button class="home-hotspot home-settings" onclick="openSettings12()" aria-label="设置"></button><button id="continueBtn" class="continue-archive" onclick="continueGame()" hidden>继续远征 →</button><small class="archive-version">WALK-OFF PITCH · v0.13</small></section>
@@ -581,7 +605,9 @@ function supportCapacity() {
 }
 
 relicFragment = function(id) {
-  return '<span class="relic-fragment" style="'+cropStyle(relicArt[id],2048,2048)+'"></span>';
+  const rect = relicArt[id];
+  const size = id === 'R008' ? 1 : 0.72;
+  return '<span class="relic-fragment" style="--relic-ratio:'+(rect[2]/rect[3])+';--relic-scale:'+size+';'+cropStyle(rect,2048,2048)+'"></span>';
 };
 
 function cycleRelic(step) {

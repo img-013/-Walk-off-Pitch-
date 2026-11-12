@@ -59,3 +59,27 @@
 body[data-screen="intro"] #intro::after{z-index:0;pointer-events:none}
 body[data-screen="intro"] #intro::before{z-index:1}
 .relic-carousel{z-index:2}
+
+/* Fit the complete artwork to the space left by the interface. */
+body[data-screen="start"] .archive-home{width:min(100%,150dvh)}
+#intro{width:min(100%,177.78dvh);background-size:100% auto;background-repeat:no-repeat;background-color:var(--paper)}
+#intro::before{background-size:contain}
+#battle{width:min(100%,calc((100dvh - var(--top-height))*16/9))}
+.top{box-sizing:border-box}
+#relicDisplay{container-type:size}
+#relicDisplay .relic-fragment{
+  width:min(92cqw,calc(100cqh * var(--relic-ratio) * var(--relic-scale)),78cqh);
+  height:auto;
+  max-width:none;
+}
+#battleCore{container-type:size}
+#battleCore .relic-fragment{
+  width:min(82cqw,calc(65cqh * var(--relic-ratio)));
+  height:auto;
+  max-height:none;
+  flex:none;
+}
+@media(max-width:700px){
+  #intro{min-height:min(330px,100dvh)!important}
+  #intro::before{bottom:12%;left:0;width:53%;height:68%}
+}
