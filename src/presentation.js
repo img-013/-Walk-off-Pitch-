@@ -32,7 +32,7 @@ function tellStories(pages,after){storyState={pages,index:0,after};paintStory();
 function paintStory(){const [speaker,text]=storyState.pages[storyState.index];$('storyPortrait').innerHTML=PitchArt.portrait();$('storySpeaker').textContent=speaker;$('storyText').textContent=text;$('storyProgress').textContent=(storyState.index+1)+' / '+storyState.pages.length;$('storyOverlay').hidden=false;$('storyNext').textContent=storyState.index===storyState.pages.length-1?'继续旅程 →':'继续 →';$('storyNext').focus();}
 function advanceStory(skip=false){if(!storyState)return;if(!skip&&storyState.index<storyState.pages.length-1){storyState.index++;paintStory();return}const after=storyState.after;storyState=null;$('storyOverlay').hidden=true;after();}
 chooseNode=function(key){if(storyState||introRunning)return;if(state.tutorial==='map'&&key==='0-0'){
- tellStories([['摆渡人','怎么？没人告诉过你这里的规则？\n那倒正常。真正了解拉斯科尔的人，很少会向别人分享经验。\n看到那边的海鸥了吗？先拿它练练手吧。']],()=>{state.tutorial='battle';chooseNode80(key);const core=rules.find(c=>state.rules.includes(c.id)&&c.slot==='core');tellStories([
+ tellStories([['摆渡人','怎么？没人告诉过你这里的规则？\n那倒正常。真正了解拉斯科尔的人，很少会向别人分享经验。\n看到那边的海鸥了吗？先拿它练练手吧。']],()=>{state.tutorial='battle';chooseNode80(key);const core=rules.find(c=>state.rules.includes(c.id)&&c.slot==='core')||{name:'无戒律',text:'双方按基础规则结算，你可装备六条规则。'};tellStories([
  ['摆渡人','赌局规则很简单。\n投掷三枚骰子。第一、二掷后，你可以点击骰子保留或解除保留。\n总共有三次机会。通常第三掷后点数更高的一方获胜。\n你的主戒律会改变这个规则：'+core.name+'。'],
  ['摆渡人','看到点数与下方的结算预览了吗？\n规则卡提供的优势会影响最终结果，你和对手的差值就是基础伤害。\n有时帮助你，有时帮助你的对手。\n在拉斯科尔，公平并不是理所当然的事。'],
  ['摆渡人','很快你还会接触到另一种东西，人们称它们为「戒律」。\n戒律会与你绑定。\n正常情况下，一个人只能拥有一条主戒律。\n你已经从海中带回了属于自己的那一条。'],
