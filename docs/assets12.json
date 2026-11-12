@@ -1,0 +1,37 @@
+[
+  {
+    "file": "assets/start12.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 3514019,
+    "sha256": "a471589504962bbc9ab0844ca5034a9fc7bf11d5556e13f793904f679f882a40"
+  },
+  {
+    "file": "assets/battle12.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 3419780,
+    "sha256": "5c28066e503af00a49c8a77f8287597d386198e5dafe573a144146550aecfb83"
+  },
+  {
+    "file": "assets/relics12.png",
+    "width": 860,
+    "height": 498,
+    "bytes": 996705,
+    "sha256": "cd2f4d620efff17e44e5f3769dd6e7e71de3e7a726f1c0af8e433bd894c46cf2"
+  },
+  {
+    "file": "assets/enemies12.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 3619119,
+    "sha256": "abe154cc83ea5c70f828f4cc9785adc6d9d1b300476bdfa306159131192ea464"
+  },
+  {
+    "file": "assets/map12.png",
+    "width": 1024,
+    "height": 1536,
+    "bytes": 3778682,
+    "sha256": "f7ea73b77d1c3725ce3e6a4ae74c7785204f949e354f7e4dbe2fb108e6d68eda"
+  }
+]

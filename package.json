@@ -1,6 +1,6 @@
 {
   "name": "walk-off-pitch",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "private": true,
   "description": "再见一掷 — dice duels and permanent-rule builds",
   "engines": {

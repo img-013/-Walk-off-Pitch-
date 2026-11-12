@@ -27,7 +27,7 @@ const welcome=[
  ['摆渡人','欢迎来到拉斯科尔，幸存者。\n倒也不必露出那副惊讶的表情。\n那头发狂的白鲸掀翻了整条船，而你活了下来。\n每天都有船试图驶入这座赌城。能抵达的人并不多。'],
  ['摆渡人','关于拉斯科尔，人们讲过无数故事。\n其中最出名的，是十二枚黄金骰。\n据说财富女神阿尔卡索恩将王冠化作十二枚黄金骰散落城中。\n贵族、骗子、佣兵和朝圣者为此来到这里。直到今天也是如此。']
 ];
-function finishIntro(){if(!introRunning)return;introRunning=false;$('introBlackout').hidden=true;show('map');tellStories(welcome,()=>{modal('选择构筑方向','主戒律已经绑定。选择你想追求的方向，再挑选第一张规则卡。',Object.entries(CARD_DATABASE.schools).map(([key,name])=>[name,()=>{state.focus=key;offerRules(false,()=>{state.tutorial='map';renderMap();show('map');saveCheckpoint();$('routeProgress').textContent='新手引导 · 点击最下方的普通海鸥战斗节点';})}]))});}
+function finishIntro(){if(!introRunning)return;introRunning=false;$('introBlackout').hidden=true;show('map');tellStories(welcome,()=>{modal('选择构筑方向','主戒律已经绑定。选择你想追求的方向，再挑选第一张规则卡。',Object.entries(CARD_DATABASE.schools).map(([key,name])=>[name,()=>{state.focus=key;offerRules(false,()=>{state.tutorial='map';renderMap();show('map');saveCheckpoint();$('routeProgress').textContent='新手引导 · 点击最下方的战斗节点';})}]))});}
 function tellStories(pages,after){storyState={pages,index:0,after};paintStory();}
 function paintStory(){const [speaker,text]=storyState.pages[storyState.index];$('storyPortrait').innerHTML=PitchArt.portrait();$('storySpeaker').textContent=speaker;$('storyText').textContent=text;$('storyProgress').textContent=(storyState.index+1)+' / '+storyState.pages.length;$('storyOverlay').hidden=false;$('storyNext').textContent=storyState.index===storyState.pages.length-1?'继续旅程 →':'继续 →';$('storyNext').focus();}
 function advanceStory(skip=false){if(!storyState)return;if(!skip&&storyState.index<storyState.pages.length-1){storyState.index++;paintStory();return}const after=storyState.after;storyState=null;$('storyOverlay').hidden=true;after();}
