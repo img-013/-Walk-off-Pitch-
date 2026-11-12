@@ -84,3 +84,14 @@ body[data-screen="start"] .archive-home{width:min(100%,150dvh)}
   #intro::before{bottom:12%;left:0;width:53%;height:68%}
 }
 .story-portrait{aspect-ratio:141.4/147;background:var(--paper);border-color:var(--ink);filter:none}
+/* Shared engraved action buttons. */
+body :is(.smallbtn,.choice,.book-tab,.btn,.home-hotspot){border:4px double #bcb8aa;border-radius:0;clip-path:none;background-color:#202729;background-image:repeating-linear-gradient(12deg,transparent 0 3px,#ffffff05 3px 4px);color:#f5f0e4;box-shadow:0 0 0 1px #222,inset 0 0 0 1px #161a19;text-shadow:none}
+body :is(.btn.gold,.home-start){background-color:#e7e3d6;color:#171815;border-color:#34352f}
+body :is(.smallbtn,.choice,.book-tab,.btn,.home-hotspot):is(:hover,:focus-visible):not(:disabled){background-color:#1739e5;color:#fff;outline:2px solid #1739e5;outline-offset:2px}
+body .choice :is(strong,b,small,span){color:inherit}
+body .home-hotspot{left:2%;width:24%;height:12.8%;padding:5px;font-size:clamp(12px,2.4vw,34px);font-weight:bold}
+body .home-start{top:46%}body .home-rules{top:61.3%}body .home-settings{top:76.5%}
+body[data-screen="intro"] #intro::before{left:0;bottom:18%;width:52%;height:82%;background-size:cover;background-position:center bottom}
+body[data-screen="intro"] #intro::after{display:none}
+.selection-caption{position:absolute;left:1.9%;bottom:4.7%;width:43%;height:18%;box-sizing:border-box;z-index:3;padding:1.3%;border:3px double #222;background:#e4e1d6;color:#171815;font-size:clamp(10px,1.5vw,21px);line-height:1.7}
+@media(max-width:700px){body[data-screen="intro"] #intro::before{left:-2%;bottom:20%;width:54%;height:83%;background-size:cover}.selection-caption{width:44%;height:22%;bottom:4%;padding:2%;font-size:10px;line-height:1.5}body .home-hotspot{border-width:3px}}
