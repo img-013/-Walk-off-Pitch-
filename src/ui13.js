@@ -101,7 +101,7 @@ function renderSharedHealth(result) {
   if (!state.enemy) return;
   const player = state.hp/state.maxHp;
   const enemy = state.enemy.hp/state.enemy.maxHp;
-  const share = 100*player/(player+enemy || 1);
+  const share = Math.max(0,Math.min(100,100*player));
   const playerShield = result?.playerShield ?? (state.carryShield || 0)+(state.enemyMemory?.thriftRound === state.roundNumber ? 2 : 0);
   const enemyShield = result?.enemyShield ?? EnemySystem.guard(state);
   $('playerShare').style.width = share+'%';

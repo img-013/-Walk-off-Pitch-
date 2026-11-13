@@ -100,3 +100,10 @@ html,body{height:auto!important;min-height:100%;overflow-y:auto!important}
 .top{height:auto!important;min-height:44px;flex-wrap:wrap!important}.header-actions{flex-wrap:wrap}.modal{box-sizing:border-box;max-width:calc(100vw - 24px);max-height:85dvh;overflow:auto}
 @media(max-width:700px){.top .smallbtn{font-size:11px;min-height:32px}.stats{flex-wrap:wrap}#battle{width:100%;min-height:0}.map-layout{height:auto;min-height:650px}.modal .choice{min-height:44px}#intro{min-height:320px}.archive-selection #confirmCore{left:0;width:100%;top:100%;min-height:36px}}
 @media(max-height:550px) and (min-width:701px){#battle{width:min(100%,1000px)}.map-layout{min-height:600px}}
+/* Each health bar measures its own current / maximum HP. */
+.separate-health{position:absolute;left:7%;right:7%;top:10%;display:grid;grid-template-columns:1fr 1fr;gap:9%;color:#191e20}
+.health-unit{min-width:0;font-size:clamp(10px,1.3cqw,18px);font-weight:bold;line-height:1.3}
+.health-track{position:relative;height:clamp(8px,1.2cqw,16px);margin:3px 0;border:1px solid #202729;background:#c3beb2;overflow:hidden}
+.health-track #playerShare,.health-track #enemyShare{position:absolute;inset:0 auto 0 0;height:100%;background:#28675d!important;transition:width .25s ease}
+.health-track #enemyShare{background:#a34537!important}
+.health-unit small{display:block;font-size:clamp(9px,1cqw,13px);font-weight:normal}.enemy-health{text-align:right}
