@@ -3,7 +3,7 @@ function renderEnemyChoices(){const host=$('enemyChoices');host.replaceChildren(
 const renderCampaignMap=renderMap;
 renderMap=function(){renderCampaignMap();const chapter=graph.find(n=>availableNodes().includes(n.key))?.chapter||3;$('chapterLabel').textContent='第'+chapter+'章 ／ '+['赌城边岸','审判街区','命运内庭'][chapter-1];$('mapChapter').textContent='CHAPTER '+chapter+' / LASKOR';$('mapTitle').innerHTML=['拉斯科尔<br><em>赌城边岸</em>','拉斯科尔<br><em>审判街区</em>','拉斯科尔<br><em>命运内庭</em>'][chapter-1];};
 // A small debt choice is integrated with the existing event; a 40-event database is not implied.
-openEvent=function(){modal('命运借据','债务可换取当下资源。累计2点及以上债务时，第三章每第3回合敌方胜出伤害+1，意图栏提前展示。',[
+function debtEvent(){modal('命运借据','债务可换取当下资源。累计2点及以上债务时，第三章每第3回合敌方胜出伤害+1，意图栏提前展示。',[
  ['借取18金币 · 命运债务+1',()=>{state.gold+=18;state.fateDebt=(state.fateDebt||0)+1;recordAction('debt',{change:1});finishNode()}],
  ['偿还10金币 · 命运债务-1',()=>{state=WalkOffEngine.spend(state,10,CARD_DATABASE);state.fateDebt--;recordAction('debt',{change:-1});finishNode()},state.gold<10||!state.fateDebt],
  ['不作交易 · 恢复4生命',()=>{state.hp=Math.min(state.maxHp,state.hp+4);finishNode()}]
@@ -11,3 +11,5 @@ openEvent=function(){modal('命运借据','债务可换取当下资源。累计2
 rulebookPages.enemies='<h3>33种敌人 · 投骰前读取意图</h3><p>普通敌人21、精英9、首领3。敌方基础行为是保留高点；反向赌局保留低点。机制在回合开始确定，半血换阶段在下一回合生效。限锁最多影响一颗骰子，反制不禁用主戒律。</p>'+Object.entries(enemies).map(([id,e])=>'<article class="book-rule"><b>'+e.name+'</b><small> '+id+' · 第'+e.chapter+'章 · '+EnemySystem.branches[e.branch]+' · 威胁估算'+e.threat.value+'</small><p>'+e.desc+'</p>'+(e.phases?'<p>半血换阶段：'+e.phases.map(p=>p.map(t=>EnemySystem.descriptions[t]).join('；')).join(' → ')+'</p>':'')+'</article>').join('');
 rulebookPages.map='<h3>三章46步</h3><p>第一章15步8战、第二章16步10战、第三章15步8战；每章3精英与1首领。每次只显示当前章节，第三章远处隐藏、前一层给类型与危险预告、可进入时显示身份和完整机制。点击地图下方的遭遇情报也可进入节点。</p><p>八次免费规则奖励：开局和指定七个成长节点；其他战斗提供金币。每次战斗结束基础恢复3生命，精英恢复5，章节首领后完全恢复。商店和祭坛仍提供构筑调整。每章末首领拥有半血阶段变化。</p><p>v0.10使用独立存档，不读取或覆盖v0.8/v0.9八层地图存档。此前导出的旧版HTML仍可继续旧远征。</p>';
 rulebookPages.base=rulebookPages.base.replace('开局及首领前七个节点各有一次免费三选一，共 8 次。','开局及46步路线中七个指定成长节点各有一次免费三选一，共8次。');
+
+expandedEvents.push(debtEvent);
