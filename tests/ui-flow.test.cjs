@@ -48,3 +48,5 @@ test('start menu resumes a six-rule expedition and uses the final boss in onboar
   assert.equal(resumed.run('state.gold'), 42);
   assert.equal(resumed.run('state.rules.length'), 6);
 });
+test('custom dice use their faces and preserve locked values',async()=>{const{run}=setup();run('newGame();startBattle("E001");state.diceFaces=[[2,2,2,2,2,2],[4,4,4,4,4,4],[6,6,6,6,6,6]];state.enemy.faces=[1,1,1,1,1,1]');await run('rollDice()');assert.equal(run('state.pdice.join()'),'2,4,6');assert.ok(run('state.edice.every(v=>v===1)'));run('state.locked[0]=true;state.diceFaces[0]=[5,5,5,5,5,5]');await run('rollDice()');assert.equal(run('state.pdice[0]'),2);});
+test('enemy face averages rise across chapters and ranks',()=>{const{run}=setup();const means=run('[{chapter:1},{chapter:1,rank:"elite"},{chapter:2,rank:"elite"},{chapter:3,rank:"elite"},{chapter:3,rank:"boss"}].map(e=>enemyFaces(e).reduce((a,b)=>a+b,0)/6)');for(let i=1;i<means.length;i++)assert.ok(means[i]>means[i-1]);});
