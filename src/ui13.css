@@ -95,3 +95,8 @@ body[data-screen="intro"] #intro::before{left:0;bottom:18%;width:52%;height:82%;
 body[data-screen="intro"] #intro::after{display:none}
 .selection-caption{position:absolute;left:1.9%;bottom:4.7%;width:43%;height:18%;box-sizing:border-box;z-index:3;padding:1.3%;border:3px double #222;background:#e4e1d6;color:#171815;font-size:clamp(10px,1.5vw,21px);line-height:1.7}
 @media(max-width:700px){body[data-screen="intro"] #intro::before{left:-2%;bottom:20%;width:54%;height:83%;background-size:cover}.selection-caption{width:44%;height:22%;bottom:4%;padding:2%;font-size:10px;line-height:1.5}body .home-hotspot{border-width:3px}}
+/* Preserve artwork proportions while allowing short screens to scroll. */
+html,body{height:auto!important;min-height:100%;overflow-y:auto!important}
+.top{height:auto!important;min-height:44px;flex-wrap:wrap!important}.header-actions{flex-wrap:wrap}.modal{box-sizing:border-box;max-width:calc(100vw - 24px);max-height:85dvh;overflow:auto}
+@media(max-width:700px){.top .smallbtn{font-size:11px;min-height:32px}.stats{flex-wrap:wrap}#battle{width:100%;min-height:0}.map-layout{height:auto;min-height:650px}.modal .choice{min-height:44px}#intro{min-height:320px}.archive-selection #confirmCore{left:0;width:100%;top:100%;min-height:36px}}
+@media(max-height:550px) and (min-width:701px){#battle{width:min(100%,1000px)}.map-layout{min-height:600px}}
