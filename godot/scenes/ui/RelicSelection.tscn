@@ -1,0 +1,131 @@
+[gd_scene format=3]
+[ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://art/relics.png" id="relics"]
+[sub_resource type="AtlasTexture" id="Ring"]
+atlas = ExtResource("relics")
+region = Rect2(885,431,265,185)
+[node name="RelicSelection" type="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0
+offset_top = 0
+offset_right = 1280
+offset_bottom = 800
+mouse_filter = 2
+theme = ExtResource("theme")
+[node name="RelicPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 80
+offset_top = 90
+offset_right = 1200
+offset_bottom = 710
+
+[node name="RelicHeading" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120
+offset_top = 115
+offset_right = 1020
+offset_bottom = 175
+text = "选择你的戒律"
+theme_override_font_sizes/font_size = 36
+
+[node name="RelicPoem" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120
+offset_top = 200
+offset_right = 520
+offset_bottom = 440
+text = "八件遗物，八种赌局。\n\n带走一件，改变胜负的规则。\n也可以空手启程，\n为第六张规则留一个位置。"
+theme_override_font_sizes/font_size = 24
+
+[node name="RelicNumber" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 660
+offset_top = 185
+offset_right = 1010
+offset_bottom = 217
+text = "01 / 09"
+theme_override_font_sizes/font_size = 16
+
+[node name="RelicIcon" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 740
+offset_top = 225
+offset_right = 960
+offset_bottom = 325
+visible = false
+text = "Ⅰ"
+theme_override_font_sizes/font_size = 68
+
+[node name="RelicName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 640
+offset_top = 340
+offset_right = 1120
+offset_bottom = 390
+text = "反向赌局"
+theme_override_font_sizes/font_size = 30
+
+[node name="RelicDescription" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 640
+offset_top = 405
+offset_right = 1110
+offset_bottom = 535
+text = "最终点数低者获胜。计分优势改为减点，最低为 0。"
+bbcode_enabled = true
+scroll_active = false
+[node name="RelicPrev" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 590
+offset_top = 250
+offset_right = 660
+offset_bottom = 314
+text = "←"
+
+[node name="RelicNext" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1090
+offset_top = 250
+offset_right = 1160
+offset_bottom = 314
+text = "→"
+
+[node name="RelicConfirm" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 820
+offset_top = 592
+offset_right = 1120
+offset_bottom = 650
+text = "确认戒律 →"
+
+[node name="RelicBack" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120
+offset_top = 600
+offset_right = 280
+offset_bottom = 648
+text = "返回"
+
+[node name="RelicObject" type="TextureRect" parent="."]
+texture = SubResource("Ring")
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 720
+offset_top = 220
+offset_right = 960
+offset_bottom = 335
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2

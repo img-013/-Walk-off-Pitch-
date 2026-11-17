@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="DieDefinition" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/die_definition.gd" id="1"]
+[resource]
+script = ExtResource("1")
+face_values = Array[int]([1, 2, 3, 4, 5, 6])
+face_symbols = PackedStringArray("", "", "", "", "", "")

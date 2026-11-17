@@ -1,0 +1,85 @@
+[gd_scene format=3]
+[ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
+[node name="MainMenu" type="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0
+offset_top = 0
+offset_right = 1280
+offset_bottom = 800
+mouse_filter = 2
+theme = ExtResource("theme")
+[node name="MenuShade" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 50
+offset_top = 80
+offset_right = 505
+offset_bottom = 720
+
+[node name="MenuEyebrow" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 85
+offset_top = 110
+offset_right = 465
+offset_bottom = 145
+text = "♠   T H E   L A S T   W A L T Z   ♠"
+theme_override_font_sizes/font_size = 16
+
+[node name="MenuTitle" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 85
+offset_top = 155
+offset_right = 465
+offset_bottom = 255
+text = "再见一掷"
+theme_override_font_sizes/font_size = 64
+
+[node name="MenuSubtitle" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 88
+offset_top = 270
+offset_right = 448
+offset_bottom = 350
+text = "帷幕落下，赌局开场。\n三次投掷，一局命运。"
+theme_override_font_sizes/font_size = 20
+
+[node name="StartButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 88
+offset_top = 402
+offset_right = 453
+offset_bottom = 467
+text = "开始游戏  →"
+
+[node name="RulesButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 88
+offset_top = 483
+offset_right = 453
+offset_bottom = 539
+text = "查看规则"
+
+[node name="SettingsButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 88
+offset_top = 554
+offset_right = 453
+offset_bottom = 610
+text = "设置"
+
+[node name="MenuVersion" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 88
+offset_top = 650
+offset_right = 458
+offset_bottom = 680
+text = "WALK-OFF PITCH  ·  暗幕赌厅"
+theme_override_font_sizes/font_size = 14

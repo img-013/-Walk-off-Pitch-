@@ -1,0 +1,19 @@
+[gd_scene format=3]
+[ext_resource type="Shader" path="res://shaders/cabaret.gdshader" id="shader"]
+[sub_resource type="ShaderMaterial" id="Film"]
+shader = ExtResource("shader")
+shader_parameter/pixel_size = 2.5
+shader_parameter/grayscale = 1.0
+shader_parameter/levels = 12.0
+shader_parameter/vignette = 0.45
+shader_parameter/exposure = 1.15
+[node name="CabaretFilter" type="CanvasLayer"]
+layer = -1
+[node name="MonochromePixels" type="ColorRect" parent="."]
+material = SubResource("Film")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

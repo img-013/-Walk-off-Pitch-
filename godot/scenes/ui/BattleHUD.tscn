@@ -1,0 +1,220 @@
+[gd_scene format=3]
+[ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
+[node name="BattleHUD" type="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0
+offset_top = 0
+offset_right = 1280
+offset_bottom = 800
+mouse_filter = 2
+theme = ExtResource("theme")
+[node name="TopPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 24
+offset_top = 16
+offset_right = 1256
+offset_bottom = 160
+
+[node name="BattleHeading" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40
+offset_top = 22
+offset_right = 720
+offset_bottom = 54
+text = "再见一掷  /  命运赌桌"
+theme_override_font_sizes/font_size = 18
+
+[node name="BattleMenu" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1110
+offset_top = 24
+offset_right = 1235
+offset_bottom = 58
+text = "保存 / 首页"
+
+[node name="RuleSlots" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40
+offset_top = 64
+offset_right = 1235
+offset_bottom = 147
+theme_override_constants/separation = 10
+[node name="HealthLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40
+offset_top = 170
+offset_right = 990
+offset_bottom = 202
+text = "远征者 30 / 30                         对手 12 / 12"
+theme_override_font_sizes/font_size = 19
+
+[node name="SharedHealth" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40
+offset_top = 207
+offset_right = 1235
+offset_bottom = 221
+value = 50.0
+show_percentage = false
+[node name="IntentLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40
+offset_top = 232
+offset_right = 1210
+offset_bottom = 287
+text = "敌人意图"
+theme_override_font_sizes/font_size = 16
+
+[node name="RoundLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40
+offset_top = 295
+offset_right = 310
+offset_bottom = 330
+text = "回合 01 · 0 / 3 掷"
+theme_override_font_sizes/font_size = 20
+
+[node name="EnemyTotal" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 900
+offset_top = 365
+offset_right = 1200
+offset_bottom = 397
+text = "对手：—"
+theme_override_font_sizes/font_size = 19
+
+[node name="LockButtons" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 410
+offset_top = 494
+offset_right = 870
+offset_bottom = 539
+theme_override_constants/separation = 12
+[node name="PlayerTotal" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 900
+offset_top = 485
+offset_right = 1200
+offset_bottom = 517
+text = "你的点数：—"
+theme_override_font_sizes/font_size = 19
+
+[node name="BattleLogPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40
+offset_top = 590
+offset_right = 790
+offset_bottom = 710
+
+[node name="BattleLog" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 54
+offset_top = 598
+offset_right = 774
+offset_bottom = 700
+bbcode_enabled = true
+scroll_following = true
+[node name="EnemyActions" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 830
+offset_top = 590
+offset_right = 1230
+offset_bottom = 710
+theme_override_constants/separation = 6
+[node name="RollButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 415
+offset_top = 733
+offset_right = 635
+offset_bottom = 783
+text = "投掷骰子"
+
+[node name="SettleButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 655
+offset_top = 733
+offset_right = 875
+offset_bottom = 783
+text = "揭晓胜负"
+
+[node name="EnemyDetails" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40
+offset_top = 736
+offset_right = 215
+offset_bottom = 779
+text = "敌人信息"
+
+[node name="DiceDetails" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1010
+offset_top = 736
+offset_right = 1230
+offset_bottom = 779
+text = "骰面 / 规则查看"
+
+[node name="EnemyPortrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1150
+offset_top = 232
+offset_right = 1230
+offset_bottom = 328
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+[node name="Rule0" type="Button" parent="RuleSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "规则位 1"
+[node name="Rule1" type="Button" parent="RuleSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "规则位 2"
+[node name="Rule2" type="Button" parent="RuleSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "规则位 3"
+[node name="Rule3" type="Button" parent="RuleSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "规则位 4"
+[node name="Rule4" type="Button" parent="RuleSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "规则位 5"
+[node name="Rule5" type="Button" parent="RuleSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "规则位 6"
+[node name="LockDie0" type="Button" parent="LockButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "锁骰 1"
+[node name="LockDie1" type="Button" parent="LockButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "锁骰 2"
+[node name="LockDie2" type="Button" parent="LockButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "锁骰 3"

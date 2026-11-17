@@ -1,0 +1,29 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/cabaret_audio.gd" id="script"]
+[ext_resource type="AudioStream" path="res://audio/main_theme.mp3" id="Music"]
+[ext_resource type="AudioStream" path="res://audio/hover.wav" id="Hover"]
+[ext_resource type="AudioStream" path="res://audio/click.wav" id="Click"]
+[ext_resource type="AudioStream" path="res://audio/roll.wav" id="Roll"]
+[ext_resource type="AudioStream" path="res://audio/reveal.wav" id="Reveal"]
+[node name="CabaretAudio" type="Node"]
+script = ExtResource("script")
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("Music")
+volume_db = -15.0
+max_polyphony = 1
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("Hover")
+volume_db = -15.0
+max_polyphony = 3
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("Click")
+volume_db = -15.0
+max_polyphony = 3
+[node name="Roll" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("Roll")
+volume_db = -15.0
+max_polyphony = 3
+[node name="Reveal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("Reveal")
+volume_db = -15.0
+max_polyphony = 3

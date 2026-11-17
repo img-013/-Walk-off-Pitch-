@@ -8,3 +8,5 @@ work/
 *.tmp
 .DS_Store
 Thumbs.db
+godot/.godot/
+godot/build/

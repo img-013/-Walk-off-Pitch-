@@ -1,0 +1,69 @@
+[gd_scene format=3]
+[ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
+[node name="ChoiceDialog" type="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0
+offset_top = 0
+offset_right = 1280
+offset_bottom = 800
+mouse_filter = 2
+theme = ExtResource("theme")
+[node name="ModalDim" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0
+offset_top = 0
+offset_right = 1280
+offset_bottom = 800
+color = Color(0,0,0,0.62)
+[node name="ModalPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 275
+offset_top = 95
+offset_right = 1005
+offset_bottom = 715
+
+[node name="ChoiceTitle" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 310
+offset_top = 120
+offset_right = 970
+offset_bottom = 180
+text = "远征"
+theme_override_font_sizes/font_size = 32
+
+[node name="ChoiceText" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 310
+offset_top = 192
+offset_right = 970
+offset_bottom = 327
+bbcode_enabled = true
+[node name="ChoiceScroll" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 310
+offset_top = 345
+offset_right = 970
+offset_bottom = 675
+horizontal_scroll_mode = 0
+[node name="ChoiceButtons" type="VBoxContainer" parent="ChoiceScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+[node name="DialogPortrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 910
+offset_top = 120
+offset_right = 975
+offset_bottom = 190
+visible = false
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2

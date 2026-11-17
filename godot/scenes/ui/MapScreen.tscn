@@ -1,0 +1,1671 @@
+[gd_scene format=3]
+[ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
+[node name="MapScreen" type="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0
+offset_top = 0
+offset_right = 1280
+offset_bottom = 800
+mouse_filter = 2
+theme = ExtResource("theme")
+[node name="MapPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 30
+offset_top = 30
+offset_right = 1250
+offset_bottom = 770
+
+[node name="ChapterTitle" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60
+offset_top = 65
+offset_right = 320
+offset_bottom = 165
+text = "第一章\n迷雾赌厅"
+theme_override_font_sizes/font_size = 32
+
+[node name="RunStats" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60
+offset_top = 185
+offset_right = 320
+offset_bottom = 260
+text = "生命 30 / 30\n金币 20"
+theme_override_font_sizes/font_size = 21
+
+[node name="MapDescription" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60
+offset_top = 290
+offset_right = 320
+offset_bottom = 440
+text = "选择亮起的节点前进。\n\n战斗 · 精英 · 事件\n祭坛 · 商店 · 酒馆\n\n路线一旦走过，便无法回头。"
+theme_override_font_sizes/font_size = 17
+
+[node name="MapCollection" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60
+offset_top = 520
+offset_right = 300
+offset_bottom = 570
+text = "已收集规则"
+
+[node name="MapSave" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60
+offset_top = 590
+offset_right = 300
+offset_bottom = 640
+text = "保存并返回首页"
+
+[node name="MapScroll" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 350
+offset_top = 65
+offset_right = 1210
+offset_bottom = 715
+horizontal_scroll_mode = 0
+[node name="Routes" type="Control" parent="MapScroll"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(820, 1700)
+layout_mode = 2
+mouse_filter = 2
+[node name="Chapter1" type="Control" parent="MapScroll/Routes"]
+visible = true
+mouse_filter = 2
+[node name="Link_0-0_1-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 1565, 146.6, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_0-0_1-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 1565, 405, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_0-0_1-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 1565, 663.4, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_1-0_2-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 1465, 146.6, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_1-0_2-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 1465, 318.8666666666666, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_1-1_2-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 1465, 318.8666666666666, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_1-1_2-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 1465, 491.1333333333333, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_1-2_2-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 1465, 491.1333333333333, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_1-2_2-3" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 1465, 663.4, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_2-0_3-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 1365, 146.6, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_2-1_3-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(318.8666666666666, 1365, 146.6, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_2-1_3-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(318.8666666666666, 1365, 405, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_2-2_3-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(491.1333333333333, 1365, 405, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_2-2_3-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(491.1333333333333, 1365, 663.4, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_2-3_3-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 1365, 663.4, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_3-0_4-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 1265, 146.6, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_3-0_4-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 1265, 318.8666666666666, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_3-1_4-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 1265, 318.8666666666666, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_3-1_4-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 1265, 491.1333333333333, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_3-2_4-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 1265, 491.1333333333333, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_3-2_4-3" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 1265, 663.4, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_4-0_5-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 1165, 146.6, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_4-1_5-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(318.8666666666666, 1165, 146.6, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_4-2_5-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(491.1333333333333, 1165, 663.4, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_4-3_5-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 1165, 663.4, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_5-0_6-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 1065, 146.6, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_5-0_6-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 1065, 318.8666666666666, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_5-1_6-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 1065, 491.1333333333333, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_5-1_6-3" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 1065, 663.4, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_6-0_7-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 965, 146.6, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_6-1_7-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(318.8666666666666, 965, 146.6, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_6-1_7-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(318.8666666666666, 965, 405, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_6-2_7-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(491.1333333333333, 965, 405, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_6-2_7-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(491.1333333333333, 965, 663.4, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_6-3_7-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 965, 663.4, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_7-0_8-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 865, 146.6, 765)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_7-1_8-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 865, 405, 765)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_7-2_8-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 865, 663.4, 765)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_8-0_9-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 765, 146.6, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_8-0_9-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 765, 318.8666666666666, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_8-1_9-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 765, 318.8666666666666, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_8-1_9-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 765, 491.1333333333333, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_8-2_9-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 765, 491.1333333333333, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_8-2_9-3" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 765, 663.4, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_9-0_10-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 665, 146.6, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_9-1_10-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(318.8666666666666, 665, 146.6, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_9-1_10-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(318.8666666666666, 665, 405, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_9-2_10-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(491.1333333333333, 665, 405, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_9-2_10-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(491.1333333333333, 665, 663.4, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_9-3_10-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 665, 663.4, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_10-0_11-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 565, 146.6, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_10-0_11-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 565, 318.8666666666666, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_10-1_11-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 565, 318.8666666666666, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_10-1_11-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(405, 565, 491.1333333333333, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_10-2_11-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 565, 491.1333333333333, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_10-2_11-3" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 565, 663.4, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_11-0_12-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 465, 146.6, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_11-1_12-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(318.8666666666666, 465, 146.6, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_11-2_12-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(491.1333333333333, 465, 663.4, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_11-3_12-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 465, 663.4, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_12-0_13-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 365, 146.6, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_12-0_13-1" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 365, 318.8666666666666, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_12-1_13-2" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 365, 491.1333333333333, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_12-1_13-3" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 365, 663.4, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_13-0_14-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(146.6, 265, 405, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_13-1_14-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(318.8666666666666, 265, 405, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_13-2_14-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(491.1333333333333, 265, 405, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_13-3_14-0" type="Line2D" parent="MapScroll/Routes/Chapter1"]
+points = PackedVector2Array(663.4, 265, 405, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Node_0_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 360
+offset_top = 1540
+offset_right = 450
+offset_bottom = 1590
+text = "战斗"
+[node name="Node_1_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 1440
+offset_right = 191.6
+offset_bottom = 1490
+text = "祭坛"
+[node name="Node_1_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 360
+offset_top = 1440
+offset_right = 450
+offset_bottom = 1490
+text = "祭坛"
+[node name="Node_1_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 1440
+offset_right = 708.4
+offset_bottom = 1490
+text = "祭坛"
+[node name="Node_2_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 1340
+offset_right = 191.6
+offset_bottom = 1390
+text = "战斗"
+[node name="Node_2_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 273.8666666666666
+offset_top = 1340
+offset_right = 363.8666666666666
+offset_bottom = 1390
+text = "战斗"
+[node name="Node_2_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 446.1333333333333
+offset_top = 1340
+offset_right = 536.1333333333333
+offset_bottom = 1390
+text = "战斗"
+[node name="Node_2_3" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 1340
+offset_right = 708.4
+offset_bottom = 1390
+text = "战斗"
+[node name="Node_3_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 1240
+offset_right = 191.6
+offset_bottom = 1290
+text = "事件"
+[node name="Node_3_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 360
+offset_top = 1240
+offset_right = 450
+offset_bottom = 1290
+text = "酒馆"
+[node name="Node_3_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 1240
+offset_right = 708.4
+offset_bottom = 1290
+text = "商店"
+[node name="Node_4_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 1140
+offset_right = 191.6
+offset_bottom = 1190
+text = "精英"
+[node name="Node_4_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 273.8666666666666
+offset_top = 1140
+offset_right = 363.8666666666666
+offset_bottom = 1190
+text = "精英"
+[node name="Node_4_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 446.1333333333333
+offset_top = 1140
+offset_right = 536.1333333333333
+offset_bottom = 1190
+text = "精英"
+[node name="Node_4_3" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 1140
+offset_right = 708.4
+offset_bottom = 1190
+text = "精英"
+[node name="Node_5_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 1040
+offset_right = 191.6
+offset_bottom = 1090
+text = "酒馆"
+[node name="Node_5_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 1040
+offset_right = 708.4
+offset_bottom = 1090
+text = "事件"
+[node name="Node_6_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 940
+offset_right = 191.6
+offset_bottom = 990
+text = "战斗"
+[node name="Node_6_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 273.8666666666666
+offset_top = 940
+offset_right = 363.8666666666666
+offset_bottom = 990
+text = "战斗"
+[node name="Node_6_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 446.1333333333333
+offset_top = 940
+offset_right = 536.1333333333333
+offset_bottom = 990
+text = "战斗"
+[node name="Node_6_3" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 940
+offset_right = 708.4
+offset_bottom = 990
+text = "战斗"
+[node name="Node_7_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 840
+offset_right = 191.6
+offset_bottom = 890
+text = "商店"
+[node name="Node_7_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 360
+offset_top = 840
+offset_right = 450
+offset_bottom = 890
+text = "商店"
+[node name="Node_7_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 840
+offset_right = 708.4
+offset_bottom = 890
+text = "事件"
+[node name="Node_8_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 740
+offset_right = 191.6
+offset_bottom = 790
+text = "精英"
+[node name="Node_8_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 360
+offset_top = 740
+offset_right = 450
+offset_bottom = 790
+text = "精英"
+[node name="Node_8_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 740
+offset_right = 708.4
+offset_bottom = 790
+text = "精英"
+[node name="Node_9_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 640
+offset_right = 191.6
+offset_bottom = 690
+text = "事件"
+[node name="Node_9_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 273.8666666666666
+offset_top = 640
+offset_right = 363.8666666666666
+offset_bottom = 690
+text = "酒馆"
+[node name="Node_9_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 446.1333333333333
+offset_top = 640
+offset_right = 536.1333333333333
+offset_bottom = 690
+text = "商店"
+[node name="Node_9_3" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 640
+offset_right = 708.4
+offset_bottom = 690
+text = "事件"
+[node name="Node_10_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 540
+offset_right = 191.6
+offset_bottom = 590
+text = "战斗"
+[node name="Node_10_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 360
+offset_top = 540
+offset_right = 450
+offset_bottom = 590
+text = "战斗"
+[node name="Node_10_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 540
+offset_right = 708.4
+offset_bottom = 590
+text = "战斗"
+[node name="Node_11_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 440
+offset_right = 191.6
+offset_bottom = 490
+text = "酒馆"
+[node name="Node_11_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 273.8666666666666
+offset_top = 440
+offset_right = 363.8666666666666
+offset_bottom = 490
+text = "事件"
+[node name="Node_11_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 446.1333333333333
+offset_top = 440
+offset_right = 536.1333333333333
+offset_bottom = 490
+text = "酒馆"
+[node name="Node_11_3" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 440
+offset_right = 708.4
+offset_bottom = 490
+text = "商店"
+[node name="Node_12_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 340
+offset_right = 191.6
+offset_bottom = 390
+text = "精英"
+[node name="Node_12_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 340
+offset_right = 708.4
+offset_bottom = 390
+text = "精英"
+[node name="Node_13_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 101.6
+offset_top = 240
+offset_right = 191.6
+offset_bottom = 290
+text = "祭坛"
+[node name="Node_13_1" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 273.8666666666666
+offset_top = 240
+offset_right = 363.8666666666666
+offset_bottom = 290
+text = "祭坛"
+[node name="Node_13_2" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 446.1333333333333
+offset_top = 240
+offset_right = 536.1333333333333
+offset_bottom = 290
+text = "祭坛"
+[node name="Node_13_3" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 618.4
+offset_top = 240
+offset_right = 708.4
+offset_bottom = 290
+text = "祭坛"
+[node name="Node_14_0" type="Button" parent="MapScroll/Routes/Chapter1"]
+offset_left = 360
+offset_top = 140
+offset_right = 450
+offset_bottom = 190
+text = "首领"
+[node name="Chapter2" type="Control" parent="MapScroll/Routes"]
+visible = false
+mouse_filter = 2
+[node name="Link_15-0_16-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 1565, 146.6, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_15-0_16-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 1565, 405, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_15-0_16-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 1565, 663.4, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_16-0_17-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 1465, 146.6, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_16-0_17-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 1465, 318.8666666666666, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_16-1_17-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 1465, 318.8666666666666, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_16-1_17-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 1465, 491.1333333333333, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_16-2_17-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 1465, 491.1333333333333, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_16-2_17-3" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 1465, 663.4, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_17-0_18-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 1365, 146.6, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_17-1_18-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 1365, 146.6, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_17-1_18-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 1365, 405, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_17-2_18-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 1365, 405, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_17-2_18-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 1365, 663.4, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_17-3_18-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 1365, 663.4, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_18-0_19-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 1265, 146.6, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_18-0_19-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 1265, 318.8666666666666, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_18-1_19-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 1265, 318.8666666666666, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_18-1_19-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 1265, 491.1333333333333, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_18-2_19-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 1265, 491.1333333333333, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_18-2_19-3" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 1265, 663.4, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_19-0_20-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 1165, 146.6, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_19-1_20-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 1165, 146.6, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_19-2_20-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 1165, 663.4, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_19-3_20-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 1165, 663.4, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_20-0_21-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 1065, 146.6, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_20-0_21-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 1065, 318.8666666666666, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_20-1_21-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 1065, 491.1333333333333, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_20-1_21-3" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 1065, 663.4, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_21-0_22-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 965, 146.6, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_21-1_22-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 965, 146.6, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_21-1_22-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 965, 405, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_21-2_22-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 965, 405, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_21-2_22-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 965, 663.4, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_21-3_22-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 965, 663.4, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_22-0_23-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 865, 146.6, 765)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_22-1_23-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 865, 405, 765)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_22-2_23-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 865, 663.4, 765)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_23-0_24-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 765, 146.6, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_23-0_24-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 765, 318.8666666666666, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_23-1_24-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 765, 318.8666666666666, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_23-1_24-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 765, 491.1333333333333, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_23-2_24-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 765, 491.1333333333333, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_23-2_24-3" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 765, 663.4, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_24-0_25-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 665, 146.6, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_24-1_25-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 665, 146.6, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_24-1_25-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 665, 405, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_24-2_25-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 665, 405, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_24-2_25-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 665, 663.4, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_24-3_25-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 665, 663.4, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_25-0_26-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 565, 146.6, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_25-0_26-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 565, 318.8666666666666, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_25-1_26-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 565, 318.8666666666666, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_25-1_26-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 565, 491.1333333333333, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_25-2_26-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 565, 491.1333333333333, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_25-2_26-3" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 565, 663.4, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_26-0_27-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 465, 146.6, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_26-1_27-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 465, 146.6, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_26-2_27-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 465, 663.4, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_26-3_27-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 465, 663.4, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_27-0_28-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 365, 146.6, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_27-0_28-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 365, 318.8666666666666, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_27-1_28-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 365, 491.1333333333333, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_27-1_28-3" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 365, 663.4, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_28-0_29-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 265, 146.6, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_28-1_29-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 265, 146.6, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_28-1_29-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(318.8666666666666, 265, 405, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_28-2_29-1" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 265, 405, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_28-2_29-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(491.1333333333333, 265, 663.4, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_28-3_29-2" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 265, 663.4, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_29-0_30-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(146.6, 165, 405, 65)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_29-1_30-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(405, 165, 405, 65)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_29-2_30-0" type="Line2D" parent="MapScroll/Routes/Chapter2"]
+points = PackedVector2Array(663.4, 165, 405, 65)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Node_15_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 360
+offset_top = 1540
+offset_right = 450
+offset_bottom = 1590
+text = "战斗"
+[node name="Node_16_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 1440
+offset_right = 191.6
+offset_bottom = 1490
+text = "事件"
+[node name="Node_16_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 360
+offset_top = 1440
+offset_right = 450
+offset_bottom = 1490
+text = "事件"
+[node name="Node_16_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 1440
+offset_right = 708.4
+offset_bottom = 1490
+text = "酒馆"
+[node name="Node_17_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 1340
+offset_right = 191.6
+offset_bottom = 1390
+text = "战斗"
+[node name="Node_17_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 273.8666666666666
+offset_top = 1340
+offset_right = 363.8666666666666
+offset_bottom = 1390
+text = "战斗"
+[node name="Node_17_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 446.1333333333333
+offset_top = 1340
+offset_right = 536.1333333333333
+offset_bottom = 1390
+text = "战斗"
+[node name="Node_17_3" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 1340
+offset_right = 708.4
+offset_bottom = 1390
+text = "战斗"
+[node name="Node_18_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 1240
+offset_right = 191.6
+offset_bottom = 1290
+text = "精英"
+[node name="Node_18_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 360
+offset_top = 1240
+offset_right = 450
+offset_bottom = 1290
+text = "精英"
+[node name="Node_18_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 1240
+offset_right = 708.4
+offset_bottom = 1290
+text = "精英"
+[node name="Node_19_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 1140
+offset_right = 191.6
+offset_bottom = 1190
+text = "酒馆"
+[node name="Node_19_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 273.8666666666666
+offset_top = 1140
+offset_right = 363.8666666666666
+offset_bottom = 1190
+text = "事件"
+[node name="Node_19_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 446.1333333333333
+offset_top = 1140
+offset_right = 536.1333333333333
+offset_bottom = 1190
+text = "酒馆"
+[node name="Node_19_3" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 1140
+offset_right = 708.4
+offset_bottom = 1190
+text = "商店"
+[node name="Node_20_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 1040
+offset_right = 191.6
+offset_bottom = 1090
+text = "战斗"
+[node name="Node_20_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 1040
+offset_right = 708.4
+offset_bottom = 1090
+text = "战斗"
+[node name="Node_21_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 940
+offset_right = 191.6
+offset_bottom = 990
+text = "商店"
+[node name="Node_21_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 273.8666666666666
+offset_top = 940
+offset_right = 363.8666666666666
+offset_bottom = 990
+text = "商店"
+[node name="Node_21_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 446.1333333333333
+offset_top = 940
+offset_right = 536.1333333333333
+offset_bottom = 990
+text = "事件"
+[node name="Node_21_3" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 940
+offset_right = 708.4
+offset_bottom = 990
+text = "酒馆"
+[node name="Node_22_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 840
+offset_right = 191.6
+offset_bottom = 890
+text = "精英"
+[node name="Node_22_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 360
+offset_top = 840
+offset_right = 450
+offset_bottom = 890
+text = "精英"
+[node name="Node_22_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 840
+offset_right = 708.4
+offset_bottom = 890
+text = "精英"
+[node name="Node_23_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 740
+offset_right = 191.6
+offset_bottom = 790
+text = "战斗"
+[node name="Node_23_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 360
+offset_top = 740
+offset_right = 450
+offset_bottom = 790
+text = "战斗"
+[node name="Node_23_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 740
+offset_right = 708.4
+offset_bottom = 790
+text = "战斗"
+[node name="Node_24_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 640
+offset_right = 191.6
+offset_bottom = 690
+text = "事件"
+[node name="Node_24_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 273.8666666666666
+offset_top = 640
+offset_right = 363.8666666666666
+offset_bottom = 690
+text = "商店"
+[node name="Node_24_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 446.1333333333333
+offset_top = 640
+offset_right = 536.1333333333333
+offset_bottom = 690
+text = "事件"
+[node name="Node_24_3" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 640
+offset_right = 708.4
+offset_bottom = 690
+text = "酒馆"
+[node name="Node_25_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 540
+offset_right = 191.6
+offset_bottom = 590
+text = "战斗"
+[node name="Node_25_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 360
+offset_top = 540
+offset_right = 450
+offset_bottom = 590
+text = "战斗"
+[node name="Node_25_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 540
+offset_right = 708.4
+offset_bottom = 590
+text = "战斗"
+[node name="Node_26_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 440
+offset_right = 191.6
+offset_bottom = 490
+text = "酒馆"
+[node name="Node_26_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 273.8666666666666
+offset_top = 440
+offset_right = 363.8666666666666
+offset_bottom = 490
+text = "酒馆"
+[node name="Node_26_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 446.1333333333333
+offset_top = 440
+offset_right = 536.1333333333333
+offset_bottom = 490
+text = "商店"
+[node name="Node_26_3" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 440
+offset_right = 708.4
+offset_bottom = 490
+text = "事件"
+[node name="Node_27_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 340
+offset_right = 191.6
+offset_bottom = 390
+text = "精英"
+[node name="Node_27_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 340
+offset_right = 708.4
+offset_bottom = 390
+text = "精英"
+[node name="Node_28_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 240
+offset_right = 191.6
+offset_bottom = 290
+text = "战斗"
+[node name="Node_28_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 273.8666666666666
+offset_top = 240
+offset_right = 363.8666666666666
+offset_bottom = 290
+text = "战斗"
+[node name="Node_28_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 446.1333333333333
+offset_top = 240
+offset_right = 536.1333333333333
+offset_bottom = 290
+text = "战斗"
+[node name="Node_28_3" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 240
+offset_right = 708.4
+offset_bottom = 290
+text = "战斗"
+[node name="Node_29_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 101.6
+offset_top = 140
+offset_right = 191.6
+offset_bottom = 190
+text = "祭坛"
+[node name="Node_29_1" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 360
+offset_top = 140
+offset_right = 450
+offset_bottom = 190
+text = "祭坛"
+[node name="Node_29_2" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 618.4
+offset_top = 140
+offset_right = 708.4
+offset_bottom = 190
+text = "祭坛"
+[node name="Node_30_0" type="Button" parent="MapScroll/Routes/Chapter2"]
+offset_left = 360
+offset_top = 40
+offset_right = 450
+offset_bottom = 90
+text = "首领"
+[node name="Chapter3" type="Control" parent="MapScroll/Routes"]
+visible = false
+mouse_filter = 2
+[node name="Link_31-0_32-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(405, 1565, 146.6, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_31-0_32-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(405, 1565, 318.8666666666666, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_31-0_32-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(405, 1565, 491.1333333333333, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_31-0_32-3" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(405, 1565, 663.4, 1465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_32-0_33-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 1465, 146.6, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_32-1_33-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(318.8666666666666, 1465, 318.8666666666666, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_32-2_33-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(491.1333333333333, 1465, 491.1333333333333, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_32-3_33-3" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 1465, 663.4, 1365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_33-0_34-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 1365, 146.6, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_33-1_34-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(318.8666666666666, 1365, 318.8666666666666, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_33-2_34-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(491.1333333333333, 1365, 491.1333333333333, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_33-3_34-3" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 1365, 663.4, 1265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_34-0_35-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 1265, 146.6, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_34-1_35-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(318.8666666666666, 1265, 318.8666666666666, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_34-2_35-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(491.1333333333333, 1265, 491.1333333333333, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_34-3_35-3" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 1265, 663.4, 1165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_35-0_36-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 1165, 146.6, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_35-1_36-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(318.8666666666666, 1165, 318.8666666666666, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_35-2_36-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(491.1333333333333, 1165, 491.1333333333333, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_35-3_36-3" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 1165, 663.4, 1065)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_36-0_37-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 1065, 146.6, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_36-1_37-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(318.8666666666666, 1065, 318.8666666666666, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_36-2_37-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(491.1333333333333, 1065, 491.1333333333333, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_36-3_37-3" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 1065, 663.4, 965)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_37-0_38-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 965, 146.6, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_37-1_38-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(318.8666666666666, 965, 146.6, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_37-1_38-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(318.8666666666666, 965, 405, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_37-2_38-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(491.1333333333333, 965, 405, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_37-2_38-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(491.1333333333333, 965, 663.4, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_37-3_38-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 965, 663.4, 865)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_38-0_39-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 865, 146.6, 765)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_38-1_39-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(405, 865, 405, 765)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_38-2_39-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 865, 663.4, 765)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_39-0_40-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 765, 146.6, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_39-1_40-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(405, 765, 405, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_39-2_40-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 765, 663.4, 665)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_40-0_41-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 665, 146.6, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_40-1_41-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(405, 665, 405, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_40-2_41-2" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 665, 663.4, 565)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_41-0_42-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 565, 146.6, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_41-1_42-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(405, 565, 146.6, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_41-1_42-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(405, 565, 663.4, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_41-2_42-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 565, 663.4, 465)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_42-0_43-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 465, 146.6, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_42-1_43-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 465, 663.4, 365)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_43-0_44-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 365, 146.6, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_43-1_44-1" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 365, 663.4, 265)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_44-0_45-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(146.6, 265, 405, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Link_44-1_45-0" type="Line2D" parent="MapScroll/Routes/Chapter3"]
+points = PackedVector2Array(663.4, 265, 405, 165)
+width = 2.0
+default_color = Color(0.42,0.38,0.25,0.65)
+[node name="Node_31_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 360
+offset_top = 1540
+offset_right = 450
+offset_bottom = 1590
+text = "战斗"
+[node name="Node_32_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 1440
+offset_right = 191.6
+offset_bottom = 1490
+text = "事件"
+[node name="Node_32_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 273.8666666666666
+offset_top = 1440
+offset_right = 363.8666666666666
+offset_bottom = 1490
+text = "酒馆"
+[node name="Node_32_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 446.1333333333333
+offset_top = 1440
+offset_right = 536.1333333333333
+offset_bottom = 1490
+text = "商店"
+[node name="Node_32_3" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 1440
+offset_right = 708.4
+offset_bottom = 1490
+text = "事件"
+[node name="Node_33_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 1340
+offset_right = 191.6
+offset_bottom = 1390
+text = "精英"
+[node name="Node_33_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 273.8666666666666
+offset_top = 1340
+offset_right = 363.8666666666666
+offset_bottom = 1390
+text = "精英"
+[node name="Node_33_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 446.1333333333333
+offset_top = 1340
+offset_right = 536.1333333333333
+offset_bottom = 1390
+text = "精英"
+[node name="Node_33_3" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 1340
+offset_right = 708.4
+offset_bottom = 1390
+text = "精英"
+[node name="Node_34_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 1240
+offset_right = 191.6
+offset_bottom = 1290
+text = "酒馆"
+[node name="Node_34_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 273.8666666666666
+offset_top = 1240
+offset_right = 363.8666666666666
+offset_bottom = 1290
+text = "事件"
+[node name="Node_34_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 446.1333333333333
+offset_top = 1240
+offset_right = 536.1333333333333
+offset_bottom = 1290
+text = "酒馆"
+[node name="Node_34_3" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 1240
+offset_right = 708.4
+offset_bottom = 1290
+text = "商店"
+[node name="Node_35_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 1140
+offset_right = 191.6
+offset_bottom = 1190
+text = "战斗"
+[node name="Node_35_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 273.8666666666666
+offset_top = 1140
+offset_right = 363.8666666666666
+offset_bottom = 1190
+text = "战斗"
+[node name="Node_35_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 446.1333333333333
+offset_top = 1140
+offset_right = 536.1333333333333
+offset_bottom = 1190
+text = "战斗"
+[node name="Node_35_3" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 1140
+offset_right = 708.4
+offset_bottom = 1190
+text = "战斗"
+[node name="Node_36_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 1040
+offset_right = 191.6
+offset_bottom = 1090
+text = "商店"
+[node name="Node_36_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 273.8666666666666
+offset_top = 1040
+offset_right = 363.8666666666666
+offset_bottom = 1090
+text = "商店"
+[node name="Node_36_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 446.1333333333333
+offset_top = 1040
+offset_right = 536.1333333333333
+offset_bottom = 1090
+text = "事件"
+[node name="Node_36_3" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 1040
+offset_right = 708.4
+offset_bottom = 1090
+text = "酒馆"
+[node name="Node_37_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 940
+offset_right = 191.6
+offset_bottom = 990
+text = "精英"
+[node name="Node_37_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 273.8666666666666
+offset_top = 940
+offset_right = 363.8666666666666
+offset_bottom = 990
+text = "精英"
+[node name="Node_37_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 446.1333333333333
+offset_top = 940
+offset_right = 536.1333333333333
+offset_bottom = 990
+text = "精英"
+[node name="Node_37_3" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 940
+offset_right = 708.4
+offset_bottom = 990
+text = "精英"
+[node name="Node_38_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 840
+offset_right = 191.6
+offset_bottom = 890
+text = "事件"
+[node name="Node_38_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 360
+offset_top = 840
+offset_right = 450
+offset_bottom = 890
+text = "酒馆"
+[node name="Node_38_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 840
+offset_right = 708.4
+offset_bottom = 890
+text = "商店"
+[node name="Node_39_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 740
+offset_right = 191.6
+offset_bottom = 790
+text = "战斗"
+[node name="Node_39_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 360
+offset_top = 740
+offset_right = 450
+offset_bottom = 790
+text = "战斗"
+[node name="Node_39_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 740
+offset_right = 708.4
+offset_bottom = 790
+text = "战斗"
+[node name="Node_40_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 640
+offset_right = 191.6
+offset_bottom = 690
+text = "祭坛"
+[node name="Node_40_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 360
+offset_top = 640
+offset_right = 450
+offset_bottom = 690
+text = "祭坛"
+[node name="Node_40_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 640
+offset_right = 708.4
+offset_bottom = 690
+text = "祭坛"
+[node name="Node_41_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 540
+offset_right = 191.6
+offset_bottom = 590
+text = "精英"
+[node name="Node_41_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 360
+offset_top = 540
+offset_right = 450
+offset_bottom = 590
+text = "精英"
+[node name="Node_41_2" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 540
+offset_right = 708.4
+offset_bottom = 590
+text = "精英"
+[node name="Node_42_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 440
+offset_right = 191.6
+offset_bottom = 490
+text = "酒馆"
+[node name="Node_42_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 440
+offset_right = 708.4
+offset_bottom = 490
+text = "商店"
+[node name="Node_43_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 340
+offset_right = 191.6
+offset_bottom = 390
+text = "战斗"
+[node name="Node_43_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 340
+offset_right = 708.4
+offset_bottom = 390
+text = "战斗"
+[node name="Node_44_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 101.6
+offset_top = 240
+offset_right = 191.6
+offset_bottom = 290
+text = "事件"
+[node name="Node_44_1" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 618.4
+offset_top = 240
+offset_right = 708.4
+offset_bottom = 290
+text = "酒馆"
+[node name="Node_45_0" type="Button" parent="MapScroll/Routes/Chapter3"]
+offset_left = 360
+offset_top = 140
+offset_right = 450
+offset_bottom = 190
+text = "首领"

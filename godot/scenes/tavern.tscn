@@ -1,0 +1,41 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://models/cabaret_editable.tscn" id="room"]
+[ext_resource type="PackedScene" path="res://scenes/dice.tscn" id="dice"]
+[sub_resource type="Environment" id="Env"]
+background_mode = 1
+background_color = Color(0.008,0.009,0.008,1)
+ambient_light_source = 3
+ambient_light_color = Color(0.33,0.39,0.34,1)
+ambient_light_energy = 0.28
+tonemap_mode = 0
+[node name="Tavern" type="Node3D"]
+[node name="Cabaret" parent="." instance=ExtResource("room")]
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(0,1.72,1.8)
+rotation = Vector3(-0.48,0,0)
+fov = 70.0
+near = 0.03
+current = true
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+[node name="PlayerDice" type="Node3D" parent="."]
+[node name="Die0" parent="PlayerDice" instance=ExtResource("dice")]
+position = Vector3(-0.36,0.86,0.28)
+scale = Vector3(0.32,0.32,0.32)
+[node name="Die1" parent="PlayerDice" instance=ExtResource("dice")]
+position = Vector3(0,0.86,0.28)
+scale = Vector3(0.32,0.32,0.32)
+[node name="Die2" parent="PlayerDice" instance=ExtResource("dice")]
+position = Vector3(0.36,0.86,0.28)
+scale = Vector3(0.32,0.32,0.32)
+[node name="EnemyDice" type="Node3D" parent="."]
+[node name="Die0" parent="EnemyDice" instance=ExtResource("dice")]
+position = Vector3(-0.36,0.86,-0.25)
+scale = Vector3(0.32,0.32,0.32)
+[node name="Die1" parent="EnemyDice" instance=ExtResource("dice")]
+position = Vector3(0,0.86,-0.25)
+scale = Vector3(0.32,0.32,0.32)
+[node name="Die2" parent="EnemyDice" instance=ExtResource("dice")]
+position = Vector3(0.36,0.86,-0.25)
+scale = Vector3(0.32,0.32,0.32)
+[editable path="Cabaret"]

@@ -1,0 +1,7 @@
+const fs=require('fs');const rate=22050;let seed=319;function noise(){seed=(seed*1664525+1013904223)>>>0;return seed/2147483648-1}
+function wav(name,duration,notes,kind){let len=Math.ceil(duration*rate),data=new Float64Array(len);for(let i=0;i<len;i++){let t=i/rate,v=0;for(const [start,hz,gain,decay] of notes){let u=t-start;if(u<0)continue;let e=Math.min(1,u/.003)*Math.exp(-u/decay);let tone=Math.sin(2*Math.PI*hz*u)+.32*Math.sin(2*Math.PI*hz*2.007*u)+.12*Math.sin(2*Math.PI*hz*3.98*u);v+=gain*e*tone;}
+if(kind==='wood'){for(const start of [0,.08,.155,.23,.31]){let u=t-start;if(u>=0)v+=.12*noise()*Math.exp(-u/.016)}}data[i]=v*Math.min(1,(duration-t)/.04)}let peak=Math.max(...data.map(Math.abs));let b=Buffer.alloc(44+len*2);b.write('RIFF');b.writeUInt32LE(b.length-8,4);b.write('WAVEfmt ',8);b.writeUInt32LE(16,16);b.writeUInt16LE(1,20);b.writeUInt16LE(1,22);b.writeUInt32LE(rate,24);b.writeUInt32LE(rate*2,28);b.writeUInt16LE(2,32);b.writeUInt16LE(16,34);b.write('data',36);b.writeUInt32LE(len*2,40);for(let i=0;i<len;i++)b.writeInt16LE(Math.round(data[i]/Math.max(1,peak)*24000),44+i*2);fs.writeFileSync('godot/audio/'+name+'.wav',b)}
+wav('hover',.15,[[0,1046.5,.15,.026],[.018,1108.7,.06,.022]]);
+wav('click',.34,[[0,261.63,.2,.07],[.025,369.99,.13,.08],[.045,523.25,.1,.055]],'wood');
+wav('roll',.62,[[0,130.81,.17,.04],[.09,155.56,.16,.05],[.19,185,.15,.045],[.31,246.94,.13,.08]],'wood');
+wav('reveal',.9,[[0,130.81,.2,.25],[.065,311.13,.18,.22],[.13,369.99,.14,.23],[.19,523.25,.15,.23]]);

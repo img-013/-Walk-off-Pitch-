@@ -1,0 +1,37 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/main.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/tavern.tscn" id="tavern"]
+[ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
+[ext_resource type="PackedScene" path="res://scenes/ui/MainMenu.tscn" id="MainMenu"]
+[ext_resource type="PackedScene" path="res://scenes/ui/RelicSelection.tscn" id="RelicSelection"]
+[ext_resource type="PackedScene" path="res://scenes/ui/MapScreen.tscn" id="MapScreen"]
+[ext_resource type="PackedScene" path="res://scenes/ui/BattleHUD.tscn" id="BattleHUD"]
+[ext_resource type="PackedScene" path="res://scenes/ui/ChoiceDialog.tscn" id="ChoiceDialog"]
+[ext_resource type="PackedScene" path="res://scenes/cabaret_filter.tscn" id="film"]
+[ext_resource type="PackedScene" path="res://scenes/cabaret_audio.tscn" id="audio"]
+[node name="WalkOffPitch" type="Node3D"]
+script = ExtResource("script")
+[node name="Tavern" parent="." instance=ExtResource("tavern")]
+[node name="Pages" type="CanvasLayer" parent="."]
+[node name="UI" type="Control" parent="Pages"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("theme")
+[node name="MainMenu" parent="Pages/UI" instance=ExtResource("MainMenu")]
+visible = true
+[node name="RelicSelection" parent="Pages/UI" instance=ExtResource("RelicSelection")]
+visible = false
+[node name="MapScreen" parent="Pages/UI" instance=ExtResource("MapScreen")]
+visible = false
+[node name="BattleHUD" parent="Pages/UI" instance=ExtResource("BattleHUD")]
+visible = false
+[node name="ChoiceDialog" parent="Pages/UI" instance=ExtResource("ChoiceDialog")]
+visible = false
+
+[node name="CabaretFilter" parent="." instance=ExtResource("film")]
+[node name="CabaretAudio" parent="." instance=ExtResource("audio")]

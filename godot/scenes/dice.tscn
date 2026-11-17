@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/die.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/default_die.tres" id="2"]
+[ext_resource type="ArrayMesh" path="res://models/die_mesh.tres" id="body"]
+[sub_resource type="QuadMesh" id="Face"]
+size = Vector2(0.56, 0.56)
+[node name="Dice" type="Node3D"]
+script = ExtResource("1")
+definition = ExtResource("2")
+[node name="DiceBody" type="Node3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="DiceBody"]
+scale = Vector3(0.65,0.65,0.65)
+mesh = ExtResource("body")
+[node name="Face0" type="MeshInstance3D" parent="DiceBody"]
+position = Vector3(0,0.327,0)
+rotation = Vector3(-1.5707963267948966,0,0)
+mesh = SubResource("Face")
+[node name="Face1" type="MeshInstance3D" parent="DiceBody"]
+position = Vector3(0,0,0.327)
+rotation = Vector3(0,0,0)
+mesh = SubResource("Face")
+[node name="Face2" type="MeshInstance3D" parent="DiceBody"]
+position = Vector3(0.327,0,0)
+rotation = Vector3(0,1.5707963267948966,0)
+mesh = SubResource("Face")
+[node name="Face3" type="MeshInstance3D" parent="DiceBody"]
+position = Vector3(-0.327,0,0)
+rotation = Vector3(0,-1.5707963267948966,0)
+mesh = SubResource("Face")
+[node name="Face4" type="MeshInstance3D" parent="DiceBody"]
+position = Vector3(0,0,-0.327)
+rotation = Vector3(0,3.141592653589793,0)
+mesh = SubResource("Face")
+[node name="Face5" type="MeshInstance3D" parent="DiceBody"]
+position = Vector3(0,-0.327,0)
+rotation = Vector3(1.5707963267948966,0,0)
+mesh = SubResource("Face")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
