@@ -181,7 +181,7 @@ func finish_current() -> void:
 func render_battle() -> void:
 	var s=game.s
 	var enabled=BattleProtocol.enabled(s)
-	for name in ["EarlyStop","TacticalButton","PublicPot","PotChips","WagerLabel","SpeedButton"]:ui(name).visible=enabled
+	for name in ["EarlyStop","TacticalButton","PotPanel","PublicPot","PotChips","WagerLabel","SpeedButton"]:ui(name).visible=enabled
 	ui("ProtocolButton").disabled=busy
 	ui("EarlyStop").disabled=busy or s.roll!=2
 	ui("TacticalButton").disabled=busy or s.roll<1 or s.roll>=3 or s.get("earlyStop",false) or s.get("tacticalTokens",0)==0
@@ -189,9 +189,10 @@ func render_battle() -> void:
 	ui("PublicPot").text="公共赌注 %d"%s.get("publicPot",0)
 	ui("PotChips").text="◈ ".repeat(int(s.get("publicPot",0))/2)
 	ui("WagerLabel").text="本轮赌局 · "+BattleProtocol.wager(s).get("name","")+"\n"+{"overwhelm":"有效领先 ≥4 获胜：额外伤害 +3","initiative":"第二掷提前收手并获胜：下轮护盾 +2","steal":"赌注 ≥4 并获胜：额外伤害 +2","narrow":"有效领先 1–3 获胜：战术筹码 +1"}.get(s.get("currentWager",""),"")
-	ui("EnemyPortrait").texture=portrait(s.enemy.id)
-	ui("HealthLabel").text="远征者  %d / %d                 护盾 %d  /  %d                 %s  %d / %d" % [s.hp,s.maxHp,last_result.get("playerShield",0),last_result.get("enemyShield",0),s.enemy.name,s.enemy.hp,s.enemy.maxHp]
-	ui("SharedHealth").value=100.0*(float(s.hp)/s.maxHp)/maxf(.001,float(s.hp)/s.maxHp+float(s.enemy.hp)/s.enemy.maxHp)
+	ui("HealthLabel").text="远征者  %d / %d    护盾 %d"%[s.hp,s.maxHp,last_result.get("playerShield",0)]
+	ui("EnemyHealthLabel").text="%s  %d / %d    护盾 %d"%[s.enemy.name,s.enemy.hp,s.enemy.maxHp,last_result.get("enemyShield",0)]
+	ui("PlayerHealth").value=100.0*s.hp/s.maxHp
+	ui("EnemyHealth").value=100.0*s.enemy.hp/s.enemy.maxHp
 	ui("RoundLabel").text="回合 %02d · %d / 3 掷" % [s.roundNumber,s.roll]
 	ui("IntentLabel").text=" · ".join(PackedStringArray(s.enemyIntent.lines))
 	ui("PlayerTotal").text="你的点数：%s" % (str(RulesEngine.total(s.pdice)) if s.roll else "—")

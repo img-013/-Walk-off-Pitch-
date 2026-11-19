@@ -1,14 +1,19 @@
 [gd_scene format=3]
 [ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
 [sub_resource type="StyleBoxFlat" id="glow"]
-bg_color = Color(0.6,0.4,0.12,0.04)
+bg_color = Color(0.7,0.08,0.12,0.12)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.95,0.76,0.35,0.8)
-shadow_color = Color(0.8,0.5,0.12,0.6)
-shadow_size = 12
+border_color = Color(0.98,0.94,0.9,1)
+shadow_color = Color(0.65,0.08,0.14,0.85)
+shadow_size = 20
+[sub_resource type="StyleBoxFlat" id="EnemyBar"]
+bg_color = Color(0.5,0.13,0.19,1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.8,0.45,0.48,1)
 [node name="BattleHUD" type="Control"]
 unique_name_in_owner = true
 layout_mode = 0
@@ -57,19 +62,19 @@ theme_override_constants/separation = 10
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 40
-offset_top = 170
-offset_right = 990
-offset_bottom = 202
+offset_top = 166
+offset_right = 600
+offset_bottom = 200
 text = "远征者 30 / 30                         对手 12 / 12"
 theme_override_font_sizes/font_size = 19
 
-[node name="SharedHealth" type="ProgressBar" parent="."]
+[node name="PlayerHealth" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 40
 offset_top = 207
-offset_right = 1235
-offset_bottom = 221
+offset_right = 600
+offset_bottom = 227
 value = 50.0
 show_percentage = false
 [node name="IntentLabel" type="Label" parent="."]
@@ -96,9 +101,9 @@ theme_override_font_sizes/font_size = 20
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 900
-offset_top = 365
-offset_right = 1200
-offset_bottom = 397
+offset_top = 420
+offset_right = 1235
+offset_bottom = 460
 text = "对手：—"
 theme_override_font_sizes/font_size = 19
 
@@ -115,8 +120,8 @@ theme_override_constants/separation = 12
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 900
-offset_top = 485
-offset_right = 1200
+offset_top = 477
+offset_right = 1235
 offset_bottom = 517
 text = "你的点数：—"
 theme_override_font_sizes/font_size = 19
@@ -182,16 +187,6 @@ offset_right = 1230
 offset_bottom = 779
 text = "骰面 / 规则查看"
 
-[node name="EnemyPortrait" type="TextureRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1150
-offset_top = 232
-offset_right = 1230
-offset_bottom = 328
-expand_mode = 1
-stretch_mode = 5
-mouse_filter = 2
 [node name="Rule0" type="Button" parent="RuleSlots"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -245,28 +240,39 @@ offset_right = 1100
 offset_bottom = 58
 text = "结算：正常"
 
+
+[node name="PotPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1000
+offset_top = 285
+offset_right = 1235
+offset_bottom = 410
+mouse_filter = 2
+
+
 [node name="PublicPot" type="Label" parent="."]
 layout_mode = 0
-offset_left = 520
-offset_top = 325
-offset_right = 760
-offset_bottom = 361
+offset_left = 1012
+offset_top = 297
+offset_right = 1223
+offset_bottom = 339
 mouse_filter = 2
 horizontal_alignment = 1
 text = "公共赌注 0"
-theme_override_colors/font_color = Color(0.85,0.69,0.38,1)
+theme_override_colors/font_color = Color(0.96,0.94,0.89,1)
 
+theme_override_font_sizes/font_size = 24
 [node name="PotChips" type="Label" parent="."]
 layout_mode = 0
-offset_left = 550
-offset_top = 365
-offset_right = 730
-offset_bottom = 411
+offset_left = 1012
+offset_top = 348
+offset_right = 1223
+offset_bottom = 392
 mouse_filter = 2
 horizontal_alignment = 1
 text = "◈ ◈ ◈"
 theme_override_font_sizes/font_size = 30
-theme_override_colors/font_color = Color(0.7,0.53,0.24,1)
+theme_override_colors/font_color = Color(0.74,0.23,0.29,1)
 
 [node name="WagerLabel" type="Label" parent="."]
 layout_mode = 0
@@ -297,28 +303,34 @@ text = "战术筹码 0 · 骰面 +1"
 
 [node name="SettlementText" type="Label" parent="."]
 layout_mode = 0
-offset_left = 420
-offset_top = 416
-offset_right = 860
-offset_bottom = 466
+offset_left = 280
+offset_top = 340
+offset_right = 1000
+offset_bottom = 455
 mouse_filter = 2
 horizontal_alignment = 1
 text = ""
-theme_override_font_sizes/font_size = 26
-theme_override_colors/font_color = Color(0.95,0.86,0.65,1)
+theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.96,0.94,0.89,1)
 
+theme_override_colors/font_outline_color = Color(0.025,0.015,0.02,1)
+theme_override_constants/outline_size = 12
+z_index = 15
 [node name="Contribution" type="Label" parent="."]
 layout_mode = 0
-offset_left = 420
-offset_top = 155
-offset_right = 860
-offset_bottom = 189
+offset_left = 280
+offset_top = 280
+offset_right = 980
+offset_bottom = 335
 mouse_filter = 2
 horizontal_alignment = 1
 text = ""
-theme_override_font_sizes/font_size = 22
-theme_override_colors/font_color = Color(0.96,0.78,0.38,1)
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.96,0.94,0.89,1)
 
+theme_override_colors/font_outline_color = Color(0.025,0.015,0.02,1)
+theme_override_constants/outline_size = 8
+z_index = 15
 [node name="TableFlash" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 390
@@ -326,7 +338,7 @@ offset_top = 405
 offset_right = 880
 offset_bottom = 525
 mouse_filter = 2
-color = Color(0.65,0.46,0.16,0)
+color = Color(0.55,0.06,0.1,0)
 
 [node name="SkipSettlement" type="Button" parent="."]
 layout_mode = 0
@@ -342,3 +354,26 @@ visible = false
 mouse_filter = 2
 z_index = 10
 theme_override_styles/panel = SubResource("glow")
+
+[node name="EnemyHealthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 680
+offset_top = 166
+offset_right = 1235
+offset_bottom = 200
+mouse_filter = 2
+horizontal_alignment = 2
+text = "敌方"
+theme_override_font_sizes/font_size = 20
+
+[node name="EnemyHealth" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 680
+offset_top = 207
+offset_right = 1235
+offset_bottom = 227
+mouse_filter = 2
+value = 100
+show_percentage = false
+fill_mode = 1
+theme_override_styles/fill = SubResource("EnemyBar")

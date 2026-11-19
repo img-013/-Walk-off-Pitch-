@@ -34,6 +34,7 @@ func play_result(result: Dictionary, rule_ids: Array) -> void:
 			tone+=1
 			var title=app.game.cards.get(ev.source_rule_id,{}).get("name","")
 			app.ui("Contribution").text="%s · %s %s%d"%[title,ev.label,"+" if ev.delta>0 else "",ev.delta]
+			app.ui("Contribution").add_theme_font_size_override("font_size",32 if app.ui("Contribution").text.length()<23 else 24)
 			sound(false)
 		elif ev.type=="CLIMAX_EVENT":
 			app.ui("Contribution").text="钉子一刻 · "+ev.label
@@ -49,6 +50,10 @@ func play_result(result: Dictionary, rule_ids: Array) -> void:
 		var enemy_home=enemy.position if enemy else Vector3.ZERO
 		var chips=app.ui("PotChips");var chips_home=chips.position
 		var burst=ev.type=="FINAL_DAMAGE" and result.climax_event.active
+		var hp_bar=app.ui("EnemyHealth" if result.win else "PlayerHealth")
+		var hp_before=float(hp_bar.value)
+		var hp_after=100.0*app.game.s.enemy.hp/app.game.s.enemy.maxHp if result.win else 100.0*app.game.s.hp/app.game.s.maxHp
+		if ev.type=="FINAL_DAMAGE":app.ui("SettlementText").text=("造成" if result.win else "受到")+"  %d  点伤害"%result.diff if result.win or result.lost else "平局"
 		var elapsed=0.0
 		while elapsed<step and not skip_requested:
 			elapsed+=get_process_delta_time()
@@ -59,13 +64,14 @@ func play_result(result: Dictionary, rule_ids: Array) -> void:
 				app.ui("CardGlow").size=card.size
 				app.ui("CardGlow").modulate.a=pulse
 				card.pivot_offset=card.size/2;card.scale=Vector2.ONE*(1.0+float(cfg.card_scale)*pulse)
-				card.modulate=Color.WHITE.lerp(Color(1.4,1.16,.68),pulse)
+				card.modulate=Color.WHITE.lerp(Color(1.5,1.35,1.3),pulse)
 				card.rotation=sin(t*TAU*2)*float(cfg.card_shake)*pulse
 			if ev.resource=="score" and label is Label:
 				label.text=("敌方 " if ev.ui_element=="EnemyTotal" else "你的点数 ")+str(roundi(lerpf(ev.before,ev.after,1-pow(1-t,3))))
 			if ev.type=="PUBLIC_POT_ADD":chips.position=chips_home+Vector2(0,-float(cfg.chip_drop)*(1-t));chips.text="◈ ".repeat(int(result.potAfter)/2)
 			if ev.type=="PUBLIC_POT_PAYOUT":chips.position=chips_home+Vector2(0,float(cfg.chip_flight) if result.win else -float(cfg.chip_flight))*t;chips.modulate.a=1-t
 			if ev.type=="FINAL_DAMAGE":
+				hp_bar.value=lerpf(hp_before,hp_after,1-pow(1-t,3))
 				app.ui("SettlementText").pivot_offset=app.ui("SettlementText").size/2
 				app.ui("SettlementText").scale=Vector2.ONE*(1+pulse*(float(cfg.climax_scale) if burst else float(cfg.damage_scale)))
 				if burst:
@@ -73,7 +79,7 @@ func play_result(result: Dictionary, rule_ids: Array) -> void:
 					app.ui("TableFlash").color.a=float(cfg.flash_alpha)*pulse
 					if enemy and result.win:enemy.position=enemy_home+Vector3(0,0,-float(cfg.enemy_recoil)*pulse)
 					for i in range(rule_ids.size()):
-						if app.game.cards[rule_ids[i]].slot=="core":app.ui("RuleSlots").get_child(i).modulate=Color.WHITE.lerp(Color(1.5,1.15,.55),pulse)
+						if app.game.cards[rule_ids[i]].slot=="core":app.ui("RuleSlots").get_child(i).modulate=Color.WHITE.lerp(Color(1.6,1.1,1.1),pulse)
 			await get_tree().process_frame
 		app.ui("CardGlow").hide()
 		if card:card.scale=Vector2.ONE;card.rotation=0;card.modulate=Color.WHITE
@@ -81,9 +87,10 @@ func play_result(result: Dictionary, rule_ids: Array) -> void:
 		if enemy:enemy.position=enemy_home
 		chips.position=chips_home;chips.modulate=Color.WHITE
 		app.ui("TableFlash").color.a=0;app.ui("SettlementText").scale=Vector2.ONE
+		if ev.type=="FINAL_DAMAGE":hp_bar.value=hp_after
 	# Skip and normal paths end at the same authoritative snapshot.
 	app.ui("PlayerTotal").text="结算：%d"%result.p;app.ui("EnemyTotal").text="结算：%d"%result.e
-	app.ui("SettlementText").text=("造成" if result.win else "受到")+" %d 伤害"%result.diff if result.win or result.lost else "真正平局 · 公共赌注 %d"%result.potAfter
+	app.ui("SettlementText").text=""
 	app.ui("PublicPot").text="公共赌注 %d"%result.potAfter
 	app.ui("PotChips").text="◈ ".repeat(int(result.potAfter)/2)
 	app.ui("Contribution").text=""

@@ -18,3 +18,7 @@
 默认滤镜为 12 级黑白灰阶、2.5 像素采样、有序抖动、轮廓压暗与暗角。滤镜在 UI 下方，文字保持清晰。设置中可以关闭滤镜查看琥珀烛光、灰绿环境光和暗红边光。烛火只作小幅连续波动，不使用突发闪屏。
 
 滤镜实现遵循 [Godot 屏幕采样说明](https://docs.godotengine.org/en/stable/tutorials/shaders/screen-reading_shaders.html)，音乐循环使用 [AudioStreamMP3.loop](https://docs.godotengine.org/en/stable/classes/class_audiostreammp3.html)。
+
+## UI pixel serif font
+RenOuFangSong 16 v1.1.1 by yzdnn, KH Dot lineage. Source: https://github.com/yzdnn/RenOuFangSong-16 . Unmodified font bundled under SIL OFL 1.1; license at art/fonts/OFL.txt. Imported without antialiasing for crisp pixel glyphs.
+
