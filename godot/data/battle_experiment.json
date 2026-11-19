@@ -1,0 +1,74 @@
+{
+  "battle_experiment_enabled": false,
+  "pot_step": 2,
+  "pot_cap": 6,
+  "minimum_damage": 3,
+  "extra_cap": 6,
+  "tactical_cap": 2,
+  "tactical_effect": {
+    "kind": "increment",
+    "amount": 1,
+    "maximum": 6
+  },
+  "climax_damage": 12,
+  "climax_pot": 4,
+  "climax_rules": 3,
+  "wagers": {
+    "overwhelm": {
+      "name": "压倒",
+      "gap": 4,
+      "damage": 3
+    },
+    "initiative": {
+      "name": "先手",
+      "roll": 2,
+      "shield": 2
+    },
+    "steal": {
+      "name": "夺注",
+      "pot": 4,
+      "damage": 2
+    },
+    "narrow": {
+      "name": "险胜",
+      "min_gap": 1,
+      "max_gap": 3,
+      "tokens": 1
+    }
+  },
+  "enemy_pools": {
+    "E001": [
+      "overwhelm",
+      "initiative"
+    ],
+    "E005": [
+      "steal",
+      "narrow"
+    ]
+  },
+  "default_pool": [
+    "overwhelm",
+    "initiative",
+    "steal",
+    "narrow"
+  ],
+  "presentation": {
+    "normal_step": 0.21,
+    "pause": 0.035,
+    "fast_scale": 0.38,
+    "max_duration": 2.5,
+    "climax_pause": 0.1,
+    "card_scale": 0.12,
+    "card_shake": 0.012,
+    "damage_scale": 0.12,
+    "climax_scale": 0.48,
+    "table_shake": 0.018,
+    "enemy_recoil": 0.09,
+    "flash_alpha": 0.15,
+    "pitch_step": 0.055,
+    "max_pitch": 1.5,
+    "climax_pitch": 0.8,
+    "chip_flight": 130,
+    "chip_drop": 35
+  }
+}

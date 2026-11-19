@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var battle_experiment_enabled: bool = BattleProtocol.config.battle_experiment_enabled
 @export var animation_speed: float = 1.0
 var game = RunState.new()
 var busy = false
@@ -15,6 +16,14 @@ func ui(node_name: String) -> Node:
 	return $Pages/UI.find_child(node_name, true, false)
 
 func _ready() -> void:
+	get_viewport().physics_object_picking=true
+	game.battle_experiment_enabled=battle_experiment_enabled
+	ui("ProtocolButton").pressed.connect(protocol_debug)
+	ui("SpeedButton").pressed.connect(cycle_settlement_speed)
+	ui("SkipSettlement").pressed.connect(func():$SettlementPresenter.skip())
+	ui("EarlyStop").pressed.connect(func():
+		if not busy and game.stop_early():update_dice({},false);settle_round())
+	ui("TacticalButton").pressed.connect(tactical_menu)
 	portrait_regions=JSON.parse_string(FileAccess.get_file_as_string("res://data/portraits.json"))
 	for c in game.cards.values():
 		if c.slot=="core":relics.append(c.id)
@@ -34,7 +43,8 @@ func _ready() -> void:
 	ui("EnemyDetails").pressed.connect(enemy_details)
 	ui("DiceDetails").pressed.connect(collection)
 	for i in range(3):
-		ui("LockButtons").get_child(i).pressed.connect(func():toggle_lock(i))
+		$Tavern/PlayerDice.get_child(i).get_node("ClickArea").input_event.connect(func(_camera,event,_position,_normal,_shape):
+			if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and event.pressed and current_page=="BattleHUD" and not ui("ChoiceDialog").visible:toggle_lock(i))
 	for i in range(6):
 		ui("RuleSlots").get_child(i).pressed.connect(func():show_rule_slot(i))
 	for n in game.map:
@@ -71,7 +81,7 @@ func modal(title: String, text: String, options: Array) -> void:
 		b.pressed.connect(func():ui("ChoiceDialog").hide();action.call())
 		ui("ChoiceButtons").add_child(b)
 	ui("ChoiceDialog").show()
-	if ui("ChoiceButtons").get_child_count():ui("ChoiceButtons").get_child(0).grab_focus()
+	get_viewport().gui_release_focus()
 
 func close_dialog() -> void:
 	ui("ChoiceDialog").hide()
@@ -106,7 +116,7 @@ func begin_run() -> void:
 	game.fresh(relics[relic_index]);game.s.phase="opening_reward";game.offer();game.save()
 	show_page("MapScreen")
 	if not FileAccess.file_exists("user://tutorial_seen.txt"):
-		modal("命运本身", "欢迎来到赌桌。\n\n每回合投掷三次。第一次投掷后，点击锁骰按钮保留点数；第三次后揭晓胜负。永久规则自动触发，双方点数差决定伤害。\n\n你的旅程，从第一条规则开始。",[["记住规则 · 选择起始牌",func():
+		modal("命运本身", "欢迎来到赌桌。\n\n每回合投掷三次。第一次投掷后，单击骰子锁定或解锁，锁图标表示保留；第三次后揭晓胜负。永久规则自动触发，双方点数差决定伤害。\n\n你的旅程，从第一条规则开始。",[["记住规则 · 选择起始牌",func():
 			var file=FileAccess.open("user://tutorial_seen.txt",FileAccess.WRITE);file.store_string("1");show_reward(true)]])
 		ui("DialogPortrait").texture=portrait("B003");ui("DialogPortrait").show()
 	else:show_reward(true)
@@ -170,6 +180,15 @@ func finish_current() -> void:
 
 func render_battle() -> void:
 	var s=game.s
+	var enabled=BattleProtocol.enabled(s)
+	for name in ["EarlyStop","TacticalButton","PublicPot","PotChips","WagerLabel","SpeedButton"]:ui(name).visible=enabled
+	ui("ProtocolButton").disabled=busy
+	ui("EarlyStop").disabled=busy or s.roll!=2
+	ui("TacticalButton").disabled=busy or s.roll<1 or s.roll>=3 or s.get("earlyStop",false) or s.get("tacticalTokens",0)==0
+	ui("TacticalButton").text="战术筹码 %d · 骰面 +1"%s.get("tacticalTokens",0)
+	ui("PublicPot").text="公共赌注 %d"%s.get("publicPot",0)
+	ui("PotChips").text="◈ ".repeat(int(s.get("publicPot",0))/2)
+	ui("WagerLabel").text="本轮赌局 · "+BattleProtocol.wager(s).get("name","")+"\n"+{"overwhelm":"有效领先 ≥4 获胜：额外伤害 +3","initiative":"第二掷提前收手并获胜：下轮护盾 +2","steal":"赌注 ≥4 并获胜：额外伤害 +2","narrow":"有效领先 1–3 获胜：战术筹码 +1"}.get(s.get("currentWager",""),"")
 	ui("EnemyPortrait").texture=portrait(s.enemy.id)
 	ui("HealthLabel").text="远征者  %d / %d                 护盾 %d  /  %d                 %s  %d / %d" % [s.hp,s.maxHp,last_result.get("playerShield",0),last_result.get("enemyShield",0),s.enemy.name,s.enemy.hp,s.enemy.maxHp]
 	ui("SharedHealth").value=100.0*(float(s.hp)/s.maxHp)/maxf(.001,float(s.hp)/s.maxHp+float(s.enemy.hp)/s.enemy.maxHp)
@@ -177,7 +196,7 @@ func render_battle() -> void:
 	ui("IntentLabel").text=" · ".join(PackedStringArray(s.enemyIntent.lines))
 	ui("PlayerTotal").text="你的点数：%s" % (str(RulesEngine.total(s.pdice)) if s.roll else "—")
 	ui("EnemyTotal").text="对手点数：%s" % (str(RulesEngine.total(s.edice)) if s.roll else "—")
-	ui("RollButton").disabled=busy or s.roll>=3 or (s.enemyIntent.tax and not s.enemyMemory.has("tax"))
+	ui("RollButton").disabled=busy or s.get("earlyStop",false) or s.roll>=3 or (s.enemyIntent.tax and not s.enemyMemory.has("tax"))
 	ui("SettleButton").disabled=busy or s.roll!=3
 	ui("BattleMenu").disabled=busy
 	for i in range(3):
@@ -186,7 +205,7 @@ func render_battle() -> void:
 		$Tavern/PlayerDice.get_child(i).set_locked(s.locked[i])
 	for i in range(6):
 		var b=ui("RuleSlots").get_child(i)
-		b.disabled=i>=s.rules.size()
+		b.disabled=busy or i>=s.rules.size()
 		b.text=game.cards[s.rules[i]].name if i<s.rules.size() else "空规则位"
 		b.tooltip_text=game.cards[s.rules[i]].description if i<s.rules.size() else ""
 	clear_children(ui("EnemyActions"))
@@ -206,12 +225,13 @@ func portrait(id: String) -> AtlasTexture:
 	return texture
 
 func enemy_button(text: String, kind: String, disabled: bool=false) -> void:
-	var b=Button.new();b.text=text;b.disabled=disabled or busy
+	var b=preload("res://scenes/ui/ChoiceButton.tscn").instantiate();b.text=text;b.disabled=disabled or busy
 	b.pressed.connect(func():if not busy and game.enemy_choice(kind):game.save();render_battle())
 	ui("EnemyActions").add_child(b)
 
 func toggle_lock(i: int) -> void:
-	if not busy and game.lock_die(i):game.save();render_battle()
+	if not busy and game.lock_die(i):
+		$CabaretAudio.play("Click");game.save();render_battle()
 
 func update_dice(masks: Dictionary, animate: bool) -> void:
 	for i in range(3):
@@ -230,7 +250,7 @@ func roll_dice() -> void:
 	if busy:return
 	var masks=game.roll()
 	if masks.is_empty():return
-	busy=true;render_battle();update_dice(masks,true)
+	busy=true;ui("SettlementText").text="";render_battle();update_dice(masks,true)
 	ui("PlayerTotal").text="骰子滚动中…";ui("EnemyTotal").text="…"
 	await get_tree().create_timer(.85/animation_speed).timeout
 	busy=false
@@ -238,8 +258,10 @@ func roll_dice() -> void:
 	game.save();render_battle()
 
 func settle_round() -> void:
-	if busy or game.s.roll!=3:return
+	if busy or (game.s.roll!=3 and not (BattleProtocol.enabled(game.s) and game.s.get("earlyStop",false))):return
 	busy=true;render_battle()
+	var rule_ids=game.s.rules.duplicate()
+	var experimental=BattleProtocol.enabled(game.s)
 	var result=game.settle()
 	if result.is_empty():busy=false;return
 	last_result=result
@@ -247,8 +269,11 @@ func settle_round() -> void:
 	log_lines.append("最终 %d : %d · %s %d 伤害" % [result.p,result.e,"造成" if result.win else "受到",result.diff])
 	while log_lines.size()>40:log_lines.remove_at(0)
 	ui("BattleLog").text="\n".join(log_lines)
-	ui("PlayerTotal").text="结算：%d" % result.p;ui("EnemyTotal").text="结算：%d" % result.e
-	await get_tree().create_timer(.65/animation_speed).timeout
+	game.save() # Commit once before any animation; skipping cannot repeat a reward.
+	if experimental:await $SettlementPresenter.play_result(result,rule_ids)
+	else:
+		ui("PlayerTotal").text="结算：%d" % result.p;ui("EnemyTotal").text="结算：%d" % result.e
+		await get_tree().create_timer(.65/animation_speed).timeout
 	busy=false
 	if game.s.phase=="defeat":modal("此行止步于此","赌局结束。下一次，走一条不同的路。",[["返回首页",func():show_page("MainMenu")]]);return
 	if game.s.phase=="victory":game.save();victory();return
@@ -331,6 +356,7 @@ func settings() -> void:
 		["背景音乐："+("开" if $CabaretAudio.music_enabled else "关"),func():$CabaretAudio.toggle_music();settings()],
 		["按键音效："+("开" if $CabaretAudio.effects_enabled else "关"),func():$CabaretAudio.toggle_effects();settings()],
 		["黑白像素滤镜："+("开" if $CabaretFilter.visible else "关"),func():$CabaretFilter.visible=not $CabaretFilter.visible;settings()],
+		["赌桌协议实验 / 调试",protocol_debug],
 		["标准投掷速度",func():animation_speed=1.0],
 		["快速投掷",func():animation_speed=2.5],
 		["切换全屏",func():DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if DisplayServer.window_get_mode()==DisplayServer.WINDOW_MODE_FULLSCREEN else DisplayServer.WINDOW_MODE_FULLSCREEN)],
@@ -340,3 +366,47 @@ func show_rule_slot(index: int) -> void:
 	if index>=game.s.rules.size():return
 	var c=game.cards[game.s.rules[index]]
 	modal(c.name,c.description,[["返回赌桌",close_dialog]])
+
+
+func cycle_settlement_speed() -> void:
+	$SettlementPresenter.speed=($SettlementPresenter.speed+1)%3
+	ui("SpeedButton").text="结算："+["正常","快速","跳过"][$SettlementPresenter.speed]
+	if $SettlementPresenter.speed==2:$SettlementPresenter.skip()
+
+func tactical_menu() -> void:
+	if busy:return
+	var options=[]
+	for i in range(3):options.append(["第 %d 骰：%d → %d"%[i+1,game.s.pdice[i],mini(6,game.s.pdice[i]+1)],func():
+		if game.use_tactical(i):game.save();update_dice({},false);render_battle(),game.s.pdice[i]>=6])
+	options.append(["返回",close_dialog]);modal("使用战术筹码","消耗 1 枚，只改变本轮当前骰面。",options)
+
+func protocol_debug() -> void:
+	if busy:return
+	var active=not game.s.is_empty() and game.s.get("phase","")=="battle"
+	var enabled=BattleProtocol.enabled(game.s) if not game.s.is_empty() else game.battle_experiment_enabled
+	var options=[]
+	options.append(["赌桌协议："+("开启" if enabled else "关闭"),func():
+		game.battle_experiment_enabled=not enabled
+		if not game.s.is_empty():
+			game.s.battle_experiment_enabled=not enabled
+			if enabled:game.s.carryShield=maxi(0,game.s.get("carryShield",0)-game.s.get("protocolShield",0));game.s.protocolShield=0
+			game.s.publicPot=0;game.s.tacticalTokens=0;game.s.debugTie=false;game.s.debugClimax=false
+			if active:game.s.currentWager=BattleProtocol.choose(game.s);render_battle()
+			game.save()
+		protocol_debug(),active and game.s.roll!=0])
+	if active and enabled:
+		options.append(["敌人赌局：自动按池轮换",func():game.s.debugWager="";game.s.currentWager=BattleProtocol.choose(game.s);render_battle();protocol_debug()])
+		for id in BattleProtocol.config.wagers:
+			options.append(["指定赌局 · "+BattleProtocol.config.wagers[id].name,func():game.s.debugWager=id;game.s.currentWager=id;render_battle();protocol_debug()])
+		for amount in range(0,int(BattleProtocol.config.pot_cap)+1,int(BattleProtocol.config.pot_step)):options.append(["公共赌注设为 %d"%amount,func():game.s.publicPot=amount;render_battle();protocol_debug()])
+		options.append(["下一次比较强制同分（保留平局判胜）",func():game.s.debugTie=true;close_dialog()])
+		options.append(["下一次强制演出爆发（不加伤害）",func():game.s.debugClimax=true;close_dialog()])
+	options.append(["结算速度："+["正常","快速","跳过"][$SettlementPresenter.speed],func():cycle_settlement_speed();protocol_debug()])
+	options.append(["查看上次实际事件",show_settlement_events])
+	options.append(["返回",close_dialog])
+	modal("赌桌协议 1.0 · 实验调试","开关默认关闭，仅可在回合投骰前切换。切换时清空实验筹码。调试同分与强制爆发为一次性。",options)
+
+func show_settlement_events() -> void:
+	var lines: PackedStringArray=[]
+	for e in last_result.get("events",[]):lines.append("%s · %s · %s: %s %+d → %s"%[e.type,e.source_rule_id,e.resource,str(e.before),int(e.delta),str(e.after)])
+	modal("实际结算事件", "\n".join(lines) if not lines.is_empty() else "尚未结算。",[["返回",protocol_debug]])

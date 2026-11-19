@@ -1303,3 +1303,4 @@ mesh = SubResource("ArrayMesh_8jlju")
 
 [node name="WallsLevel2" type="MeshInstance3D" parent="." unique_id=1550765662]
 mesh = SubResource("ArrayMesh_t8o5f")
+

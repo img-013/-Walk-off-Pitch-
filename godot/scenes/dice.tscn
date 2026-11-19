@@ -2,6 +2,9 @@
 [ext_resource type="Script" path="res://scripts/die.gd" id="1"]
 [ext_resource type="Resource" path="res://resources/default_die.tres" id="2"]
 [ext_resource type="ArrayMesh" path="res://models/die_mesh.tres" id="body"]
+[ext_resource type="Texture2D" path="res://art/dice_lock.svg" id="lock"]
+[sub_resource type="BoxShape3D" id="PickBox"]
+size = Vector3(1.1,1.1,1.1)
 [sub_resource type="QuadMesh" id="Face"]
 size = Vector2(0.56, 0.56)
 [node name="Dice" type="Node3D"]
@@ -36,3 +39,18 @@ position = Vector3(0,-0.327,0)
 rotation = Vector3(1.5707963267948966,0,0)
 mesh = SubResource("Face")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ClickArea" type="Area3D" parent="."]
+input_ray_pickable = true
+collision_layer = 2
+collision_mask = 0
+[node name="PickShape" type="CollisionShape3D" parent="ClickArea"]
+shape = SubResource("PickBox")
+[node name="LockIcon" type="Sprite3D" parent="."]
+visible = false
+position = Vector3(0,0.85,0)
+texture = ExtResource("lock")
+pixel_size = 0.017
+billboard = 1
+no_depth_test = true
+shaded = false

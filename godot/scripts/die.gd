@@ -9,6 +9,7 @@ extends Node3D
 		if is_node_ready():update_faces()
 @export_range(0.1, 2.0) var roll_duration: float = 0.72
 @export_range(0.05, 1.5) var bounce_height: float = 0.23
+var is_locked: bool = false
 var tween: Tween
 var home: Vector3
 const ROTATIONS = [Vector3.ZERO, Vector3(-PI/2,0,0), Vector3(0,0,PI/2), Vector3(0,0,-PI/2), Vector3(PI/2,0,0), Vector3(PI,0,0)]
@@ -33,6 +34,8 @@ func update_faces() -> void:
 		material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 		material.roughness = 1.0
 		get_node("DiceBody/Face%d" % i).material_override = material
+
+	set_locked(is_locked)
 
 func change_face(index: int, value: int, symbol: String = "") -> void:
 	if index < 0 or index > 5 or value < 1 or value > 6: return
@@ -62,6 +65,10 @@ func roll_to(face_index: int, animate: bool = true) -> void:
 	tween.chain().tween_callback(func(): $DiceBody.rotation = target)
 
 func set_locked(locked: bool) -> void:
+	is_locked=locked
+	if has_node("LockIcon"):$LockIcon.visible=locked
 	var mat = $DiceBody/Mesh.material_override as StandardMaterial3D
 	if mat:
-		mat.albedo_color = Color(0.65,0.85,0.55) if locked else Color.WHITE
+		mat.albedo_color = Color(0.3,0.65,0.9) if locked else Color.WHITE
+		mat.emission_enabled=locked
+		mat.emission=Color(0.16,0.3,0.45) if locked else Color.BLACK

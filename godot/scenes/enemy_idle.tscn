@@ -1,0 +1,30 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/enemy_idle.gd" id="script"]
+[ext_resource type="Shader" path="res://shaders/idle_video.gdshader" id="shader"]
+[ext_resource type="VideoStream" path="res://video/thief_idle.ogv" id="video"]
+[ext_resource type="Texture2D" path="res://video/thief-preview.png" id="poster"]
+[sub_resource type="ShaderMaterial" id="Material"]
+resource_local_to_scene = true
+shader = ExtResource("shader")
+shader_parameter/video_texture = ExtResource("poster")
+[sub_resource type="QuadMesh" id="Screen"]
+size = Vector2(3.2,1.8)
+[node name="EnemyIdle" type="Node3D"]
+script = ExtResource("script")
+[node name="Portrait" type="MeshInstance3D" parent="."]
+material_override = SubResource("Material")
+mesh = SubResource("Screen")
+cast_shadow = 0
+[node name="VideoViewport" type="SubViewport" parent="."]
+size = Vector2i(910,512)
+disable_3d = true
+render_target_update_mode = 4
+[node name="IdleVideo" type="VideoStreamPlayer" parent="VideoViewport"]
+offset_right = 910.0
+offset_bottom = 512.0
+stream = ExtResource("video")
+autoplay = true
+loop = true
+expand = true
+volume_db = -80.0
+mouse_filter = 2

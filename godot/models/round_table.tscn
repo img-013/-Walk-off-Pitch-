@@ -83,3 +83,4 @@ mesh = SubResource("ArrayMesh_kqsvt")
 
 [node name="round_wooden_table_01_bolts" type="MeshInstance3D" parent="." unique_id=1067138800]
 mesh = SubResource("ArrayMesh_wo33x")
+

@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/ChoiceDialog.tscn" id="ChoiceDialog"]
 [ext_resource type="PackedScene" path="res://scenes/cabaret_filter.tscn" id="film"]
 [ext_resource type="PackedScene" path="res://scenes/cabaret_audio.tscn" id="audio"]
+[ext_resource type="Script" path="res://scripts/settlement_presenter.gd" id="presenter"]
 [node name="WalkOffPitch" type="Node3D"]
 script = ExtResource("script")
 [node name="Tavern" parent="." instance=ExtResource("tavern")]
@@ -35,3 +36,9 @@ visible = false
 
 [node name="CabaretFilter" parent="." instance=ExtResource("film")]
 [node name="CabaretAudio" parent="." instance=ExtResource("audio")]
+
+[node name="SettlementPresenter" type="Node" parent="."]
+script = ExtResource("presenter")
+
+[node name="Impact" type="AudioStreamPlayer" parent="SettlementPresenter"]
+max_polyphony = 2

@@ -1,5 +1,14 @@
 [gd_scene format=3]
 [ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
+[sub_resource type="StyleBoxFlat" id="glow"]
+bg_color = Color(0.6,0.4,0.12,0.04)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95,0.76,0.35,0.8)
+shadow_color = Color(0.8,0.5,0.12,0.6)
+shadow_size = 12
 [node name="BattleHUD" type="Control"]
 unique_name_in_owner = true
 layout_mode = 0
@@ -94,6 +103,7 @@ text = "对手：—"
 theme_override_font_sizes/font_size = 19
 
 [node name="LockButtons" type="HBoxContainer" parent="."]
+visible = false
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 410
@@ -218,3 +228,117 @@ text = "锁骰 2"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "锁骰 3"
+
+[node name="ProtocolButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 790
+offset_top = 24
+offset_right = 940
+offset_bottom = 58
+text = "赌桌协议 / 调试"
+
+[node name="SpeedButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 950
+offset_top = 24
+offset_right = 1100
+offset_bottom = 58
+text = "结算：正常"
+
+[node name="PublicPot" type="Label" parent="."]
+layout_mode = 0
+offset_left = 520
+offset_top = 325
+offset_right = 760
+offset_bottom = 361
+mouse_filter = 2
+horizontal_alignment = 1
+text = "公共赌注 0"
+theme_override_colors/font_color = Color(0.85,0.69,0.38,1)
+
+[node name="PotChips" type="Label" parent="."]
+layout_mode = 0
+offset_left = 550
+offset_top = 365
+offset_right = 730
+offset_bottom = 411
+mouse_filter = 2
+horizontal_alignment = 1
+text = "◈ ◈ ◈"
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.7,0.53,0.24,1)
+
+[node name="WagerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40
+offset_top = 332
+offset_right = 430
+offset_bottom = 404
+mouse_filter = 2
+text = "本轮赌局"
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 17
+
+[node name="EarlyStop" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40
+offset_top = 540
+offset_right = 270
+offset_bottom = 580
+text = "提前收手（第二掷）"
+
+[node name="TacticalButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 280
+offset_top = 540
+offset_right = 510
+offset_bottom = 580
+text = "战术筹码 0 · 骰面 +1"
+
+[node name="SettlementText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420
+offset_top = 416
+offset_right = 860
+offset_bottom = 466
+mouse_filter = 2
+horizontal_alignment = 1
+text = ""
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.95,0.86,0.65,1)
+
+[node name="Contribution" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420
+offset_top = 155
+offset_right = 860
+offset_bottom = 189
+mouse_filter = 2
+horizontal_alignment = 1
+text = ""
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.96,0.78,0.38,1)
+
+[node name="TableFlash" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 390
+offset_top = 405
+offset_right = 880
+offset_bottom = 525
+mouse_filter = 2
+color = Color(0.65,0.46,0.16,0)
+
+[node name="SkipSettlement" type="Button" parent="."]
+layout_mode = 0
+offset_left = 550
+offset_top = 485
+offset_right = 730
+offset_bottom = 525
+visible = false
+text = "跳过结算 ▶▶"
+
+[node name="CardGlow" type="Panel" parent="."]
+visible = false
+mouse_filter = 2
+z_index = 10
+theme_override_styles/panel = SubResource("glow")
