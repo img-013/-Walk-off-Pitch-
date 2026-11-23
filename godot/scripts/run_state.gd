@@ -41,7 +41,7 @@ func capacity() -> int:
 
 func start_battle(id: String) -> void:
 	s.phase="battle";s.enemy=enemies[id].duplicate(true);s.enemy.id=id;s.enemy.maxHp=s.enemy.hp
-	s.protocolShield=0;s.publicPot=0;s.tacticalTokens=0;s.earlyStop=false;s.lastSettledRound=0
+	s.lastScores=[0,0];s.protocolShield=0;s.publicPot=0;s.tacticalTokens=0;s.earlyStop=false;s.lastSettledRound=0
 	s.roundNumber=1;s.battleLosses=0;s.battleCardGold=0;s.battleHealing=0;s.cardGold={};s.cardHealing={};s.used={};s.carryAdv=0;s.carryShield=0;s.openingAdv=s.spendBank;s.spendBank=0;s.openingDebt=s.nextBattleDebt;s.nextBattleDebt=0;s.previousLockSignature=""
 	s.enemyMemory={"streak":0,"schools":{},"suppress":""}
 	s.pdice=[1,1,1];s.edice=[]
@@ -111,6 +111,7 @@ func settle() -> Dictionary:
 	if s.phase!="battle" or (s.roll!=3 and not (BattleProtocol.enabled(s) and s.roll==2 and s.get("earlyStop",false))) or s.get("lastSettledRound",0)==s.roundNumber:return {}
 	var r=RulesEngine.evaluate(s,cards)
 	s.lastSettledRound=s.roundNumber
+	s.lastScores=[r.p,r.e]
 	s.protocolShield=r.wagerShield
 	if BattleProtocol.enabled(s):s.publicPot=r.potAfter;s.tacticalTokens=mini(BattleProtocol.config.tactical_cap,s.get("tacticalTokens",0)+r.tacticalGain)
 	s.debugTie=false;s.debugClimax=false

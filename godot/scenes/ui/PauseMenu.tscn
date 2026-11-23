@@ -1,0 +1,122 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="script"]
+[ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 20
+script = ExtResource("script")
+[node name="Root" type="Control" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("theme")
+[node name="Dim" type="ColorRect" parent="Root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0,0,0,0.78)
+[node name="Panel" type="Panel" parent="Root"]
+offset_left = 390
+offset_top = 120
+offset_right = 890
+offset_bottom = 710
+[node name="Title" type="Label" parent="Root"]
+offset_left = 425
+offset_top = 145
+offset_right = 855
+offset_bottom = 190
+text = "远征菜单"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+[node name="Save" type="Button" parent="Root"]
+offset_left = 425
+offset_top = 220
+offset_right = 855
+offset_bottom = 270
+text = "保存游戏"
+[node name="Settings" type="Button" parent="Root"]
+offset_left = 425
+offset_top = 285
+offset_right = 855
+offset_bottom = 335
+text = "设置 / 声音"
+[node name="Home" type="Button" parent="Root"]
+offset_left = 425
+offset_top = 350
+offset_right = 855
+offset_bottom = 400
+text = "返回主页"
+[node name="Quit" type="Button" parent="Root"]
+offset_left = 425
+offset_top = 415
+offset_right = 855
+offset_bottom = 465
+text = "退出游戏"
+[node name="Resume" type="Button" parent="Root"]
+offset_left = 425
+offset_top = 600
+offset_right = 855
+offset_bottom = 650
+text = "返回游戏"
+[node name="Yes" type="Button" parent="Root"]
+offset_left = 425
+offset_top = 470
+offset_right = 855
+offset_bottom = 520
+text = "确认"
+[node name="No" type="Button" parent="Root"]
+offset_left = 425
+offset_top = 535
+offset_right = 855
+offset_bottom = 585
+text = "取消"
+[node name="Notice" type="Label" parent="Root"]
+offset_left = 425
+offset_top = 190
+offset_right = 855
+offset_bottom = 255
+text = ""
+autowrap_mode = 2
+horizontal_alignment = 1
+[node name="MasterLabel" type="Label" parent="Root"]
+offset_left = 425
+offset_top = 270
+offset_right = 855
+offset_bottom = 300
+text = "主要音量"
+[node name="Master" type="HSlider" parent="Root"]
+offset_left = 425
+offset_top = 305
+offset_right = 855
+offset_bottom = 337
+max_value = 100.0
+step = 1.0
+value = 100.0
+[node name="MusicLabel" type="Label" parent="Root"]
+offset_left = 425
+offset_top = 365
+offset_right = 855
+offset_bottom = 395
+text = "音乐音量"
+[node name="Music" type="HSlider" parent="Root"]
+offset_left = 425
+offset_top = 400
+offset_right = 855
+offset_bottom = 432
+max_value = 100.0
+step = 1.0
+value = 100.0
+[node name="EffectsLabel" type="Label" parent="Root"]
+offset_left = 425
+offset_top = 460
+offset_right = 855
+offset_bottom = 490
+text = "音效音量"
+[node name="Effects" type="HSlider" parent="Root"]
+offset_left = 425
+offset_top = 495
+offset_right = 855
+offset_bottom = 527
+max_value = 100.0
+step = 1.0
+value = 100.0

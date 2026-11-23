@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" path="res://art/button_hover.svg" id="hover"]
 [ext_resource type="Texture2D" path="res://art/button_pressed.svg" id="pressed"]
 
-[ext_resource type="FontFile" path="res://art/fonts/RenOuFangSong-16.ttf" id="pixel_font"]
+[ext_resource type="FontFile" path="res://art/fonts/readable/NotoSansSC.ttf" id="readable_font"]
 [sub_resource type="StyleBoxFlat" id="Panel"]
 bg_color = Color(0.025,0.022,0.024,0.94)
 border_width_left = 2
@@ -76,7 +76,7 @@ content_margin_bottom = 9.0
 Label/colors/font_shadow_color = Color(0,0,0,1)
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 2
-default_font = ExtResource("pixel_font")
+default_font = ExtResource("readable_font")
 default_font_size = 18
 Label/colors/font_color = Color(0.91,0.89,0.84,1)
 RichTextLabel/colors/default_color = Color(0.86,0.84,0.80,1)

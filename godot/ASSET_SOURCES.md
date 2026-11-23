@@ -22,3 +22,6 @@
 ## UI pixel serif font
 RenOuFangSong 16 v1.1.1 by yzdnn, KH Dot lineage. Source: https://github.com/yzdnn/RenOuFangSong-16 . Unmodified font bundled under SIL OFL 1.1; license at art/fonts/OFL.txt. Imported without antialiasing for crisp pixel glyphs.
 
+
+Readable UI: Noto Sans SC from https://github.com/google/fonts/tree/main/ofl/notosanssc . Bundled under OFL; see art/fonts/readable/OFL.txt.
+

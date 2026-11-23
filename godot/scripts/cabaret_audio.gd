@@ -3,12 +3,20 @@ extends Node
 @export_range(-40.0,0.0) var effects_volume_db: float = -9.0
 var music_enabled: bool = true
 var effects_enabled: bool = true
+var levels: Dictionary = {"Master":1.0,"Music":1.0,"Effects":1.0}
 var last_hover: int = 0
 func _ready() -> void:
 	var config=ConfigFile.new()
 	if config.load("user://presentation.cfg")==OK:
 		music_enabled=config.get_value("audio","music",true)
 		effects_enabled=config.get_value("audio","effects",true)
+	for bus_name in ["Music","Effects"]:
+		if AudioServer.get_bus_index(bus_name)<0:AudioServer.add_bus();AudioServer.set_bus_name(AudioServer.bus_count-1,bus_name)
+	for key in levels:levels[key]=clampf(float(config.get_value("audio",key+"Level",1.0)),0.0,1.0)
+	$Music.bus="Music"
+	for key in ["Hover","Click","Roll","Reveal"]:get_node(key).bus="Effects"
+	get_parent().get_node("SettlementPresenter/Impact").bus="Effects"
+	apply_levels()
 	$Music.stream=$Music.stream.duplicate()
 	$Music.stream.loop=true
 	$Music.volume_db=-60.0
@@ -48,4 +56,17 @@ func save_preferences() -> void:
 	config.load("user://presentation.cfg")
 	config.set_value("audio","music",music_enabled)
 	config.set_value("audio","effects",effects_enabled)
+	for key in levels:config.set_value("audio",key+"Level",levels[key])
 	config.save("user://presentation.cfg")
+
+func set_level(key: String, value: float) -> void:
+	if not levels.has(key):return
+	levels[key]=clampf(value,0.0,1.0)
+	if key=="Music" and value>0 and not music_enabled:music_enabled=true;$Music.volume_db=music_volume_db;$Music.play()
+	if key=="Effects" and value>0:effects_enabled=true
+	apply_levels();save_preferences()
+func apply_levels() -> void:
+	for key in levels:
+		var index=AudioServer.get_bus_index(key)
+		AudioServer.set_bus_mute(index,levels[key]<=0.0)
+		AudioServer.set_bus_volume_db(index,linear_to_db(maxf(.0001,levels[key])))

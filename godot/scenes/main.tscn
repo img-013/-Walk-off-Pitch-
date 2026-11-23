@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/cabaret_filter.tscn" id="film"]
 [ext_resource type="PackedScene" path="res://scenes/cabaret_audio.tscn" id="audio"]
 [ext_resource type="Script" path="res://scripts/settlement_presenter.gd" id="presenter"]
+[ext_resource type="PackedScene" path="res://scenes/ui/PauseMenu.tscn" id="pause_menu"]
 [node name="WalkOffPitch" type="Node3D"]
 script = ExtResource("script")
 [node name="Tavern" parent="." instance=ExtResource("tavern")]
@@ -42,3 +43,5 @@ script = ExtResource("presenter")
 
 [node name="Impact" type="AudioStreamPlayer" parent="SettlementPresenter"]
 max_polyphony = 2
+
+[node name="PauseMenu" parent="." instance=ExtResource("pause_menu")]

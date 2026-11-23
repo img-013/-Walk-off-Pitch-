@@ -31,13 +31,14 @@ func _ready() -> void:
 	ui("StartButton").pressed.connect(start_menu)
 	ui("RulesButton").pressed.connect(rulebook)
 	ui("SettingsButton").pressed.connect(settings)
+	ui("QuitButton").pressed.connect(func():$PauseMenu.request_confirmation("quit"))
 	ui("RelicPrev").pressed.connect(func():cycle_relic(-1))
 	ui("RelicNext").pressed.connect(func():cycle_relic(1))
 	ui("RelicBack").pressed.connect(func():show_page("MainMenu"))
 	ui("RelicConfirm").pressed.connect(begin_run)
 	ui("MapCollection").pressed.connect(collection)
-	ui("MapSave").pressed.connect(save_home)
-	ui("BattleMenu").pressed.connect(save_home)
+	ui("MapSave").pressed.connect(func():$PauseMenu.open_menu())
+	ui("BattleMenu").pressed.connect(func():$PauseMenu.open_menu())
 	ui("RollButton").pressed.connect(roll_dice)
 	ui("SettleButton").pressed.connect(settle_round)
 	ui("EnemyDetails").pressed.connect(enemy_details)
@@ -51,7 +52,7 @@ func _ready() -> void:
 		ui("Node_"+n.key.replace("-","_")).pressed.connect(func():enter_node(n))
 	show_page("MainMenu")
 	if "--smoke" in OS.get_cmdline_user_args():
-		game.fresh("",12345);game.s.current="0-0";game.start_battle("E001");show_page("BattleHUD");render_battle();update_dice({},false)
+		game.fresh("",12345);game.s.current="0-0";last_result={};game.start_battle("E001");show_page("BattleHUD");render_battle();update_dice({},false)
 	if "--relic-preview" in OS.get_cmdline_user_args():open_relics()
 	if "--capture" in OS.get_cmdline_user_args():
 		await get_tree().create_timer(1.5).timeout
@@ -195,8 +196,8 @@ func render_battle() -> void:
 	ui("EnemyHealth").value=100.0*s.enemy.hp/s.enemy.maxHp
 	ui("RoundLabel").text="回合 %02d · %d / 3 掷" % [s.roundNumber,s.roll]
 	ui("IntentLabel").text=" · ".join(PackedStringArray(s.enemyIntent.lines))
-	ui("PlayerTotal").text="你的点数：%s" % (str(RulesEngine.total(s.pdice)) if s.roll else "—")
-	ui("EnemyTotal").text="对手点数：%s" % (str(RulesEngine.total(s.edice)) if s.roll else "—")
+	ui("PlayerTotal").text="你的点数：%s" % (str(RulesEngine.total(s.pdice)) if s.roll else str(last_result.get("p",s.get("lastScores",[0,0])[0])))
+	ui("EnemyTotal").text="对手点数：%s" % (str(RulesEngine.total(s.edice)) if s.roll else str(last_result.get("e",s.get("lastScores",[0,0])[1])))
 	ui("RollButton").disabled=busy or s.get("earlyStop",false) or s.roll>=3 or (s.enemyIntent.tax and not s.enemyMemory.has("tax"))
 	ui("SettleButton").disabled=busy or s.roll!=3
 	ui("BattleMenu").disabled=busy
@@ -252,7 +253,7 @@ func roll_dice() -> void:
 	var masks=game.roll()
 	if masks.is_empty():return
 	busy=true;ui("SettlementText").text="";render_battle();update_dice(masks,true)
-	ui("PlayerTotal").text="骰子滚动中…";ui("EnemyTotal").text="…"
+
 	await get_tree().create_timer(.85/animation_speed).timeout
 	busy=false
 	log_lines.append("第 %d 掷：你 %s / 对手 %s" % [game.s.roll,str(game.s.pdice),str(game.s.edice)])
@@ -353,6 +354,9 @@ func catalog() -> void:
 	options.append(["关闭",close_dialog]);modal("规则图鉴","共 80 张规则，沿用网页版卡牌数据。",options)
 
 func settings() -> void:
+	$PauseMenu.open_settings()
+
+func advanced_settings() -> void:
 	modal("幕后台", "画面与声音",[
 		["背景音乐："+("开" if $CabaretAudio.music_enabled else "关"),func():$CabaretAudio.toggle_music();settings()],
 		["按键音效："+("开" if $CabaretAudio.effects_enabled else "关"),func():$CabaretAudio.toggle_effects();settings()],

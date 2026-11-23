@@ -32,13 +32,13 @@ environment = SubResource("Env")
 [node name="PlayerDice" type="Node3D" parent="." unique_id=1509011834]
 
 [node name="Die0" parent="PlayerDice" unique_id=2036050141 instance=ExtResource("dice")]
-transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, -0.36, 0.794, 0.28)
+transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, -0.28, 0.794, 0.18)
 
 [node name="Die1" parent="PlayerDice" unique_id=2077274639 instance=ExtResource("dice")]
-transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 0, 0.794, 0.28)
+transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 0, 0.794, 0.18)
 
 [node name="Die2" parent="PlayerDice" unique_id=1783840982 instance=ExtResource("dice")]
-transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 0.36, 0.794, 0.28)
+transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 0.28, 0.794, 0.18)
 
 [node name="EnemyDice" type="Node3D" parent="." unique_id=624497702]
 
