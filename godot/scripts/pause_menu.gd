@@ -5,6 +5,7 @@ var app: Node
 func _ready() -> void:
 	app=get_parent()
 	$Root/Save.pressed.connect(save_game)
+	$Root/EventsDebug.pressed.connect(func():close();app.event_debug_menu())
 	$Root/Settings.pressed.connect(open_settings)
 	$Root/Home.pressed.connect(func():request_confirmation("home"))
 	$Root/Quit.pressed.connect(func():request_confirmation("quit"))
@@ -30,7 +31,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 func display(next_mode: String) -> void:
 	mode=next_mode;$Root.show();$Root/Notice.text=""
-	for key in ["Save","Settings","Home","Quit"]:get_node("Root/"+key).visible=mode=="menu"
+	for key in ["Save","Settings","Home","Quit","EventsDebug"]:get_node("Root/"+key).visible=mode=="menu"
 	for key in ["Master","Music","Effects"]:
 		get_node("Root/"+key).visible=mode=="settings"
 		get_node("Root/"+key+"Label").visible=mode=="settings"
@@ -52,6 +53,7 @@ func request_confirmation(kind: String) -> void:
 	action=kind;display("confirm");$Root/Title.text="返回主页？" if kind=="home" else "退出游戏？"
 	$Root/Notice.text="将保存当前远征后离开。" if not app.game.s.is_empty() else "确认退出游戏。"
 func confirm() -> void:
+	if app.event_debug_original!=null:app.end_event_debug()
 	if not app.game.s.is_empty() and app.game.s.get("phase","") not in ["defeat","complete"]:
 		if not app.game.save():$Root/Notice.text="保存失败，已取消离开。";return
 	if action=="home":

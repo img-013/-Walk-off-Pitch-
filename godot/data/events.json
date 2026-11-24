@@ -1,0 +1,322 @@
+{
+  "gothic_faceless_dealer": {
+    "title": "无面庄家",
+    "subtitle": "THE FACELESS DEALER",
+    "image": "faceless.png",
+    "story": "一名无面的庄家推来三颗骰子，低声说道：\n\n“你可以赢走我的一切，但要先证明你敢下注。”",
+    "options": [
+      {
+        "label": "小赌一局",
+        "detail": "支付 5 金币。掷 4～6：获得 15 金币（50%）；1～3：无奖励（50%）。",
+        "gold_cost": 5,
+        "action": "gamble_gold",
+        "outcome": "你将金币推向无面的庄家。"
+      },
+      {
+        "label": "赌上鲜血",
+        "detail": "失去 3 生命。掷 5～6：随机稀有辅助规则（1/3）；1～4：无奖励（2/3）。",
+        "hp_cost": 3,
+        "action": "gamble_card",
+        "rarity": "稀有",
+        "outcome": "你伸出手，让鲜血代替筹码。"
+      },
+      {
+        "label": "离开赌桌",
+        "detail": "不发生变化。",
+        "outcome": "你收回手。庄家没有挽留。"
+      }
+    ]
+  },
+  "gothic_golden_contract": {
+    "title": "黄金契约",
+    "subtitle": "THE GOLDEN CONTRACT",
+    "image": "contract.png",
+    "story": "一份以黄金书写的契约悬浮在半空，财富近在眼前，代价却藏在泛黑的纸页背面。",
+    "options": [
+      {
+        "label": "签订契约",
+        "detail": "立即获得 30 金币；下一场战斗开始失去 4 生命（仅一次，可能致命）。",
+        "outcome": "黄金落入掌中，契约记下了未来的血债。",
+        "gold": 30,
+        "pending": {
+          "hp_loss": 4
+        }
+      },
+      {
+        "label": "撕毁契约",
+        "detail": "支付 10 金币，回复 8 生命。",
+        "outcome": "你买回了自己的名字，契约化为灰烬。",
+        "gold_cost": 10,
+        "heal": 8
+      },
+      {
+        "label": "拒绝契约",
+        "detail": "不发生变化。",
+        "outcome": "你转身走入黑暗，带走了尚未下注的命运。"
+      }
+    ],
+    "min_chapter": 1
+  },
+  "gothic_broken_marionette": {
+    "title": "断线木偶",
+    "subtitle": "THE BROKEN MARIONETTE",
+    "image": "marionette.png",
+    "story": "一只断线的木偶向你伸出手，它说自己愿意用最后的秘密换取自由。",
+    "options": [
+      {
+        "label": "剪断丝线",
+        "detail": "支付 8 金币，获得一张随机普通辅助规则。",
+        "outcome": "最后一根丝线断了。木偶留下它的秘密。",
+        "gold_cost": 8,
+        "action": "card",
+        "rarity": "普通"
+      },
+      {
+        "label": "夺走木偶的秘密",
+        "detail": "失去 4 生命，从 3 张随机普通辅助规则中选择 1 张。",
+        "outcome": "你触到了藏在木心深处的记忆。",
+        "hp_cost": 4,
+        "action": "choose",
+        "rarity": "普通"
+      },
+      {
+        "label": "转身离开",
+        "detail": "不发生变化。",
+        "outcome": "你转身走入黑暗，带走了尚未下注的命运。"
+      }
+    ],
+    "min_chapter": 1
+  },
+  "gothic_mirror_wager": {
+    "title": "镜中对赌",
+    "subtitle": "THE MIRROR WAGER",
+    "image": "mirror.png",
+    "story": "镜子中的人和你拥有相同的脸，却握着一套比你更完美的规则。",
+    "options": [
+      {
+        "label": "交换命运",
+        "detail": "选择一张已装备辅助规则，换成同稀有度的随机辅助规则。",
+        "outcome": "倒影将一张牌压在镜面上。",
+        "action": "exchange"
+      },
+      {
+        "label": "夺取倒影",
+        "detail": "支付 12 金币，从最多 3 张同流派或有协同关系的规则中选择 1 张。",
+        "outcome": "你寻找与现有构筑共鸣的另一种命运。",
+        "gold_cost": 12,
+        "action": "choose",
+        "related": true
+      },
+      {
+        "label": "打碎镜子",
+        "detail": "失去 3 生命，获得 8 金币。",
+        "outcome": "碎片割破手掌，镜后落下几枚旧币。",
+        "hp_cost": 3,
+        "gold": 8
+      },
+      {
+        "label": "离开",
+        "detail": "不发生变化。",
+        "outcome": "你转身走入黑暗，带走了尚未下注的命运。"
+      }
+    ],
+    "min_chapter": 1
+  },
+  "gothic_court_bell": {
+    "title": "罪钟法庭",
+    "subtitle": "THE COURT OF THE BELL",
+    "image": "bell.png",
+    "story": "巨钟悬在你的头顶，一名青铜法官宣布：“每个人都必须为自己的贪婪支付代价。”",
+    "options": [
+      {
+        "label": "缴纳赎金",
+        "detail": "支付 15 金币，回复 10 生命。",
+        "outcome": "法官收下赎金，暂时赦免了你。",
+        "gold_cost": 15,
+        "heal": 10
+      },
+      {
+        "label": "接受审判",
+        "detail": "掷骰：1～2 失去 5 生命（可能致命）；3～4 获得 10 金币；5～6 获得 25 金币。各 1/3。",
+        "outcome": "钟声响起，判决已定。",
+        "action": "judgement"
+      },
+      {
+        "label": "拒绝审判",
+        "detail": "不发生变化。",
+        "outcome": "你转身走入黑暗，带走了尚未下注的命运。"
+      }
+    ],
+    "min_chapter": 1
+  },
+  "gothic_gilded_crucible": {
+    "title": "熔金坩埚",
+    "subtitle": "THE GILDED CRUCIBLE",
+    "image": "crucible.png",
+    "story": "炼金师把一颗骰子扔进燃烧的坩埚：“黄金可以重铸，命运当然也可以。”",
+    "options": [
+      {
+        "label": "熔炼规则",
+        "detail": "选择一张辅助规则，从 3 张随机新规则中选 1 张替换。必须完成替换。",
+        "outcome": "你将旧规则交给炼金师。",
+        "action": "reforge"
+      },
+      {
+        "label": "熔炼金币",
+        "detail": "支付 12 金币，回复 6 生命。",
+        "outcome": "金属的余温重新流入你的血液。",
+        "gold_cost": 12,
+        "heal": 6
+      },
+      {
+        "label": "放弃炼金",
+        "detail": "不发生变化。",
+        "outcome": "你转身走入黑暗，带走了尚未下注的命运。"
+      }
+    ],
+    "min_chapter": 1
+  },
+  "gothic_blind_monk": {
+    "title": "盲眼修士",
+    "subtitle": "THE BLIND MONK",
+    "image": "monk.png",
+    "story": "修士从未见过骰子的模样，却能听见它们尚未落下时的声音。",
+    "options": [
+      {
+        "label": "聆听预言",
+        "detail": "支付 8 金币，下一场战斗开始获得 1 枚战术筹码（总上限 2）。",
+        "outcome": "“它会落在你需要的那一面。”预言只指向下一场战斗。",
+        "gold_cost": 8,
+        "protocol": true,
+        "pending": {
+          "tokens": 1
+        }
+      },
+      {
+        "label": "请求庇护",
+        "detail": "支付 6 金币，下一场战斗首回合获得 4 点护盾。",
+        "outcome": "烛光留在肩头，只为你抵挡下一场战斗的第一阵寒意。",
+        "gold_cost": 6,
+        "pending": {
+          "shield": 4
+        }
+      },
+      {
+        "label": "保持沉默",
+        "detail": "不发生变化。",
+        "outcome": "你转身走入黑暗，带走了尚未下注的命运。"
+      }
+    ],
+    "min_chapter": 1
+  },
+  "gothic_abyssal_market": {
+    "title": "深渊鱼市",
+    "subtitle": "THE ABYSSAL MARKET",
+    "image": "market.png",
+    "story": "潮湿的地下集市里，商人出售着不属于任何时代的骰子和遗物。",
+    "options": [
+      {
+        "label": "购买禁忌规则",
+        "detail": "支付 20 金币，获得一张随机稀有辅助规则。",
+        "outcome": "商人把一张潮湿的规则塞进你的手里。",
+        "gold_cost": 20,
+        "action": "card",
+        "rarity": "稀有"
+      },
+      {
+        "label": "购买神秘货物",
+        "detail": "支付 10 金币。8 金币、6 点治疗或 1 枚战术筹码，各 1/3；筹码上限 2，携带至下场战斗。",
+        "outcome": "你拆开了沾着海盐的包裹。",
+        "gold_cost": 10,
+        "action": "mystery",
+        "protocol": true
+      },
+      {
+        "label": "出售规则",
+        "detail": "移除一张已装备辅助规则，获得 12 金币。",
+        "outcome": "商人等待你交出愿意遗忘的秘密。",
+        "action": "sell"
+      },
+      {
+        "label": "离开市场",
+        "detail": "不发生变化。",
+        "outcome": "你转身走入黑暗，带走了尚未下注的命运。"
+      }
+    ],
+    "min_chapter": 1
+  },
+  "gothic_loom_fate": {
+    "title": "命运织机",
+    "subtitle": "THE LOOM OF FATE",
+    "image": "loom.png",
+    "story": "一台古老织机正编织着你的下一场战斗，你可以改变其中一根丝线。",
+    "options": [
+      {
+        "label": "编织胜利",
+        "detail": "支付 10 金币，下场战斗获得一次免费单骰 +1（最高 6），战斗结束失效。",
+        "outcome": "一根明亮的丝线绕住了你的骰子。",
+        "gold_cost": 10,
+        "protocol": true,
+        "pending": {
+          "free_increment": 1
+        }
+      },
+      {
+        "label": "编织赌注",
+        "detail": "下场战斗初始公共赌注 +2（总上限 6），双方均可兑现。",
+        "outcome": "织机替赌桌添上筹码，却没有写下赢家的名字。",
+        "protocol": true,
+        "pending": {
+          "pot": 2
+        }
+      },
+      {
+        "label": "剪断丝线",
+        "detail": "失去 3 生命，下场战斗首回合获得 3 点护盾。",
+        "outcome": "断裂的丝线缠成薄薄的护甲。",
+        "hp_cost": 3,
+        "pending": {
+          "shield": 3
+        }
+      },
+      {
+        "label": "离开",
+        "detail": "不发生变化。",
+        "outcome": "你转身走入黑暗，带走了尚未下注的命运。"
+      }
+    ],
+    "min_chapter": 1
+  },
+  "gothic_last_banquet": {
+    "title": "终末晚宴",
+    "subtitle": "THE LAST BANQUET",
+    "image": "banquet.png",
+    "story": "贵族们举起盛满暗红酒液的杯子，邀请你享用一场不需要活着离开的晚宴。",
+    "options": [
+      {
+        "label": "接受盛宴",
+        "detail": "回复 12 生命；下场战斗初始公共赌注 +4（总上限 6），双方均可兑现。",
+        "outcome": "温暖重返身体。账单已经摆在下一张赌桌上。",
+        "heal": 12,
+        "protocol": true,
+        "pending": {
+          "pot": 4
+        }
+      },
+      {
+        "label": "饮下黑酒",
+        "detail": "失去 6 生命，从 3 张随机稀有辅助规则中选择 1 张。",
+        "outcome": "黑酒灼烧喉咙，古老的知识随之醒来。",
+        "hp_cost": 6,
+        "action": "choose",
+        "rarity": "稀有"
+      },
+      {
+        "label": "拒绝邀请",
+        "detail": "不发生变化。",
+        "outcome": "你转身走入黑暗，带走了尚未下注的命运。"
+      }
+    ],
+    "min_chapter": 1
+  }
+}

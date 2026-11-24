@@ -1,0 +1,60 @@
+[gd_scene format=3]
+[ext_resource type="Texture2D" path="res://art/events/faceless.png" id="art"]
+[ext_resource type="Shader" path="res://shaders/illustration_cabaret.gdshader" id="fade"]
+[ext_resource type="Theme" path="res://resources/event_theme.tres" id="theme"]
+[ext_resource type="FontVariation" path="res://resources/event_title_font.tres" id="title_font"]
+[sub_resource type="ShaderMaterial" id="fade_material"]
+shader = ExtResource("fade")
+shader_parameter/fade_right = true
+[node name="EventScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("theme")
+[node name="Black" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0,0,0,1)
+mouse_filter = 2
+[node name="EventIllustration" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("art")
+expand_mode = 1
+stretch_mode = 6
+material = SubResource("fade_material")
+mouse_filter = 2
+[node name="EventScroll" type="ScrollContainer" parent="."]
+anchor_left = 0.575
+anchor_right = 0.975
+anchor_top = 0.07
+anchor_bottom = 0.94
+horizontal_scroll_mode = 0
+[node name="Content" type="VBoxContainer" parent="EventScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+[node name="EventSubtitle" type="Label" parent="EventScroll/Content"]
+text = "THE FACELESS DEALER"
+theme_override_colors/font_color = Color(0.58,0.45,0.26,1)
+theme_override_font_sizes/font_size = 16
+[node name="EventTitle" type="Label" parent="EventScroll/Content"]
+text = "无面庄家"
+theme_override_fonts/font = ExtResource("title_font")
+theme_override_colors/font_color = Color(0.81,0.68,0.44,1)
+theme_override_font_sizes/font_size = 42
+[node name="EventStats" type="Label" parent="EventScroll/Content"]
+text = "生命 30 / 30     金币 20"
+theme_override_font_sizes/font_size = 17
+autowrap_mode = 3
+[node name="EventStory" type="Label" parent="EventScroll/Content"]
+text = "一名无面的庄家推来三颗骰子。"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 22
+[node name="Divider" type="HSeparator" parent="EventScroll/Content"]
+[node name="EventOptions" type="VBoxContainer" parent="EventScroll/Content"]
+theme_override_constants/separation = 12
+[node name="EventPending" type="Label" parent="EventScroll/Content"]
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.64,0.57,0.45,1)
+theme_override_font_sizes/font_size = 16

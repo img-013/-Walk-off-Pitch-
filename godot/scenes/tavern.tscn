@@ -51,6 +51,10 @@ transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 0, 0.794, -0.25)
 [node name="Die2" parent="EnemyDice" unique_id=1442414697 instance=ExtResource("dice")]
 transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 0.36, 0.794, -0.25)
 
+[node name="Die3" parent="EnemyDice" instance=ExtResource("dice")]
+visible = false
+transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 0.54, 0.794, -0.25)
+
 [node name="EnemyIdle" parent="." instance=ExtResource("idle")]
 position = Vector3(0,0.55,-1.08)
 

@@ -22,7 +22,7 @@ func has(key: String) -> bool:
 
 func fresh(core: String = "", seed_value: int = 0) -> void:
 	rng.seed=seed_value if seed_value else Time.get_unix_time_from_system()
-	s={"battle_experiment_enabled":battle_experiment_enabled,"version":1,"seed":str(rng.seed),"hp":30,"maxHp":30,"gold":20,"rules":[core] if core!="" else [],"noCore":core=="","done":[],"current":"","next":["0-0"],"phase":"map","enemy":{},"spendBank":0,"spendRemainder":0,"nextBattleDebt":0,"fateDebt":0,"nodeGold":0,"shopPurchases":0,"faces":[[1,2,3,4,5,6],[1,2,3,4,5,6],[1,2,3,4,5,6]],"encounters":{},"reward":[],"eventIndex":-1}
+	s={"protocolDefaultVersion":1,"battle_experiment_enabled":battle_experiment_enabled,"version":1,"seed":str(rng.seed),"hp":30,"maxHp":30,"gold":20,"rules":[core] if core!="" else [],"noCore":core=="","done":[],"current":"","next":["0-0"],"phase":"map","enemy":{},"spendBank":0,"spendRemainder":0,"nextBattleDebt":0,"fateDebt":0,"nodeGold":0,"shopPurchases":0,"faces":[[1,2,3,4,5,6],[1,2,3,4,5,6],[1,2,3,4,5,6]],"encounters":{},"reward":[],"eventIndex":-1}
 	var previous_branch=""
 	for node in map:
 		if node.type not in ["fight","elite","boss"]:continue
@@ -41,7 +41,8 @@ func capacity() -> int:
 
 func start_battle(id: String) -> void:
 	s.phase="battle";s.enemy=enemies[id].duplicate(true);s.enemy.id=id;s.enemy.maxHp=s.enemy.hp
-	s.lastScores=[0,0];s.protocolShield=0;s.publicPot=0;s.tacticalTokens=0;s.earlyStop=false;s.lastSettledRound=0
+	if s.current=="0-0" and has("low_wins"):s.enemy.dice=4
+	s.lastScores=[0,0];s.protocolShield=0;s.publicPot=0;s.tacticalTokens=int(s.get("eventCarriedTokens",0));s.erase("eventCarriedTokens");s.earlyStop=false;s.lastSettledRound=0
 	s.roundNumber=1;s.battleLosses=0;s.battleCardGold=0;s.battleHealing=0;s.cardGold={};s.cardHealing={};s.used={};s.carryAdv=0;s.carryShield=0;s.openingAdv=s.spendBank;s.spendBank=0;s.openingDebt=s.nextBattleDebt;s.nextBattleDebt=0;s.previousLockSignature=""
 	s.enemyMemory={"streak":0,"schools":{},"suppress":""}
 	s.pdice=[1,1,1];s.edice=[]
@@ -49,11 +50,13 @@ func start_battle(id: String) -> void:
 	if has("entry_gold"):s.gold+=6
 	if has("entry_heal") and s.hp>s.maxHp/2.0:s.hp=mini(s.maxHp,s.hp+3)
 	new_round()
+	EventDirector.consume_pending(self)
 
 func new_round() -> void:
 	s.earlyStop=false;s.rollEvents=[]
 	if BattleProtocol.enabled(s):s.currentWager=BattleProtocol.choose(s)
-	s.roll=0;s.locked=[false,false,false];s.earlyLocked=[false,false,false];s.lastRerollMask=[false,false,false];s.lastRerolled=0;s.rerollsAfterFirst=0;s.faceChanges=0;s.enemyKept=0;s.physical=[0,0,0];s.enemyPhysical=[0,0,0]
+	s.roll=0;s.locked=[false,false,false];s.earlyLocked=[false,false,false];s.lastRerollMask=[false,false,false];s.lastRerolled=0;s.rerollsAfterFirst=0;s.faceChanges=0;s.enemyKept=0;s.physical=[0,0,0];s.enemyPhysical=[]
+	s.enemyPhysical.resize(s.edice.size());s.enemyPhysical.fill(0)
 	s.enemyIntent=EnemyMechanics.intent(s)
 
 func lock_die(i: int) -> bool:
@@ -129,6 +132,7 @@ func settle() -> Dictionary:
 		s.phase="victory"
 	elif s.roundNumber>60:s.phase="defeat";clear_save()
 	else:new_round()
+	if s.phase!="battle":s.eventFreeIncrements=0
 	return r
 
 func spend(amount: int) -> bool:
@@ -192,6 +196,10 @@ func resume() -> bool:
 	for id in loaded.rules:
 		if not cards.has(id):return false
 	s=loaded;rng.seed=int(s.seed);rng.state=int(s.rngState)
+	# Enable the released protocol once for expeditions saved before it became default.
+	if int(s.get("protocolDefaultVersion",0))<1:
+		s.battle_experiment_enabled=true;s.protocolDefaultVersion=1
+	battle_experiment_enabled=bool(s.get("battle_experiment_enabled",true))
 	for key in {"battle_experiment_enabled":false,"publicPot":0,"tacticalTokens":0,"protocolShield":0,"lastSettledRound":0,"earlyStop":false,"rollEvents":[],"debugTie":false,"debugClimax":false}:
 		if not s.has(key):s[key]={"battle_experiment_enabled":false,"publicPot":0,"tacticalTokens":0,"protocolShield":0,"lastSettledRound":0,"earlyStop":false,"rollEvents":[],"debugTie":false,"debugClimax":false}[key]
 	if BattleProtocol.enabled(s) and s.phase=="battle" and not s.has("currentWager"):s.currentWager=BattleProtocol.choose(s)
@@ -212,11 +220,13 @@ func stop_early() -> bool:
 	return true
 
 func use_tactical(index: int) -> bool:
-	if not BattleProtocol.enabled(s) or s.phase!="battle" or s.roll<1 or s.roll>=3 or s.get("earlyStop",false) or s.get("tacticalTokens",0)<=0 or index<0 or index>=3:return false
+	if not BattleProtocol.enabled(s) or s.phase!="battle" or s.roll<1 or s.roll>=3 or s.get("earlyStop",false) or (s.get("tacticalTokens",0)<=0 and s.get("eventFreeIncrements",0)<=0) or index<0 or index>=3:return false
 	var effect=BattleProtocol.config.tactical_effect
 	if effect.kind!="increment" or s.pdice[index]>=effect.maximum:return false
 	var before=int(s.pdice[index])
 	# Tactical changes are not card face changes; do not activate card-only converters.
-	s.pdice[index]=mini(effect.maximum,before+effect.amount);s.tacticalTokens-=1
+	s.pdice[index]=mini(effect.maximum,before+effect.amount)
+	if s.get("eventFreeIncrements",0)>0:s.eventFreeIncrements-=1
+	else:s.tacticalTokens-=1
 	s.rollEvents.append(BattleProtocol.event("TACTICAL_USE","tactical","die_face",before,s.pdice[index]-before,"PlayerTotal","战术筹码：第 %d 骰"%(index+1)))
 	return true

@@ -120,3 +120,10 @@ offset_bottom = 527
 max_value = 100.0
 step = 1.0
 value = 100.0
+
+[node name="EventsDebug" type="Button" parent="Root"]
+offset_left = 425
+offset_top = 480
+offset_right = 855
+offset_bottom = 530
+text = "开发调试 · 事件画廊"

@@ -1,93 +1,91 @@
 [gd_scene format=3]
-[ext_resource type="Theme" path="res://resources/tavern_theme.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://art/events/main_menu.png" id="art"]
+[ext_resource type="Theme" path="res://resources/event_theme.tres" id="theme"]
+[ext_resource type="FontVariation" path="res://resources/event_title_font.tres" id="title_font"]
+[ext_resource type="Shader" path="res://shaders/illustration_cabaret.gdshader" id="illustration_filter"]
+[sub_resource type="ShaderMaterial" id="menu_filter"]
+shader = ExtResource("illustration_filter")
 [node name="MainMenu" type="Control"]
-unique_name_in_owner = true
-layout_mode = 0
+offset_right = 1280
+offset_bottom = 800
+theme = ExtResource("theme")
+[node name="MenuArtwork" type="TextureRect" parent="."]
 offset_left = 0
 offset_top = 0
 offset_right = 1280
 offset_bottom = 800
+texture = ExtResource("art")
+material = SubResource("menu_filter")
+expand_mode = 1
+stretch_mode = 6
 mouse_filter = 2
-theme = ExtResource("theme")
-[node name="MenuShade" type="Panel" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 50
-offset_top = 80
-offset_right = 505
-offset_bottom = 720
-
 [node name="MenuEyebrow" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 85
-offset_top = 110
-offset_right = 465
-offset_bottom = 145
-text = "♠   T H E   L A S T   W A L T Z   ♠"
-theme_override_font_sizes/font_size = 16
-
+offset_left = 850
+offset_top = 95
+offset_right = 1230
+offset_bottom = 125
+text = "THE LAST WALTZ"
+theme_override_colors/font_color = Color(0.68,0.53,0.32,1)
 [node name="MenuTitle" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 85
-offset_top = 155
-offset_right = 465
-offset_bottom = 255
+offset_left = 845
+offset_top = 135
+offset_right = 1235
+offset_bottom = 235
 text = "再见一掷"
-theme_override_font_sizes/font_size = 64
-
+theme_override_fonts/font = ExtResource("title_font")
+theme_override_font_sizes/font_size = 62
+theme_override_colors/font_color = Color(0.91,0.80,0.60,1)
 [node name="MenuSubtitle" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 88
-offset_top = 270
-offset_right = 448
-offset_bottom = 350
-text = "帷幕落下，赌局开场。\n三次投掷，一局命运。"
+offset_left = 850
+offset_top = 250
+offset_right = 1210
+offset_bottom = 320
+text = "三次投掷，一局命运。
+帷幕落下，赌局开场。"
 theme_override_font_sizes/font_size = 20
-
 [node name="StartButton" type="Button" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 88
-offset_top = 402
-offset_right = 453
-offset_bottom = 467
-text = "开始游戏  →"
-
-[node name="RulesButton" type="Button" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 88
-offset_top = 483
-offset_right = 453
-offset_bottom = 539
-text = "查看规则"
-
+offset_left = 850
+offset_top = 380
+offset_right = 1200
+offset_bottom = 435
+text = "开始游戏"
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 850
+offset_top = 450
+offset_right = 1200
+offset_bottom = 505
+text = "继续游戏"
 [node name="SettingsButton" type="Button" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 88
-offset_top = 554
-offset_right = 453
-offset_bottom = 610
+offset_left = 850
+offset_top = 520
+offset_right = 1200
+offset_bottom = 575
 text = "设置"
-
-[node name="MenuVersion" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 88
-offset_top = 690
-offset_right = 458
-offset_bottom = 715
-text = "WALK-OFF PITCH  ·  暗幕赌厅"
-theme_override_font_sizes/font_size = 14
-
-
 [node name="QuitButton" type="Button" parent="."]
-offset_left = 88
-offset_top = 625
-offset_right = 453
-offset_bottom = 680
-text = "退出游戏"
+offset_left = 850
+offset_top = 590
+offset_right = 1200
+offset_bottom = 645
+text = "退出"
+[node name="RulesButton" type="Button" parent="."]
+offset_left = 850
+offset_top = 690
+offset_right = 1015
+offset_bottom = 730
+text = "规则书"
+theme_override_font_sizes/font_size = 16
+[node name="EventDebugButton" type="Button" parent="."]
+offset_left = 1035
+offset_top = 690
+offset_right = 1200
+offset_bottom = 730
+text = "事件调试"
+theme_override_font_sizes/font_size = 16
+[node name="MenuVersion" type="Label" parent="."]
+offset_left = 45
+offset_top = 750
+offset_right = 1145
+offset_bottom = 780
+text = "WALK-OFF PITCH  ·  EVENT PROTOTYPE 1.0     /     每一场相遇，都是另一种下注。"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.63,0.56,0.45,1)

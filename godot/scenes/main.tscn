@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://scenes/cabaret_audio.tscn" id="audio"]
 [ext_resource type="Script" path="res://scripts/settlement_presenter.gd" id="presenter"]
 [ext_resource type="PackedScene" path="res://scenes/ui/PauseMenu.tscn" id="pause_menu"]
+[ext_resource type="PackedScene" path="res://scenes/ui/EventScreen.tscn" id="EventScreen"]
 [node name="WalkOffPitch" type="Node3D"]
 script = ExtResource("script")
 [node name="Tavern" parent="." instance=ExtResource("tavern")]
@@ -32,6 +33,8 @@ visible = false
 visible = false
 [node name="BattleHUD" parent="Pages/UI" instance=ExtResource("BattleHUD")]
 visible = false
+[node name="EventScreen" parent="Pages/UI" instance=ExtResource("EventScreen")]
+visible = false
 [node name="ChoiceDialog" parent="Pages/UI" instance=ExtResource("ChoiceDialog")]
 visible = false
 
@@ -45,3 +48,4 @@ script = ExtResource("presenter")
 max_polyphony = 2
 
 [node name="PauseMenu" parent="." instance=ExtResource("pause_menu")]
+

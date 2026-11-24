@@ -10,6 +10,7 @@ extends Node3D
 @export_range(0.1, 2.0) var roll_duration: float = 0.72
 @export_range(0.05, 1.5) var bounce_height: float = 0.23
 var is_locked: bool = false
+var is_sealed: bool = false
 var tween: Tween
 var home: Vector3
 const ROTATIONS = [Vector3.ZERO, Vector3(-PI/2,0,0), Vector3(0,0,PI/2), Vector3(0,0,-PI/2), Vector3(PI/2,0,0), Vector3(PI,0,0)]
@@ -66,9 +67,14 @@ func roll_to(face_index: int, animate: bool = true) -> void:
 
 func set_locked(locked: bool) -> void:
 	is_locked=locked
-	if has_node("LockIcon"):$LockIcon.visible=locked
+	if has_node("LockIcon"):$LockIcon.visible=locked and not is_sealed
+	if has_node("SealedIcon"):$SealedIcon.visible=is_sealed
 	var mat = $DiceBody/Mesh.material_override as StandardMaterial3D
 	if mat:
-		mat.albedo_color = Color(0.3,0.65,0.9) if locked else Color.WHITE
-		mat.emission_enabled=locked
-		mat.emission=Color(0.16,0.3,0.45) if locked else Color.BLACK
+		mat.albedo_color = Color(0.8,0.32,0.28) if is_sealed else (Color(0.3,0.65,0.9) if locked else Color.WHITE)
+		mat.emission_enabled=locked or is_sealed
+		mat.emission=Color(0.25,0.06,0.04) if is_sealed else (Color(0.16,0.3,0.45) if locked else Color.BLACK)
+
+func set_sealed(sealed: bool) -> void:
+	is_sealed=sealed
+	set_locked(is_locked)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3]
 [ext_resource type="Script" path="res://scripts/die.gd" id="1"]
 [ext_resource type="Resource" path="res://resources/default_die.tres" id="2"]
 [ext_resource type="ArrayMesh" path="res://models/die_mesh.tres" id="body"]
 [ext_resource type="Texture2D" path="res://art/dice_lock.svg" id="lock"]
+[ext_resource type="Texture2D" path="res://art/dice_sealed.svg" id="sealed"]
 [sub_resource type="BoxShape3D" id="PickBox"]
 size = Vector3(1.1,1.1,1.1)
 [sub_resource type="QuadMesh" id="Face"]
@@ -48,9 +49,18 @@ collision_mask = 0
 shape = SubResource("PickBox")
 [node name="LockIcon" type="Sprite3D" parent="."]
 visible = false
-position = Vector3(0,0.85,0)
+position = Vector3(0,0.68,0)
 texture = ExtResource("lock")
-pixel_size = 0.017
+pixel_size = 0.009
+billboard = 1
+no_depth_test = true
+shaded = false
+
+[node name="SealedIcon" type="Sprite3D" parent="."]
+visible = false
+position = Vector3(0,0.68,0)
+texture = ExtResource("sealed")
+pixel_size = 0.009
 billboard = 1
 no_depth_test = true
 shaded = false

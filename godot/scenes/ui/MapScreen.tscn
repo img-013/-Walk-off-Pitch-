@@ -43,7 +43,8 @@ layout_mode = 0
 offset_left = 60
 offset_top = 290
 offset_right = 320
-offset_bottom = 440
+offset_bottom = 500
+autowrap_mode = 3
 text = "选择亮起的节点前进。\n\n战斗 · 精英 · 事件\n祭坛 · 商店 · 酒馆\n\n路线一旦走过，便无法回头。"
 theme_override_font_sizes/font_size = 17
 

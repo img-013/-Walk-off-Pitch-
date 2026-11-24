@@ -1,5 +1,5 @@
 {
-  "battle_experiment_enabled": false,
+  "battle_experiment_enabled": true,
   "pot_step": 2,
   "pot_cap": 6,
   "minimum_damage": 3,

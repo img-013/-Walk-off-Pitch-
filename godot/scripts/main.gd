@@ -9,6 +9,8 @@ var relic_index = 0
 var current_page = "MainMenu"
 var log_lines: PackedStringArray = []
 var last_result: Dictionary = {}
+var event_debug_original = null
+var event_debug_page = "MainMenu"
 var portrait_regions: Dictionary = {}
 const NAMES = {"fight":"战斗","elite":"精英","boss":"首领","event":"事件","rest":"酒馆","shop":"商店","altar":"祭坛"}
 
@@ -17,6 +19,8 @@ func ui(node_name: String) -> Node:
 
 func _ready() -> void:
 	get_viewport().physics_object_picking=true
+	$CabaretFilter.visibility_changed.connect(sync_illustration_filter)
+	sync_illustration_filter()
 	game.battle_experiment_enabled=battle_experiment_enabled
 	ui("ProtocolButton").pressed.connect(protocol_debug)
 	ui("SpeedButton").pressed.connect(cycle_settlement_speed)
@@ -28,7 +32,9 @@ func _ready() -> void:
 	for c in game.cards.values():
 		if c.slot=="core":relics.append(c.id)
 	relics.append("")
-	ui("StartButton").pressed.connect(start_menu)
+	ui("StartButton").pressed.connect(confirm_new)
+	ui("ContinueButton").pressed.connect(resume_run)
+	ui("EventDebugButton").pressed.connect(event_debug_menu)
 	ui("RulesButton").pressed.connect(rulebook)
 	ui("SettingsButton").pressed.connect(settings)
 	ui("QuitButton").pressed.connect(func():$PauseMenu.request_confirmation("quit"))
@@ -67,6 +73,8 @@ func show_page(name: String) -> void:
 	$Tavern/PlayerDice.visible=name=="BattleHUD"
 	$Tavern/EnemyDice.visible=name=="BattleHUD"
 	ui("ChoiceDialog").hide()
+	if name=="MainMenu":ui("ContinueButton").disabled=not FileAccess.file_exists(RunState.SAVE_PATH)
+	if name!="MapScreen":$CabaretAudio.play_context(0)
 
 func clear_children(node: Node) -> void:
 	for child in node.get_children():node.remove_child(child);child.queue_free()
@@ -147,8 +155,10 @@ func render_map() -> void:
 	if game.s.phase=="complete":modal("再见一掷","你走过三章赌局，击败了命运本身。\n这一次，你改写了离席的规则。",[["返回首页",func():show_page("MainMenu")]]);return
 	var layer=game.s.done.size()
 	var chapter=1 if layer<15 else (2 if layer<31 else 3)
+	$CabaretAudio.play_context(chapter)
 	ui("ChapterTitle").text=["第一章\n迷雾赌厅","第二章\n契约回廊","第三章\n终末赌局"][chapter-1]
 	ui("RunStats").text="生命 %d / %d\n金币 %d  ·  第 %d / 46 步" % [game.s.hp,game.s.maxHp,game.s.gold,mini(46,layer+1)]
+	ui("MapDescription").text="选择亮起的节点前进。\n\n"+pending_event_text()
 	for c in range(1,4):ui("Chapter%d" % c).visible=c==chapter
 	for n in game.map:
 		var b=ui("Node_"+n.key.replace("-","_"))
@@ -162,7 +172,7 @@ func render_map() -> void:
 func enter_node(n: Dictionary) -> void:
 	if n.key not in game.s.next:return
 	game.s.current=n.key
-	game.s.nodeRewarded=false
+	game.s.nodeRewarded=false;game.s.erase("eventLegacy")
 	match n.type:
 		"fight","elite","boss":
 			game.start_battle(game.s.encounters[n.key]);log_lines.clear();last_result={};show_page("BattleHUD");render_battle();update_dice({},false)
@@ -170,6 +180,7 @@ func enter_node(n: Dictionary) -> void:
 		"shop":game.s.phase="shop";game.s.shopPurchases=0;game.s.shopRefreshed=false;game.offer();shop()
 		"rest":game.s.phase="rest";rest()
 		_:game.s.phase="event";event()
+	if game.s.phase=="defeat":modal("契约已兑现","下场战斗的生命代价耗尽了你的生命。",[["返回主页",func():show_page("MainMenu")]])
 	game.save()
 
 func finish_current() -> void:
@@ -185,12 +196,12 @@ func render_battle() -> void:
 	for name in ["EarlyStop","TacticalButton","PotPanel","PublicPot","PotChips","WagerLabel","SpeedButton"]:ui(name).visible=enabled
 	ui("ProtocolButton").disabled=busy
 	ui("EarlyStop").disabled=busy or s.roll!=2
-	ui("TacticalButton").disabled=busy or s.roll<1 or s.roll>=3 or s.get("earlyStop",false) or s.get("tacticalTokens",0)==0
-	ui("TacticalButton").text="战术筹码 %d · 骰面 +1"%s.get("tacticalTokens",0)
+	ui("TacticalButton").disabled=busy or s.roll<1 or s.roll>=3 or s.get("earlyStop",false) or (s.get("tacticalTokens",0)==0 and s.get("eventFreeIncrements",0)==0)
+	ui("TacticalButton").text="筹码 %d / 免费 %d · +1"%[s.get("tacticalTokens",0),s.get("eventFreeIncrements",0)]
 	ui("PublicPot").text="公共赌注 %d"%s.get("publicPot",0)
 	ui("PotChips").text="◈ ".repeat(int(s.get("publicPot",0))/2)
 	ui("WagerLabel").text="本轮赌局 · "+BattleProtocol.wager(s).get("name","")+"\n"+{"overwhelm":"有效领先 ≥4 获胜：额外伤害 +3","initiative":"第二掷提前收手并获胜：下轮护盾 +2","steal":"赌注 ≥4 并获胜：额外伤害 +2","narrow":"有效领先 1–3 获胜：战术筹码 +1"}.get(s.get("currentWager",""),"")
-	ui("HealthLabel").text="远征者  %d / %d    护盾 %d"%[s.hp,s.maxHp,last_result.get("playerShield",0)]
+	ui("HealthLabel").text="远征者  %d / %d    护盾 %d"%[s.hp,s.maxHp,(s.get("carryShield",0) if s.roll==0 else last_result.get("playerShield",0))]
 	ui("EnemyHealthLabel").text="%s  %d / %d    护盾 %d"%[s.enemy.name,s.enemy.hp,s.enemy.maxHp,last_result.get("enemyShield",0)]
 	ui("PlayerHealth").value=100.0*s.hp/s.maxHp
 	ui("EnemyHealth").value=100.0*s.enemy.hp/s.enemy.maxHp
@@ -205,6 +216,7 @@ func render_battle() -> void:
 		var b=ui("LockButtons").get_child(i);b.disabled=busy or s.roll==0 or s.roll>=3 or s.enemyIntent.seal==i
 		b.text=("已锁定" if s.locked[i] else "锁骰")+" %d" % (i+1)
 		$Tavern/PlayerDice.get_child(i).set_locked(s.locked[i])
+		$Tavern/PlayerDice.get_child(i).set_sealed(s.enemyIntent.seal==i)
 	for i in range(6):
 		var b=ui("RuleSlots").get_child(i)
 		b.disabled=busy or i>=s.rules.size()
@@ -243,8 +255,11 @@ func update_dice(masks: Dictionary, animate: bool) -> void:
 		values[int(game.s.physical[i])]=game.s.pdice[i]
 		die.set_values(values);die.roll_duration=.40/animation_speed
 		if masks.is_empty() or masks.pm[i]:die.roll_to(game.s.physical[i],animate)
+	for i in range($Tavern/EnemyDice.get_child_count()):
 		var enemy=$Tavern/EnemyDice.get_child(i);enemy.visible=i<game.s.edice.size()
 		if enemy.visible:
+			enemy.home.x=(-0.36+i*0.24) if game.s.edice.size()==4 else (-0.36+i*0.36)
+			enemy.position.x=enemy.home.x
 			enemy.roll_duration=.40/animation_speed
 			if masks.is_empty() or masks.em[i]:enemy.roll_to(game.s.enemyPhysical[i],animate)
 
@@ -333,7 +348,7 @@ func rest() -> void:
 	var upgrade_price=35-(8 if game.has("rest_discount") else 0)
 	modal("炉火未熄","温暖的炉火，足够让你再走一程。",[["休息 · 恢复 8 生命",func():game.s.hp=mini(game.s.maxHp,game.s.hp+8);finish_current()],["%d 金币 · 恢复全部生命" % price,func():if game.spend(price):game.s.hp=game.s.maxHp;finish_current(),game.s.gold<price],["%d 金币 · 首骰的 1 永久改为 3" % upgrade_price,func():if game.spend(upgrade_price):game.s.faces[0][0]=3;finish_current(),game.s.faces[0][0]==3 or game.s.gold<upgrade_price],["离开",finish_current]])
 
-func event() -> void:
+func legacy_event() -> void:
 	modal("雾中的许愿井","一枚旧金币悬在井沿。井底的声音提出了交易。",[["献出 5 生命 · 获得永久规则",func():game.s.hp-=5;game.s.phase="reward";game.offer();game.save();show_reward(false),game.s.hp<=5],["打捞钱袋 · 获得 18 金币",func():game.s.gold+=18;finish_current()],["饮下清泉 · 恢复 4 生命",func():game.s.hp=mini(game.s.maxHp,game.s.hp+4);finish_current()]])
 
 func collection() -> void:
@@ -383,7 +398,7 @@ func tactical_menu() -> void:
 	var options=[]
 	for i in range(3):options.append(["第 %d 骰：%d → %d"%[i+1,game.s.pdice[i],mini(6,game.s.pdice[i]+1)],func():
 		if game.use_tactical(i):game.save();update_dice({},false);render_battle(),game.s.pdice[i]>=6])
-	options.append(["返回",close_dialog]);modal("使用战术筹码","消耗 1 枚，只改变本轮当前骰面。",options)
+	options.append(["返回",close_dialog]);modal("使用战术筹码","优先使用免费次数，否则消耗 1 枚筹码。只改变本轮当前骰面。",options)
 
 func protocol_debug() -> void:
 	if busy:return
@@ -415,3 +430,93 @@ func show_settlement_events() -> void:
 	var lines: PackedStringArray=[]
 	for e in last_result.get("events",[]):lines.append("%s · %s · %s: %s %+d → %s"%[e.type,e.source_rule_id,e.resource,str(e.before),int(e.delta),str(e.after)])
 	modal("实际结算事件", "\n".join(lines) if not lines.is_empty() else "尚未结算。",[["返回",protocol_debug]])
+
+
+func event() -> void:
+	game.s.erase("eventLegacy")
+	if game.s.get("activeEvent",{}).is_empty():
+		var ids=EventDirector.catalog.keys()
+		EventDirector.begin(game,ids[game.rng.randi_range(0,ids.size()-1)])
+	show_page("EventScreen");render_event()
+
+func event_button(text: String, action: Callable, disabled: bool=false) -> void:
+	var button=preload("res://scenes/ui/ChoiceButton.tscn").instantiate()
+	button.text=text;button.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;button.disabled=disabled
+	button.add_theme_font_size_override("font_size",18)
+	button.pressed.connect(action);ui("EventOptions").add_child(button)
+
+func render_event() -> void:
+	var e=game.s.activeEvent;var data=EventDirector.catalog[e.id]
+	ui("EventTitle").text=data.title;ui("EventSubtitle").text=data.subtitle
+	ui("EventIllustration").texture=load("res://art/events/"+data.image)
+	ui("EventStats").text="生命 %d / %d   ·   金币 %d   ·   规则 %d / %d"%[game.s.hp,game.s.maxHp,game.s.gold,EventDirector.supports(game).size(),game.capacity()]
+	ui("EventStory").text=data.story if e.stage=="choice" else e.result
+	ui("EventPending").text=pending_event_text()
+	clear_children(ui("EventOptions"))
+	match e.stage:
+		"choice":
+			for i in range(data.options.size()):
+				var o=data.options[i];var reason=EventDirector.reason(game,o)
+				event_button(o.label+"\n"+o.detail+("\n"+reason if reason!="" else ""),func():
+					if EventDirector.choose(game,i):render_event(),reason!="")
+		"target":
+			ui("EventStory").text+="\n选择一张辅助规则。重铸完成前，原规则会保留。"
+			for old in EventDirector.supports(game):
+				var disabled=e.action!="sell" and EventDirector.pool(game,game.cards[old].rarity if e.action=="exchange" else "",false,old).is_empty()
+				event_button(game.cards[old].name+"\n"+game.cards[old].description,func():
+					if EventDirector.select_target(game,old):render_event(),disabled)
+		"card":
+			ui("EventStory").text+="\n选择一张规则；候选不会因退出或读档改变。"
+			for id in e.candidates:
+				event_button(game.cards[id].name+"\n"+game.cards[id].description,func():
+					if EventDirector.accept_card(game,id):render_event())
+		"replace":
+			ui("EventStory").text+="\n获得「%s」。槽位已满或存在互斥，请选择替换："%game.cards[e.reward].name
+			for old in EventDirector.replacement_targets(game,e.reward):
+				event_button("替换「"+game.cards[old].name+"」\n"+game.cards[old].description,func():
+					if EventDirector.accept_card(game,e.reward,old):render_event())
+		"result":event_button("离开 · 返回地图" if game.s.hp>0 else "远征结束",finish_event)
+
+func pending_event_text() -> String:
+	var p=game.s.get("pendingEventEffects",{});var lines: PackedStringArray=[]
+	var names={"hp_loss":"失去生命","shield":"初始护盾","tokens":"战术筹码","pot":"公共赌注（双方可兑现）","free_increment":"免费单骰 +1 次数"}
+	for key in p:lines.append(names.get(key,key)+" +"+str(p[key]))
+	if game.s.get("eventCarriedTokens",0)>0:lines.append("携带战术筹码 %d"%game.s.eventCarriedTokens)
+	return "下场战斗开始时生效一次：\n"+" · ".join(lines) if not lines.is_empty() else "每次相遇只能选择一次。"
+
+func finish_event() -> void:
+	if game.s.get("activeEvent",{}).get("stage","")!="result":return
+	if event_debug_original!=null:end_event_debug();return
+	if not EventDirector.finish(game):return
+	if game.s.phase=="defeat":
+		modal("远征结束","钟声带走了最后的生命。",[["返回主页",func():show_page("MainMenu")]])
+	else:render_map()
+
+
+func event_debug_menu() -> void:
+	if busy:return
+	var options=[]
+	for id in EventDirector.catalog:
+		options.append([EventDirector.catalog[id].title,func():open_event_debug(id)])
+	options.append(["返回",close_dialog])
+	modal("事件调试 · 独立沙盒","使用 100 金币、20 生命和示例构筑；启用赌桌协议。不会修改真实远征或存档。",options)
+
+func open_event_debug(id: String) -> void:
+	if event_debug_original==null:event_debug_original=game;event_debug_page=current_page
+	game=RunState.new();game.persistence_enabled=false;game.battle_experiment_enabled=true;game.fresh("",4817)
+	game.s.gold=100;game.s.hp=20;game.s.rules=["R001","R002","R003"];game.s.current="0-0"
+	EventDirector.begin(game,id);event()
+
+func end_event_debug() -> void:
+	game=event_debug_original;event_debug_original=null
+	if event_debug_page=="MainMenu":show_page("MainMenu")
+	else:restore_screen()
+
+
+func sync_illustration_filter() -> void:
+	var source=$CabaretFilter/MonochromePixels.material as ShaderMaterial
+	for name in ["MenuArtwork","EventIllustration"]:
+		var material=ui(name).material as ShaderMaterial
+		material.set_shader_parameter("effect_enabled",$CabaretFilter.visible)
+		for parameter in ["pixel_size","grayscale","levels","vignette","exposure"]:
+			material.set_shader_parameter(parameter,source.get_shader_parameter(parameter))

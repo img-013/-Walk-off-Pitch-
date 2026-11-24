@@ -70,3 +70,12 @@ func apply_levels() -> void:
 		var index=AudioServer.get_bus_index(key)
 		AudioServer.set_bus_mute(index,levels[key]<=0.0)
 		AudioServer.set_bus_volume_db(index,linear_to_db(maxf(.0001,levels[key])))
+
+
+var context_track: String = "res://audio/main_theme.mp3"
+func play_context(chapter: int) -> void:
+	var path="res://audio/map_chapter%d.mp3"%chapter if chapter in [2,3] else "res://audio/main_theme.mp3"
+	if path==context_track:return
+	context_track=path;$Music.stop()
+	$Music.stream=load(path).duplicate();$Music.stream.loop=true;$Music.volume_db=music_volume_db
+	if music_enabled:$Music.play()
